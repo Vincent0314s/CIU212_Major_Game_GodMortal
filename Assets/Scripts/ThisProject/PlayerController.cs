@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [Range(3,20)]
     public float currentMoveSpeed = 10f;
 
     private float turnSmoothVelocity;
+    [Range(0,1)]
     public float turnSmoothValue = 0.35f;
 
     private bool isTurningRight;
+    private bool isJumping;
+    private bool isOnTheAir;
+
+    public float jumpForce = 5f;
+    public float fallValue = 2.5f;
+
+    Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
@@ -19,32 +32,54 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(1,0,0) * currentMoveSpeed * Time.deltaTime;
-            isTurningRight = true;
-          
+        InputControl();
+        MovementControl();
 
-        }
-        else if(Input.GetKey(KeyCode.A))
+      
+    }
+
+    void InputControl() {
+        isTurningRight = Input.GetKey(KeyCode.D);
+        isJumping = Input.GetKeyDown(KeyCode.Space);
+    }
+
+    void MovementControl() {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(-1, 0, 0) * currentMoveSpeed * Time.deltaTime;
-            isTurningRight = false;
-        }
-        if (isTurningRight)
-        {
-            if (transform.eulerAngles.y != 0)
+            if (isTurningRight)
             {
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 0, ref turnSmoothVelocity, turnSmoothValue);
-                transform.rotation = Quaternion.Euler(0, angle, 0f);
+                transform.position += new Vector3(1, 0, 0) * currentMoveSpeed * Time.deltaTime;
+                //if (transform.eulerAngles.y != 0)
+                //{
+                //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 0, ref turnSmoothVelocity, turnSmoothValue);
+                //    transform.rotation = Quaternion.Euler(0, angle, 0f);
+                //}
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                transform.position += new Vector3(-1, 0, 0) * currentMoveSpeed * Time.deltaTime;
+                //if (transform.eulerAngles.y != 180)
+                //{
+                //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 180, ref turnSmoothVelocity, turnSmoothValue);
+                //    transform.rotation = Quaternion.Euler(0, angle, 0f);
+                //}
+                transform.eulerAngles = new Vector3(0, 180, 0);
             }
         }
-        else {
-            if (transform.eulerAngles.y != 180)
-            {
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 180, ref turnSmoothVelocity, turnSmoothValue);
-                transform.rotation = Quaternion.Euler(0, angle, 0f);
-            }
+        JumpControl();
+    }
+
+    void JumpControl() {
+        if (isJumping)
+        {
+            rb.velocity = Vector3.up * jumpForce;
+            
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.deltaTime;
         }
     }
 }
