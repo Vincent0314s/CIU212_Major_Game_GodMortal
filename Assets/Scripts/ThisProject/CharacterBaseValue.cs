@@ -22,6 +22,10 @@ public class CharacterBaseValue : MonoBehaviour
     public float maxHP = 100f;
     private float currentHP;
 
+    [Header("Stamina")]
+    public float maxStamina = 100f;
+    private float currentStamina;
+
     [Header("Attack")]
     [ArrayElementTitle("type")]
     public List<AttackBasicValue> attackSetting = new List<AttackBasicValue>() {
@@ -37,6 +41,7 @@ public class CharacterBaseValue : MonoBehaviour
 
     void Start() {
         currentHP = maxHP;
+        currentStamina = maxStamina;
         if (isReadyToLoadComponment) {
             anim = GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody>();
@@ -57,5 +62,9 @@ public class CharacterBaseValue : MonoBehaviour
 
     public float GetHealthPercentage() {
         return currentHP / maxHP;
+    }
+
+    public float GetStaminaPercentage() {
+        return currentStamina / maxStamina;
     }
 }

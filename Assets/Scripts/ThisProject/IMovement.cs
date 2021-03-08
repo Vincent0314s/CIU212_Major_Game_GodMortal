@@ -6,5 +6,4 @@ public interface IMovement
 {
     void SetVelocity(Vector3 velocityVector);
 
-    void SetJumpVelocity(Vector3 jumpVector);
 }

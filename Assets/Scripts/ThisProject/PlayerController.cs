@@ -4,92 +4,46 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Range(3,20)]
-    public float currentMoveSpeed = 10f;
 
-    private float turnSmoothVelocity;
-    [Range(0,1)]
-    public float turnSmoothValue = 0.35f;
+    CharacterMovement cm;
+    private bool isGoingRight;
+    private bool isGoingLeft;
+    private bool isDash;
 
-    private bool isTurningRight;
-    private bool isJumping;
-    private bool isOnTheAir;
-
-    public float jumpForce = 5f;
-    public float fallValue = 2.5f;
-
-    Rigidbody rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    public float dashForce = 5;
 
     void Start()
     {
-
+        cm = GetComponent<CharacterMovement>();
     }
 
     void Update()
     {
+        InputSetting();
         MovementInput();
-        
-        if (Input.GetKeyDown(KeyCode.Space)) isJumping = true;
+    }
 
+    void InputSetting() {
+        isGoingRight = Input.GetKey(KeyCode.D);
+        isGoingLeft = Input.GetKey(KeyCode.A);
+        isDash = Input.GetKeyDown(KeyCode.LeftShift);
     }
 
     void MovementInput() {
         float moveX = 0;
-        if (Input.GetKey(KeyCode.D)) moveX = 1;
-        if (Input.GetKey(KeyCode.A)) moveX = -1;
+        if (isGoingRight) moveX = 1;
+        if (isGoingLeft) moveX = -1;
         Vector3 moveVector = new Vector3(moveX, 0, 0).normalized;
         GetComponent<IMovement>().SetVelocity(moveVector);
+
+        //if (isDash) {
+        //    if (isGoingRight) {
+        //        transform.position = new Vector3(transform.position.x+dashForce,transform.position.y,transform.position.z);
+        //    }
+        //}
+
+        cm.JumpState(Input.GetKeyDown(KeyCode.Space));
+
+       
     }
-
-
-    
-    //void InputControl() {
-    //    isTurningRight = Input.GetKey(KeyCode.D);
-    //    isJumping = Input.GetKeyDown(KeyCode.Space);
-    //}
-
-    //void MovementControl() {
-    //    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-    //    {
-    //        if (isTurningRight)
-    //        {
-    //            transform.position += new Vector3(1, 0, 0) * currentMoveSpeed * Time.deltaTime;
-    //            //if (transform.eulerAngles.y != 0)
-    //            //{
-    //            //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 0, ref turnSmoothVelocity, turnSmoothValue);
-    //            //    transform.rotation = Quaternion.Euler(0, angle, 0f);
-    //            //}
-    //            transform.eulerAngles = new Vector3(0, 0, 0);
-    //        }
-    //        else
-    //        {
-    //            transform.position += new Vector3(-1, 0, 0) * currentMoveSpeed * Time.deltaTime;
-    //            //if (transform.eulerAngles.y != 180)
-    //            //{
-    //            //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, 180, ref turnSmoothVelocity, turnSmoothValue);
-    //            //    transform.rotation = Quaternion.Euler(0, angle, 0f);
-    //            //}
-    //            transform.eulerAngles = new Vector3(0, 180, 0);
-    //        }
-    //    }
-    //    JumpControl();
-    //}
-
-    //void JumpControl() {
-    //    if (isJumping)
-    //    {
-    //        rb.velocity = Vector3.up * jumpForce;
-            
-    //    }
-
-    //    if (rb.velocity.y < 0)
-    //    {
-    //        rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.deltaTime;
-    //    }
-    //}
 }

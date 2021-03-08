@@ -185,10 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a6638a972779d4484c44ae13526821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoveSpeed: 10
-  turnSmoothValue: 0.25
-  jumpForce: 5
-  fallValue: 2.5
+  dashForce: 3
 --- !u!33 &486480618
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -227,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isReadyToLoadComponment: 0
   maxHP: 100
+  maxStamina: 100
   attackSetting:
   - type: 0
     damage: 30
@@ -248,7 +246,6 @@ MonoBehaviour:
   turnSmoothValue: 0.35
   jumpForce: 5
   fallValue: 2.5
-  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &754522286
 GameObject:
   m_ObjectHideFlags: 0
