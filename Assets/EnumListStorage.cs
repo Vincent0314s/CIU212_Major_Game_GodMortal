@@ -1,34 +1,17 @@
 public enum VisualEffect 
 {
-	A,
-	B,
-	C,
-	D,
-	E,
-	F,
 
 }
 public enum SoundEffect 
 {
-	GG,
-	HH,
 
 }
 public enum UI_SoundEffects 
 {
-	Hover,
-	Click,
-	Exit,
 
 }
 public enum AIOwner 
 {
-
-}
-public enum Characters 
-{
-	Player,
-	Zombie,
 
 }
 public enum AttackType 
@@ -37,9 +20,10 @@ public enum AttackType
 	Heavy,
 
 }
-public enum AnimationTag 
+public enum Test 
 {
-	Idle,
-	Movement,
+	A,
+	B,
+	C,
 
 }

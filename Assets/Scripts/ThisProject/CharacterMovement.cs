@@ -32,6 +32,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
         isJumping = _jumpState;
     }
 
+
     void Update() {
         transform.position += moveDirection * currentMoveSpeed * Time.deltaTime;
         if (moveDirection.x > 0)

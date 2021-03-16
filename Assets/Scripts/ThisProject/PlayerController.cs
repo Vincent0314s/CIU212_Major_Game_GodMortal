@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
 
     CharacterMovement cm;
+    CharacterBaseValue cbv;
     private bool isGoingRight;
     private bool isGoingLeft;
     private bool isDash;
 
     public float dashForce = 5;
+    public float dashTimer= 0.5f;
+    private float dashStartTimer;
 
     void Start()
     {
         cm = GetComponent<CharacterMovement>();
+        cbv = GetComponent<CharacterBaseValue>();
+        dashStartTimer = dashTimer;
     }
 
     void Update()
@@ -34,16 +40,24 @@ public class PlayerController : MonoBehaviour
         if (isGoingRight) moveX = 1;
         if (isGoingLeft) moveX = -1;
         Vector3 moveVector = new Vector3(moveX, 0, 0).normalized;
-        GetComponent<IMovement>().SetVelocity(moveVector);
+        if (dashTimer >=0.5f) {
+            GetComponent<IMovement>().SetVelocity(moveVector);
+        }
 
-        //if (isDash) {
-        //    if (isGoingRight) {
-        //        transform.position = new Vector3(transform.position.x+dashForce,transform.position.y,transform.position.z);
-        //    }
-        //}
+        cbv.anim.SetFloat("Speed",Mathf.Abs(moveVector.x));
+        cbv.anim.SetBool("isDash",isDash);
+        if (isDash)
+        {
+            DashForward();
+            Debug.Log("Dash!");
+        }
 
         cm.JumpState(Input.GetKeyDown(KeyCode.Space));
 
        
+    }
+
+    void DashForward() {
+        cbv.rb.velocity = transform.right * dashForce;
     }
 }

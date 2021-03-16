@@ -29,6 +29,7 @@ public class EnumListEditor : EditorWindow
     {
         var data = EditorPrefs.GetString("SaveList", JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(data, this);
+        
     }
 
 
