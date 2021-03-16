@@ -13,7 +13,9 @@ public class EnumListEditor : EditorWindow
         new EnumList("UI_SoundEffects"),
         new EnumList("AIOwner"),
     };
-    
+
+    bool isShowing;
+
     [MenuItem("VincentTools/Enum/Enum Generator")]
     public static void ShowWindow()
     {
@@ -29,7 +31,6 @@ public class EnumListEditor : EditorWindow
     {
         var data = EditorPrefs.GetString("SaveList", JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(data, this);
-        
     }
 
 
@@ -39,7 +40,7 @@ public class EnumListEditor : EditorWindow
         SerializedObject so = new SerializedObject(target);
         SerializedProperty stringsProperty = so.FindProperty("enumLists");
 
-        EditorGUILayout.PropertyField(stringsProperty,true);
+        EditorGUILayout.PropertyField(stringsProperty, true);
         so.ApplyModifiedProperties();
 
         if (GUILayout.Button("Update Enum List",GUILayout.Width(200),GUILayout.Height(30)))
@@ -50,4 +51,5 @@ public class EnumListEditor : EditorWindow
             EditorPrefs.SetString("SaveList", data);
         }
     }
+
 }

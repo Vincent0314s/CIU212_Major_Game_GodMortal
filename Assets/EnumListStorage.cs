@@ -20,10 +20,3 @@ public enum AttackType
 	Heavy,
 
 }
-public enum Test 
-{
-	A,
-	B,
-	C,
-
-}

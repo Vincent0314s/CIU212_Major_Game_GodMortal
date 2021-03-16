@@ -36,6 +36,20 @@ public static class EnumListManager
         AssetDatabase.Refresh();
     }
 
+    public static void LoadCurrentEnum() {
+        StreamReader sr = new StreamReader(filePath + fileName + extension);
+        while (!sr.EndOfStream) {
+            Debug.Log(sr.ReadLine());
+
+        }
+        sr.Close();
+    }
+
+    public static string GetCurrentEnum() {
+        StreamReader sr = new StreamReader(filePath + fileName + extension);
+        return sr.ReadToEnd();
+    }
+
     public static void AddSceneList() {
         using (StreamWriter sw = File.CreateText(filePath + sceneFileName + extension))
         {
