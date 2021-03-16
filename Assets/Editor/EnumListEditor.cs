@@ -69,9 +69,9 @@ public class EnumListEditor : EditorWindow
         MultipleEnumList asset = ScriptableObject.CreateInstance<MultipleEnumList>();
 
         _multiepleEnumList = asset;
+        _multiepleEnumList.enumLists = new List<EnumList>(enumLists);
         AssetDatabase.CreateAsset(asset, path);
         AssetDatabase.SaveAssets();
-        _multiepleEnumList.enumLists = new List<EnumList>(enumLists);
     }
 
     void LoadListAsset() {

@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36d422985c73874883e9801e0abfba7, type: 3}
   m_Name: EnumListAsset
   m_EditorClassIdentifier: 
-  enumLists: []
+  enumLists:
+  - name: VisualEffect
+    enumVariable: []
+  - name: SoundEffect
+    enumVariable: []
+  - name: UI_SoundEffects
+    enumVariable: []
+  - name: AIOwner
+    enumVariable: []
+  - name: AttackType
+    enumVariable:
+    - Light
+    - Heavy
