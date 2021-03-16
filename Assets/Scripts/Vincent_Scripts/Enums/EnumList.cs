@@ -5,7 +5,12 @@ public class EnumList {
     public string name;
     public List<string> enumVariable;
 
-    public EnumList(string _name) {
+    public EnumList()
+    {
+
+    }
+    public EnumList(string _name)
+    {
         name = _name;
     }
 }
