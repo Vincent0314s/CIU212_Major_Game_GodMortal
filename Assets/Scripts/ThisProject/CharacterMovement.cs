@@ -5,12 +5,14 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour,IMovement
 {
     [Range(3, 20)]
-    public float currentMoveSpeed = 10f;
+    public float MoveSpeed = 10f;
+    private float currentMoveSpeed;
 
     [Range(0, 1)]
     public float turnSmoothValue = 0.35f;
 
-    private bool isJumping;
+    public bool isJumping { get; private set; }
+    public bool isStopMoving { get; private set; }
 
     public float jumpForce = 5f;
     public float fallValue = 2.5f;
@@ -23,6 +25,10 @@ public class CharacterMovement : MonoBehaviour,IMovement
         rb = GetComponent<Rigidbody>();
     }
 
+    void Start() {
+        currentMoveSpeed = MoveSpeed;
+    }
+
     public void SetVelocity(Vector3 velocityVector)
     {
         moveDirection = velocityVector;
@@ -33,8 +39,10 @@ public class CharacterMovement : MonoBehaviour,IMovement
     }
 
 
+
     void Update() {
-        transform.position += moveDirection * currentMoveSpeed * Time.deltaTime;
+
+        //transform.position += moveDirection * MoveSpeed * Time.deltaTime;
         if (moveDirection.x > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -52,4 +60,15 @@ public class CharacterMovement : MonoBehaviour,IMovement
             rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.deltaTime;
         }
     }
+
+    void FixedUpdate() {
+        rb.MovePosition(transform.position + moveDirection * currentMoveSpeed * Time.fixedDeltaTime);
+        Debug.Log(moveDirection);
+    }
+
+    public void StopMoving() {
+        moveDirection = Vector3.zero;
+    }
+
+
 }

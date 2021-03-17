@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enumLists:
   - name: VisualEffect
-    enumVariable: []
+    enumVariable:
+    - A
   - name: SoundEffect
     enumVariable: []
   - name: UI_SoundEffects
@@ -25,3 +26,12 @@ MonoBehaviour:
     enumVariable:
     - Light
     - Heavy
+  - name: PlayerState
+    enumVariable:
+    - Idle
+    - Moving
+    - Dash
+    - LightAttack
+    - HeavyAttack
+    - Jump
+    - DobuleJump

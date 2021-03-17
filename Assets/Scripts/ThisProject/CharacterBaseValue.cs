@@ -33,6 +33,9 @@ public class CharacterBaseValue : MonoBehaviour
         new AttackBasicValue(AttackType.Heavy,45)
     };
 
+    public bool isLightAttacking { get; private set; }
+    public bool isHeavyAttacking { get; private set; }
+
     private float damage;
 
     public Animator anim { get; private set; }
@@ -66,5 +69,30 @@ public class CharacterBaseValue : MonoBehaviour
 
     public float GetStaminaPercentage() {
         return currentStamina / maxStamina;
+    }
+
+
+    //isAttacking
+    public bool IsLightAttacking(bool condition) {
+        isLightAttacking = condition;
+        return isLightAttacking;
+    }
+
+    public bool IsLightAttacking(KeyCode condition)
+    {
+        isLightAttacking = Input.GetKeyDown(condition);
+        return isLightAttacking;
+    }
+
+    public bool IsHeavyAttacking(bool condition)
+    {
+        isHeavyAttacking = condition;
+        return isHeavyAttacking;
+    }
+
+    public bool IsHeavyAttacking(KeyCode condition)
+    {
+        isHeavyAttacking = Input.GetKeyDown(condition);
+        return isHeavyAttacking;
     }
 }
