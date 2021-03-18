@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleBehaviour : StateMachineBehaviour
+public class Player_IdleBehaviour : StateMachineBehaviour
 {
 
     PlayerController pc;
@@ -10,14 +10,11 @@ public class IdleBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
+        //pc.cm.StopMoving();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (PlayerController.i.cbv.isLightAttacking)
-        {
-            animator.SetTrigger("LightAttackStart");
-        }
         pc.Idle();
     }
 

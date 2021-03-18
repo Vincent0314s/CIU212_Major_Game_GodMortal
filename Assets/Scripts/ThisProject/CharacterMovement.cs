@@ -18,11 +18,12 @@ public class CharacterMovement : MonoBehaviour,IMovement
     public float fallValue = 2.5f;
 
     private Vector3 moveDirection;
-
     private Rigidbody rb;
+    private CharacterBaseValue cbv;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        cbv = GetComponent<CharacterBaseValue>();
     }
 
     void Start() {
@@ -63,11 +64,11 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
     void FixedUpdate() {
         rb.MovePosition(transform.position + moveDirection * currentMoveSpeed * Time.fixedDeltaTime);
-        Debug.Log(moveDirection);
     }
 
     public void StopMoving() {
         moveDirection = Vector3.zero;
+        cbv.anim.SetFloat("Speed",0);
     }
 
 
