@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_LightAttack;
     public KeyCode key_HeavyAttack;
     public KeyCode key_Dash;
+    public KeyCode key_Jump;
 
 
     void Start()
@@ -48,11 +49,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
+        Jump();
         //InputSetting();
         //ActionInput();
         //StateSetting();
         //AnimDisplay();
     }
+
+  
 
     public void Idle() {
         MoveFunction();
@@ -71,6 +76,12 @@ public class PlayerController : MonoBehaviour
         DashInputFunction();
     }
 
+    public void Jump() {
+        //cbv.rb.velocity = new Vector3(cbv.rb.velocity.x,0,cbv.rb.velocity.z);
+        //cbv.rb.AddForce(Vector3.up * 15f,ForceMode.Impulse);
+        cm.JumpState(key_Jump);
+    }
+
     public void Dash() {
         DashUpdate();
     }
@@ -83,7 +94,6 @@ public class PlayerController : MonoBehaviour
     public void HeavyAttackInput() {
         cbv.IsHeavyAttacking(key_HeavyAttack);
     }
-
 
     void MoveFunction() {
 

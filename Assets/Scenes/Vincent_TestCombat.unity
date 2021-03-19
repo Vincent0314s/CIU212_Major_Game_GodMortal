@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 50516641}
   - component: {fileID: 50516640}
   - component: {fileID: 50516639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 807646714}
   - component: {fileID: 807646713}
   - component: {fileID: 807646712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 1755282302}
   - component: {fileID: 1755282301}
   - component: {fileID: 1755282300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,11 +959,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3932945462165950518, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: forwardForceValue
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1018,6 +1013,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907928457952614789, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: fallValue
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907928457952614789, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: heightToFall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907928457952614789, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: groundDetectedOffset.x
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 8907928457952614798, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}

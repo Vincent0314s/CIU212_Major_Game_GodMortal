@@ -31,6 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70205d99f5aa22a40997c62a52c81faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardForceValue: 5
 --- !u!1 &8907928457952614798
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ Rigidbody:
   m_GameObject: {fileID: 8907928457952614798}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -121,9 +122,13 @@ MonoBehaviour:
   playerState: 0
   dashDistance: 10
   dashDuration: 0.3122
+  isFirstJump: 0
+  jumpTimes: 0
+  doubleJumpForce: 10
   key_LightAttack: 323
   key_HeavyAttack: 324
   key_Dash: 304
+  key_Jump: 32
 --- !u!114 &8907928457952614788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,8 +163,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
-  jumpForce: 5
-  fallValue: 2.5
+  detectGroundDistance: 1.5
+  jumpForce: 15
+  fallValue: 3
+  canDoubleJump: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &1929966210740479938
 PrefabInstance:
   m_ObjectHideFlags: 0
