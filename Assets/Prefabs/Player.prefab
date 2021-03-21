@@ -122,9 +122,6 @@ MonoBehaviour:
   playerState: 0
   dashDistance: 10
   dashDuration: 0.3122
-  isFirstJump: 0
-  jumpTimes: 0
-  doubleJumpForce: 10
   key_LightAttack: 323
   key_HeavyAttack: 324
   key_Dash: 304
@@ -165,8 +162,10 @@ MonoBehaviour:
   turnSmoothValue: 0.35
   detectGroundDistance: 1.5
   jumpForce: 15
-  fallValue: 3
+  fallValue: 8
+  heightToFall: 1
   canDoubleJump: 1
+  groundDetectedOffset: {x: 0.36, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
