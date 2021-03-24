@@ -32,3 +32,16 @@ public enum PlayerState
 	DobuleJump,
 
 }
+public enum LevelCheckState 
+{
+	StartPoint,
+	CheckPoint,
+	EndPoint,
+
+}
+public enum CheckPointShape 
+{
+	Box,
+	Sphere,
+
+}
