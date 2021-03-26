@@ -44,3 +44,8 @@ MonoBehaviour:
     enumVariable:
     - Box
     - Sphere
+  - name: EnemySequence
+    enumVariable:
+    - Nothing
+    - TracingPlayer
+    - StayAwayFromPlayer

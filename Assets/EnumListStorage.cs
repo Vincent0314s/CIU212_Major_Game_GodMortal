@@ -45,3 +45,10 @@ public enum CheckPointShape
 	Sphere,
 
 }
+public enum EnemySequence 
+{
+	Nothing,
+	TracingPlayer,
+	StayAwayFromPlayer,
+
+}
