@@ -79,7 +79,10 @@ public class PlayerController : MonoBehaviour
     public void Jump() {
         //cbv.rb.velocity = new Vector3(cbv.rb.velocity.x,0,cbv.rb.velocity.z);
         //cbv.rb.AddForce(Vector3.up * 15f,ForceMode.Impulse);
-        cm.JumpState(key_Jump);
+        //cm.JumpState(key_Jump);
+        if (Input.GetKeyDown(key_Jump)) {
+            cm.Jump();
+        }
     }
 
     public void Dash() {

@@ -23,9 +23,10 @@ public class CharacterMovement : MonoBehaviour,IMovement
     public float jumpForce = 5f;
     public float fallValue = 2.5f;
     [Range(0,5)]
+    [Tooltip("How long can player stay in the air, 0 is longest")]
     public float heightToFall = 2f;
     public bool canDoubleJump;
-    private int doubleJumpTimes = 2;
+    private int doubleJumpTimes = 1;
     public Vector3 groundDetectedOffset;
 
     public LayerMask groundLayer;
@@ -41,7 +42,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
     void Start() {
         currentMoveSpeed = MoveSpeed;
-        doubleJumpTimes = 2;
+        doubleJumpTimes = 1;
     }
 
     public void SetVelocity(Vector3 velocityVector)
@@ -62,33 +63,42 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
 
     void Update() {
-        FlipRotatoin();
-        Jump();
+        Flip();
+        OnGround();
+        //Jump();
     }
 
-    void FlipRotatoin() {
+    public void Flip() {
         if (moveDirection.x > 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            //transform.eulerAngles = new Vector3(0, 0, 0);
+            FacingRight(true);
         }
         else if (moveDirection.x < 0)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            //transform.eulerAngles = new Vector3(0, 180, 0);
+            FacingRight(false);
+        }
+    }
+
+    public void FacingRight(bool _condition) {
+        transform.eulerAngles = _condition ?new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
+    }
+
+    public void OnGround() {
+        isOnGround = Physics.Raycast(transform.position + groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer)
+                  || Physics.Raycast(transform.position - groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer);
+
+        if (isOnGround)
+        {
+            doubleJumpTimes = 1;
         }
     }
 
     public void Jump() {
-        isOnGround = Physics.Raycast(transform.position + groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer) 
-            || Physics.Raycast(transform.position - groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer);
-
-        if (isOnGround)
-        {
-            doubleJumpTimes = 2;
-        }
-
         if (canDoubleJump)
         {
-            if (isJumping && doubleJumpTimes > 0)
+            if (doubleJumpTimes > 0)
             {
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -96,11 +106,11 @@ public class CharacterMovement : MonoBehaviour,IMovement
             }
         }
         else {
-            if (isJumping && isOnGround)
+            //Single Jump
+            if (isOnGround)
             {
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                doubleJumpTimes--;
             }
         }
 

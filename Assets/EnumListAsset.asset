@@ -35,3 +35,17 @@ MonoBehaviour:
     - HeavyAttack
     - Jump
     - DobuleJump
+  - name: LevelCheckState
+    enumVariable:
+    - StartPoint
+    - CheckPoint
+    - EndPoint
+  - name: CheckPointShape
+    enumVariable:
+    - Box
+    - Sphere
+  - name: EnemySequence
+    enumVariable:
+    - Nothing
+    - TracingPlayer
+    - StayAwayFromPlayer

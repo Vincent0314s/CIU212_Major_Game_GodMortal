@@ -32,3 +32,23 @@ public enum PlayerState
 	DobuleJump,
 
 }
+public enum LevelCheckState 
+{
+	StartPoint,
+	CheckPoint,
+	EndPoint,
+
+}
+public enum CheckPointShape 
+{
+	Box,
+	Sphere,
+
+}
+public enum EnemySequence 
+{
+	Nothing,
+	TracingPlayer,
+	StayAwayFromPlayer,
+
+}
