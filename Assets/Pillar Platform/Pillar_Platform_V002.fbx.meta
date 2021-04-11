@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9cddaa53006c4c643a774cbe9ac82b36
+guid: 40da9a25ea89c2648ae7cdce84c95507
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Platform_SHA
-    second: {fileID: 2100000, guid: cb8fdc1a9ce07584fb201a8751dd41d5, type: 2}
+      name: Lava_Pillar_SHA
+    second: {fileID: 2100000, guid: 8d1db5ab23c5ec7479217111b44ef09a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

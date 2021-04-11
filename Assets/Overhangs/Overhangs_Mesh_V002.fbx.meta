@@ -3,7 +3,12 @@ guid: f2d81a3d1d21cdd44b676f1dc5253da3
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Overhangs_SHA
+    second: {fileID: 2100000, guid: df369de0d28db444fbb4d7af01cc4ed8, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
