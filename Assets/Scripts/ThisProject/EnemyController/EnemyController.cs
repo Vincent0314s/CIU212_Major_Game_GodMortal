@@ -23,13 +23,17 @@ public class EnemyController : MonoBehaviour
     public float detectPlayerBySec = 0.5f;
     public LayerMask playerMask;
 
-    [Space(10)]
-    [Header("AI_DetectPlatform")]
-    public float reactToJumpPlatformTimer = 1f;
-    private float currentTimeStayInJumpArea;
-    public bool isInJumpArea;
-    public Action JumpEvent;
+    //[Space(10)]
+    //[Header("AI_DetectPlatform")]
+    //public float reactToJumpPlatformTimer = 1f;
+    //private float currentTimeStayInJumpArea;
+    //public bool isInJumpArea;
+    //public Action JumpEvent;
 
+    [SerializeField]
+    private Transform platformToBeconfined;
+    public float platformDetectedDis;
+    public LayerMask platformMask;
 
     [Space(10)]
     [Header("AI_Reaction")]
@@ -59,6 +63,15 @@ public class EnemyController : MonoBehaviour
         cbv = GetComponent<CharacterBaseValue>();
         player = null;
         StartCoroutine("DetectPlayer");
+        DetectConfinedPlatform();
+    }
+
+    void DetectConfinedPlatform() {
+        //Collider[] colls = Physics.OverlapSphere(transform.position,);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit,platformDetectedDis, platformMask)) {
+            platformToBeconfined = hit.transform;
+        }
     }
 
     IEnumerator DetectPlayer() {
@@ -78,9 +91,7 @@ public class EnemyController : MonoBehaviour
 
         if (player == null)
         {
-            reactionTimer = GetRandomTime(firstTimeReactionTimeRange);
-        }
-        else {
+            //reactionTimer = GetRandomTime(firstTimeReactionTimeRange);
             reactionTimer = GetRandomTime(reactionTimeRange);
         }
     }
@@ -112,13 +123,9 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            if (!isInJumpArea)
-            {
-                TracingPlayer();
-            }
-            else { 
-                
-            }
+            float posX = transform.position.x;
+            posX = Mathf.Clamp(transform.position.x,platformToBeconfined.GetChild(0).transform.position.x, platformToBeconfined.GetChild(1).transform.position.x);
+            transform.position = new Vector3(posX,transform.position.y,transform.position.z);
         }
     }
 
@@ -132,26 +139,6 @@ public class EnemyController : MonoBehaviour
             Move(Direction.Right);
         }
     }
-
-    IEnumerator MoveBack() {
-        if (player.position.x < transform.position.x)
-        {
-            Move(Direction.Right);
-        }
-        else if (player.position.x > transform.position.x)
-        {
-            Move(Direction.Left);
-        }
-        yield return new WaitForSeconds(0.15f);
-        cm.Jump();
-    }
-
-    private void MoveBackAndJump() {
-        isInJumpArea = true;
-        StartCoroutine("MoveBack");
-        
-    }
-
 
     public void Move(Direction _dir) {
         switch (_dir)
@@ -192,39 +179,39 @@ public class EnemyController : MonoBehaviour
         Handles.DrawWireDisc(transform.position,transform.forward,detectedPlayerRange);
         GUI.color = Color.white;
         Handles.Label(transform.position, detectedPlayerRange.ToString("f1"));
-
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmos()
     {
-        if (other.tag == "JumpTrigger") {
-            JumpEvent = cm.Jump;
-            JumpEvent?.Invoke();
-        }
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "JumpTrigger") {
-            if (currentTimeStayInJumpArea < reactToJumpPlatformTimer)
-            {
-                currentTimeStayInJumpArea += Time.deltaTime;
-            }
-            else {
-                if (!isInJumpArea) {
-                    JumpEvent = MoveBackAndJump;
-                    JumpEvent?.Invoke();
-                }
-            }
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "JumpTrigger") {
-            currentTimeStayInJumpArea = 0;
-            isInJumpArea = false;
-            JumpEvent = null;
-        }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "JumpTrigger") {
+    //        if (currentTimeStayInJumpArea < reactToJumpPlatformTimer)
+    //        {
+    //            currentTimeStayInJumpArea += Time.deltaTime;
+    //        }
+    //        else {
+    //            if (!isInJumpArea) {
+    //                JumpEvent = MoveBackAndJump;
+    //                JumpEvent?.Invoke();
+    //            }
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "JumpTrigger") {
+    //        currentTimeStayInJumpArea = 0;
+    //        isInJumpArea = false;
+    //        JumpEvent = null;
+    //    }
+    //}
+
+
 }
