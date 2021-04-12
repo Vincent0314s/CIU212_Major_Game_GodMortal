@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18520823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 18520824}
+  m_Layer: 11
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18520824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18520823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.499, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1105133614}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &19103246
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +626,7 @@ TerrainCollider:
   m_GameObject: {fileID: 221297847}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 5bb04d418ee30774d8458f13723cb379, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 276d0589d1a5a7141af18cdf85af86e2, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &221297850
 Terrain:
@@ -607,7 +637,7 @@ Terrain:
   m_GameObject: {fileID: 221297847}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 5bb04d418ee30774d8458f13723cb379, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 276d0589d1a5a7141af18cdf85af86e2, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -764,6 +794,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 949388776}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &569363704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569363705}
+  m_Layer: 11
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &569363705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569363704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.498, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1105133614}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578955018
 GameObject:
@@ -1149,12 +1209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeActivedInTheBeginning: 1
---- !u!4 &1064796752 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8907928457470853992}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1080055460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1253,7 @@ GameObject:
   - component: {fileID: 1105133615}
   m_Layer: 11
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1212,9 +1266,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105133613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 192.68, y: 2.7, z: 1.2999997}
+  m_LocalPosition: {x: 112.8, y: 2.7, z: 1.2999997}
   m_LocalScale: {x: 11.097257, y: 0.56093, z: 3.6097097}
-  m_Children: []
+  m_Children:
+  - {fileID: 569363705}
+  - {fileID: 18520824}
   m_Father: {fileID: 2066404298}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2000,7 +2056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619443616}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2049,9 +2105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e5eb0ea8f78949a709d6aced69c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1064796752}
   offset: {x: 0, y: 2.5, z: -15}
-  followSpeed: 0.06
+  speedValue: 0.5
+  limitedHeight: {x: 1.5, y: 6.5}
 --- !u!1 &1619813331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2605,7 @@ PrefabInstance:
     - target: {fileID: 46125568030185987, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 46125568030185992, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
@@ -2569,12 +2625,12 @@ PrefabInstance:
     - target: {fileID: 46125568030185998, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.64
+      value: 116.54
       objectReference: {fileID: 0}
     - target: {fileID: 46125568030185998, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: 4.54
       objectReference: {fileID: 0}
     - target: {fileID: 46125568030185998, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
@@ -2648,6 +2704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1225991994815424954, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
         type: 3}
+      propertyPath: platformDetectedDis
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225991994815424954, guid: f87b921ea7fdf1e4fbc3f48f26078e54,
+        type: 3}
       propertyPath: platformMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
@@ -2673,7 +2734,7 @@ PrefabInstance:
     - target: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.09
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}

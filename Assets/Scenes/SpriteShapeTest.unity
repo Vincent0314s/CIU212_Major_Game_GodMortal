@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -774,12 +774,6 @@ Transform:
   m_Father: {fileID: 274829975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &106697956 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1878341024}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &154191222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,7 +2815,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17832
+  m_Name: pb_Mesh34680
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2984,7 +2978,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17734
+  m_Name: pb_Mesh34576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3458,7 +3452,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17714
+  m_Name: pb_Mesh34554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3932,7 +3926,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17802
+  m_Name: pb_Mesh34650
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4202,7 +4196,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17780
+  m_Name: pb_Mesh34632
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4583,9 +4577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e5eb0ea8f78949a709d6aced69c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 106697956}
   offset: {x: 0, y: 6, z: -15}
-  followSpeed: 1
+  speedValue: 0
+  limitedHeight: {x: 1.5, y: 6.5}
 --- !u!1001 &1878341024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4661,7 +4655,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17702
+  m_Name: pb_Mesh34542
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5012,7 +5006,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17818
+  m_Name: pb_Mesh34666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
