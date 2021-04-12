@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
     void Start() {
         currentMoveSpeed = MoveSpeed;
-        doubleJumpTimes = 1;
+        doubleJumpTimes = 2;
     }
 
     public void SetVelocity(Vector3 velocityVector)
@@ -91,7 +91,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
         if (isOnGround)
         {
-            doubleJumpTimes = 1;
+            doubleJumpTimes = 2;
         }
     }
 
