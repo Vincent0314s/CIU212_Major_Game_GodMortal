@@ -12,7 +12,6 @@ public class EnemyController : MonoBehaviour
     }
 
     private Direction dir;
-    public EnemySequence enemySequence;
 
     [Space(10)]
     [Header("Detect Player")]
@@ -23,21 +22,9 @@ public class EnemyController : MonoBehaviour
     public float detectPlayerBySec = 0.5f;
     public LayerMask playerMask;
 
-    //[Space(10)]
-    //[Header("AI_DetectPlatform")]
-    //public float reactToJumpPlatformTimer = 1f;
-    //private float currentTimeStayInJumpArea;
-    //public bool isInJumpArea;
-    //public Action JumpEvent;
-
-    [SerializeField]
-    private Transform platformToBeconfined;
-    public float platformDetectedDis;
-    public LayerMask platformMask;
 
     [Space(10)]
     [Header("AI_Reaction")]
-    public Vector2 firstTimeReactionTimeRange = new Vector2(1.5f,3f);
     public Vector2 reactionTimeRange = new Vector2(0.5f,2f);
 
     private float reactionTimer;
@@ -46,11 +33,14 @@ public class EnemyController : MonoBehaviour
     [Space(10)]
     [Header("AI_Movement")]
     public float stoppedDistance = 2.5f;
+    private Transform platformToBeconfined;
+    private Vector3 originalPosition;
+    public float platformDetectedDis;
+    public LayerMask platformMask;
 
     public string firstAttackAnimName = "Attack01";
 
     private Transform player;
-    [SerializeField]
     private Transform platform;
     private Vector3 moveVector;
 
@@ -62,12 +52,11 @@ public class EnemyController : MonoBehaviour
         cm = GetComponent<CharacterMovement>();
         cbv = GetComponent<CharacterBaseValue>();
         player = null;
-        StartCoroutine("DetectPlayer");
         DetectConfinedPlatform();
+        originalPosition = transform.position;
     }
 
     void DetectConfinedPlatform() {
-        //Collider[] colls = Physics.OverlapSphere(transform.position,);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit,platformDetectedDis, platformMask)) {
             platformToBeconfined = hit.transform;
@@ -88,12 +77,9 @@ public class EnemyController : MonoBehaviour
 
     public void Idle_Enter() {
         currentReactionTimer = 0;
+        StartCoroutine("DetectPlayer");
 
-        if (player == null)
-        {
-            //reactionTimer = GetRandomTime(firstTimeReactionTimeRange);
-            reactionTimer = GetRandomTime(reactionTimeRange);
-        }
+        reactionTimer = GetRandomTime(reactionTimeRange);
     }
 
     public void Idle_Update() {
@@ -103,8 +89,9 @@ public class EnemyController : MonoBehaviour
             {
                 currentReactionTimer += Time.deltaTime;
             }
-            else {
-                if (IsCloseToPlayer())
+            else
+            {
+                if (IsCloseToTarget(player.position))
                 {
                     Attack();
                 }
@@ -114,30 +101,39 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+        else {
+            if (!IsCloseToTarget(originalPosition)) { 
+                Move(originalPosition);
+            }
+        }
     }
 
     public void Running() {
-        if (IsCloseToPlayer())
+        if (player)
         {
-            Attack();
+            if (IsCloseToTarget(player.position))
+            {
+                Attack();
+            }
         }
-        else
-        {
-            float posX = transform.position.x;
-            posX = Mathf.Clamp(transform.position.x,platformToBeconfined.GetChild(0).transform.position.x, platformToBeconfined.GetChild(1).transform.position.x);
-            transform.position = new Vector3(posX,transform.position.y,transform.position.z);
+        else {
+            if (IsCloseToTarget(originalPosition))
+            {
+                cm.StopMoving();
+            }
+            else {
+                Move(originalPosition);
+            }
         }
     }
 
     public void TracingPlayer() {
-        if (player.position.x < transform.position.x)
-        {
-            Move(Direction.Left);
-        }
-        else if (player.position.x > transform.position.x)
-        {
-            Move(Direction.Right);
-        }
+        Move(player.position);
+    }
+
+    public void StopTracinPlayer() {
+        cm.StopMoving();
+        player = null;
     }
 
     public void Move(Direction _dir) {
@@ -154,9 +150,23 @@ public class EnemyController : MonoBehaviour
         }
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
+    public void Move(Vector3 targetPos) {
+        float disbetOriginalPos = Vector3.Distance(transform.position, targetPos);
+        if (disbetOriginalPos > 0.2f)
+        {
+            if (targetPos.x < transform.position.x)
+            {
+                Move(Direction.Left);
+            }
+            else if (targetPos.x > transform.position.x)
+            {
+                Move(Direction.Right);
+            }
+        }
+    }
 
-    public bool IsCloseToPlayer() {
-        float disBetween = Vector3.Distance(player.position, transform.position);
+    public bool IsCloseToTarget(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < stoppedDistance;
     }
 
@@ -185,6 +195,13 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlatformCollider") {
+            StopTracinPlayer();
+        }
     }
 
 
