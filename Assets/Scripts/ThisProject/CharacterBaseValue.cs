@@ -51,7 +51,7 @@ public class CharacterBaseValue : MonoBehaviour
         }
     }
 
-    public float GetDamageFromAttackType(AttackType _type)
+    public float GetDamageAmountFromAttackType(AttackType _type)
     {
         for (int i = 0; i < attackSetting.Count; i++)
         {
@@ -71,6 +71,18 @@ public class CharacterBaseValue : MonoBehaviour
         return currentStamina / maxStamina;
     }
 
+    public void GetHurt(float damage)
+    {
+        if (currentHP > 0)
+        {
+            currentHP -= damage;
+            anim.Play("Hurt");
+        }
+        else { 
+        //Dead
+        }
+        Debug.Log(currentHP);
+    }
 
     //isAttacking
     public bool IsLightAttacking(bool condition) {
