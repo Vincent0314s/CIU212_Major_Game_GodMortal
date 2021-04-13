@@ -113,7 +113,6 @@ public class CharacterMovement : MonoBehaviour,IMovement
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
-
     }
 
     void FixedUpdate() {

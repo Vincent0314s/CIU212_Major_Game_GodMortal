@@ -16,9 +16,6 @@ AnimatorStateMachine:
     m_State: {fileID: 561444148421232634}
     m_Position: {x: 440, y: 280, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1685787016774505872}
-    m_Position: {x: 580, y: 410, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 6905862655937189479}
     m_Position: {x: 560, y: 120, z: 0}
   m_ChildStateMachines: []
@@ -158,33 +155,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -7682165001671269572, guid: 078c32e67d35ae743bb3fd0c3847257d,
-    type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1685787016774505872
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Blade|LL
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -4554759279778453418, guid: 078c32e67d35ae743bb3fd0c3847257d,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
