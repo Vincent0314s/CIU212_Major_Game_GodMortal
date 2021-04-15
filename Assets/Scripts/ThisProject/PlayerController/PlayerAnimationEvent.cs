@@ -28,10 +28,12 @@ public class PlayerAnimationEvent : MonoBehaviour
         if (colls.Length > 0) {
             for (int i = 0; i < colls.Length; i++)
             {
-                colls[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light));
+                colls[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light),()=> { colls[i].GetComponent<EnemyController>().DisableCollision(); });
             }
         }
     }
+
+ 
 
     private void OnDrawGizmosSelected()
     {

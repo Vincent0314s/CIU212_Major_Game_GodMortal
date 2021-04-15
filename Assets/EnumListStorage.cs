@@ -52,3 +52,10 @@ public enum EnemySequence
 	StayAwayFromPlayer,
 
 }
+public enum Items 
+{
+	HealthPotion,
+	StaminaPotion,
+	Letter,
+
+}

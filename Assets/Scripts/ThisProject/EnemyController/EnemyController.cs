@@ -70,8 +70,17 @@ public class EnemyController : MonoBehaviour
             if (colls.Length > 0)
             {
                 player = colls[0].transform;
-                cm.FacingRight(false);
+                FacingPlayer();
             }
+        }
+    }
+
+    void FacingPlayer()
+    {
+        if (player.position.x > transform.position.x) {
+            cm.FacingRight(true);
+        } else if (player.position.x < transform.position.x) {
+            cm.FacingRight(false);
         }
     }
 
@@ -171,6 +180,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Attack() {
+        Move(player.position);
         cbv.anim.Play(firstAttackAnimName);
     }
 
@@ -204,6 +214,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void DisableCollision() {
+        cbv.rb.isKinematic = true;
+        GetComponent<Collider>().enabled = false;
+        Destroy(this.gameObject,5f);
+    }
 
     //private void OnTriggerStay(Collider other)
     //{
