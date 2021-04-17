@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     [Space(10)]
     [Header("Detect Player")]
     public Color circleColor = Color.white;
-    public float detectedPlayerRange = 1f;
+    public float detectedPlayerRange = 6f;
     [Tooltip("This is for optimization")]
     [Range(0,2)]
     public float detectPlayerBySec = 0.5f;
@@ -27,41 +27,42 @@ public class EnemyController : MonoBehaviour
     [Header("AI_Reaction")]
     public Vector2 reactionTimeRange = new Vector2(0.5f,2f);
 
-    private float reactionTimer;
-    private float currentReactionTimer;
+    protected float reactionTimer;
+    protected float currentReactionTimer;
 
     [Space(10)]
     [Header("AI_Movement")]
     public float stoppedDistance = 2.5f;
-    private Transform platformToBeconfined;
-    private Vector3 originalPosition;
-    public float platformDetectedDis;
-    public LayerMask platformMask;
+    protected Vector3 originalPosition;
+
+    //protected Transform platformToBeconfined;
+    //public float platformDetectedDis = 3.5f;
+    //public LayerMask platformMask;
 
     public string firstAttackAnimName = "Attack01";
 
-    private Transform player;
-    private Transform platform;
-    private Vector3 moveVector;
+    [SerializeField]
+    public Transform player { get; private set; }
+    protected Transform platform;
+    protected Vector3 moveVector;
 
     public CharacterMovement cm { get; private set; }
     public CharacterBaseValue cbv { get; private set; }
 
-    void Start()
+    public virtual void Start()
     {
         cm = GetComponent<CharacterMovement>();
         cbv = GetComponent<CharacterBaseValue>();
         player = null;
-        DetectConfinedPlatform();
         originalPosition = transform.position;
     }
 
-    void DetectConfinedPlatform() {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit,platformDetectedDis, platformMask)) {
-            platformToBeconfined = hit.transform;
-        }
-    }
+    //void DetectConfinedPlatform() {
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(transform.position, Vector3.down, out hit,platformDetectedDis, platformMask)) {
+    //        platformToBeconfined = hit.transform;
+    //    }
+    //}
 
     IEnumerator DetectPlayer() {
         while (player == null) {
@@ -91,50 +92,31 @@ public class EnemyController : MonoBehaviour
         reactionTimer = GetRandomTime(reactionTimeRange);
     }
 
-    public void Idle_Update() {
-        if (player)
-        {
-            if (currentReactionTimer < reactionTimer)
-            {
-                currentReactionTimer += Time.deltaTime;
-            }
-            else
-            {
-                if (IsCloseToTarget(player.position))
-                {
-                    Attack();
-                }
-                else
-                {
-                    TracingPlayer();
-                }
-            }
-        }
-        else {
-            if (!IsCloseToTarget(originalPosition)) { 
-                Move(originalPosition);
-            }
-        }
+    public virtual void Idle_Update() { 
+    
     }
 
-    public void Running() {
-        if (player)
-        {
-            if (IsCloseToTarget(player.position))
-            {
-                Attack();
-            }
-        }
-        else {
-            if (IsCloseToTarget(originalPosition))
-            {
-                cm.StopMoving();
-            }
-            else {
-                Move(originalPosition);
-            }
-        }
+    public virtual void Move_Upate() { 
+    
     }
+    //public void Running() {
+    //    if (player)
+    //    {
+    //        if (IsCloseToTarget(player.position))
+    //        {
+    //            Attack();
+    //        }
+    //    }
+    //    else {
+    //        if (IsCloseToTarget(originalPosition))
+    //        {
+    //            cm.StopMoving();
+    //        }
+    //        else {
+    //            Move(originalPosition);
+    //        }
+    //    }
+    //}
 
     public void TracingPlayer() {
         Move(player.position);
@@ -197,14 +179,18 @@ public class EnemyController : MonoBehaviour
     {
         Handles.color = circleColor;
         Handles.DrawWireDisc(transform.position,transform.forward,detectedPlayerRange);
-        GUI.color = Color.white;
-        Handles.Label(transform.position, detectedPlayerRange.ToString("f1"));
+        //GUI.color = Color.white;
+        //Handles.Label(transform.position, detectedPlayerRange.ToString("f1"));
+
+        Handles.color = Color.cyan;
+        Handles.DrawWireDisc(transform.position, transform.forward, stoppedDistance);
+        
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
+        //Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
     }
 
     private void OnTriggerEnter(Collider other)

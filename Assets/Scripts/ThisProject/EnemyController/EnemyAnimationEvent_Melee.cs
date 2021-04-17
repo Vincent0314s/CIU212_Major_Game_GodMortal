@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class EnemyAnimationEvent : MonoBehaviour
+public class EnemyAnimationEvent_Melee : MonoBehaviour
 {
     CharacterBaseValue cbv;
     public Transform attackPoint;
@@ -34,7 +34,7 @@ public class EnemyAnimationEvent : MonoBehaviour
         {
             Handles.color = lightAttackRangeColor;
             Handles.DrawWireDisc(attackPoint.position, transform.parent.forward, lightAttackRadius);
-            GUI.color = Color.white;
+            GUI.color = lightAttackRangeColor;
             Handles.Label(attackPoint.position, lightAttackRadius.ToString("f1"));
         }
     }

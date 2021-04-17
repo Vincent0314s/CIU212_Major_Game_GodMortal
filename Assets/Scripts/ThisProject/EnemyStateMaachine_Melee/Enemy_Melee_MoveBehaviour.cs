@@ -11,7 +11,7 @@ public class Enemy_Melee_MoveBehaviour : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ec.Running();
+        ec.Move_Upate();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
