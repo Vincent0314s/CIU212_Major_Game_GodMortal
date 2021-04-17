@@ -29,6 +29,10 @@ public class PlatformEditor : Editor
             platform.ClearBorder();
         }
 
+        if (!EditorApplication.isPlaying) {
+            platform.FindExistedBorders();
+        }
+
         if (!platform.AreCollidersNull()) {
             platform.UpdateData();
             serializedObject.ApplyModifiedProperties();

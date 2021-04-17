@@ -11,11 +11,17 @@ public class Platform : MonoBehaviour
     private GameObject leftCollider;
     private GameObject rightCollider;
 
+    private const string left = "LeftBorder";
+    private const string right = "RightBorder";
+
 
     public void GenerateConfineedCollider() {
         if (AreCollidersNull()) {
             leftCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
             rightCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+            leftCollider.name = left;
+            rightCollider.name = right;
 
             leftCollider.tag = "PlatformCollider";
             rightCollider.tag = "PlatformCollider";
@@ -26,7 +32,6 @@ public class Platform : MonoBehaviour
             leftCollider.transform.localScale = colliderSize;
             rightCollider.transform.localScale = colliderSize;
 
-            float scaleX = transform.localScale.x;
 
             leftCollider.transform.localPosition = new Vector3(-colliderOffset.x, colliderOffset.y, colliderOffset.z);
             rightCollider.transform.localPosition = new Vector3(colliderOffset.x, colliderOffset.y, colliderOffset.z);
@@ -43,8 +48,6 @@ public class Platform : MonoBehaviour
     public void UpdateData() {
         leftCollider.transform.localScale = colliderSize;
         rightCollider.transform.localScale = colliderSize;
-
-        float scaleX = transform.localScale.x;
 
         leftCollider.transform.localPosition = new Vector3(-colliderOffset.x, colliderOffset.y, colliderOffset.z);
         rightCollider.transform.localPosition = new Vector3(colliderOffset.x, colliderOffset.y, colliderOffset.z);
@@ -67,6 +70,21 @@ public class Platform : MonoBehaviour
             leftCollider = null;
             DestroyImmediate(rightCollider);
             rightCollider = null;
+        }
+    }
+
+    public void FindExistedBorders() {
+        if (transform.childCount > 0) {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if (transform.GetChild(i).gameObject.name == left && !leftCollider) {
+                    leftCollider = transform.GetChild(i).gameObject;
+                }
+                if (transform.GetChild(i).gameObject.name == right && !rightCollider)
+                {
+                    rightCollider = transform.GetChild(i).gameObject;
+                }
+            }
         }
     }
 
