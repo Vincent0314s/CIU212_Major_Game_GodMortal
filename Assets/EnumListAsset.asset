@@ -49,3 +49,8 @@ MonoBehaviour:
     - Nothing
     - TracingPlayer
     - StayAwayFromPlayer
+  - name: Items
+    enumVariable:
+    - HealthPotion
+    - StaminaPotion
+    - Letter

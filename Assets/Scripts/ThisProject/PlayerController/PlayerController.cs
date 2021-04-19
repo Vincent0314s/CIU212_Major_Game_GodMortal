@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController _i;
@@ -28,9 +27,9 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Dash")]
     public float dashDistance = 5;
-    private float dashTimer;
-    [Range(0.25f,0.4f)]
-    public float dashDuration = 0.3f;
+    //private float dashTimer;
+    //[Range(0.25f, 0.4f)]
+    //public float dashDuration = 0.3f;
 
     [Space]
     [Header("KeyCode")]
@@ -38,23 +37,33 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_HeavyAttack;
     public KeyCode key_Dash;
     public KeyCode key_Jump;
-
+    public KeyCode key_HealthPotion;
+    public KeyCode key_StanimaPotion;
 
     void Start()
     {
         cm = GetComponent<CharacterMovement>();
         cbv = GetComponent<CharacterBaseValue>();
-        dashTimer = dashDuration;
+        //dashTimer = dashDuration;
     }
 
     void Update()
     {
-        
         Jump();
         //InputSetting();
         //ActionInput();
         //StateSetting();
         //AnimDisplay();
+        if (!cbv.isDead) {
+            if (Input.GetKeyDown(key_HealthPotion))
+            {
+                if (ItemManager.i.CanUsingItems(Items.HealthPotion))
+                {
+                    ItemManager.i.RemoveItems(Items.HealthPotion);
+                    cbv.AddHP(ItemManager.i.healthPotionHealAmount);
+                }
+            }
+        }
     }
 
   
@@ -152,8 +161,6 @@ public class PlayerController : MonoBehaviour
     {
         cbv.rb.velocity = Vector3.zero;
     }
-
-
 
 
     ///////////////////////Old
