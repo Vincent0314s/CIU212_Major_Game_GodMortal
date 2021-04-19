@@ -5,7 +5,12 @@ using System;
 
 public class LevelCheckPoint : MonoBehaviour
 {
+    public enum CheckPointType { 
+        Horizontal,
+        Vertical
+    }
     public LevelCheckState levelState;
+    public CheckPointType type;
 
     public bool canActivatePositiveIndex = true;
     public int[] levelToShowIndex_positive;
@@ -107,17 +112,34 @@ public class LevelCheckPoint : MonoBehaviour
     {
         if (levelState == LevelCheckState.CheckPoint)
         {
-            if (player.position.x > transform.position.x && activateLevelEvent == null)
+            if (type == CheckPointType.Horizontal)
             {
-                activateLevelEvent = ActivatePositiveLevels;
-                activateLevelEvent?.Invoke();
+                if (player.position.x > transform.position.x && activateLevelEvent == null)
+                {
+                    activateLevelEvent = ActivatePositiveLevels;
+                    activateLevelEvent?.Invoke();
+                }
+                else if (player.position.x < transform.position.x && activateLevelEvent != null)
+                {
+                    activateLevelEvent = ActivateNegativeLevels;
+                    activateLevelEvent?.Invoke();
+                    activateLevelEvent = null;
+                }
             }
-            else if (player.position.x < transform.position.x && activateLevelEvent != null)
-            {
-                activateLevelEvent = ActivateNegativeLevels;
-                activateLevelEvent?.Invoke();
-                activateLevelEvent = null;
+            else {
+                if (player.position.y < transform.position.y && activateLevelEvent == null)
+                {
+                    activateLevelEvent = ActivatePositiveLevels;
+                    activateLevelEvent?.Invoke();
+                }
+                else if (player.position.y > transform.position.y && activateLevelEvent != null)
+                {
+                    activateLevelEvent = ActivateNegativeLevels;
+                    activateLevelEvent?.Invoke();
+                    activateLevelEvent = null;
+                }
             }
+           
         }
     }
 }

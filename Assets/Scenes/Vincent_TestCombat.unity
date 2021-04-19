@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 1
+  type: 0
   canActivatePositiveIndex: 0
   levelToShowIndex_positive: 
   canActivateNegativeIndex: 1
@@ -311,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 0
+  type: 0
   canActivatePositiveIndex: 1
   levelToShowIndex_positive: 
   canActivateNegativeIndex: 0
@@ -364,12 +366,12 @@ Transform:
   m_GameObject: {fileID: 151911850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 171.6, y: 2.7, z: 1.3}
-  m_LocalScale: {x: 3.3043194, y: 0.56093, z: 3.6097097}
+  m_LocalScale: {x: 23.065443, y: 0.56093, z: 3.6097097}
   m_Children:
   - {fileID: 429898236}
   - {fileID: 5310225}
   m_Father: {fileID: 2066404298}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &151911852
 BoxCollider:
@@ -568,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 1
+  type: 0
   canActivatePositiveIndex: 1
   levelToShowIndex_positive: 02000000
   canActivateNegativeIndex: 0
@@ -1052,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 1
+  type: 0
   canActivatePositiveIndex: 1
   levelToShowIndex_positive: 03000000
   canActivateNegativeIndex: 1
@@ -1389,7 +1393,7 @@ Transform:
   - {fileID: 1281150132}
   - {fileID: 18740900}
   m_Father: {fileID: 2066404298}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1105133615
 BoxCollider:
@@ -2806,6 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 1
+  type: 0
   canActivatePositiveIndex: 1
   levelToShowIndex_positive: 04000000
   canActivateNegativeIndex: 1
@@ -2857,8 +2862,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 151911851}
   - {fileID: 1105133614}
+  - {fileID: 151911851}
   m_Father: {fileID: 187650366}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2892,6 +2897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 2
+  type: 0
   canActivatePositiveIndex: 1
   levelToShowIndex_positive: 
   canActivateNegativeIndex: 0
@@ -2941,7 +2947,7 @@ PrefabInstance:
     - target: {fileID: 931472572024795106, guid: ba019516f61ad5749888e4d474f2aa3e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 113.52
+      value: 169.3
       objectReference: {fileID: 0}
     - target: {fileID: 931472572024795106, guid: ba019516f61ad5749888e4d474f2aa3e,
         type: 3}
