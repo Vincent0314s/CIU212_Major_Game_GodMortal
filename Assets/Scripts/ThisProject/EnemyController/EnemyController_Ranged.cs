@@ -28,7 +28,7 @@ public class EnemyController_Ranged : EnemyController
             }
             else
             {
-                if (IsCloseToTarget(player.position))
+                if (IsInAttackRange(player.position))
                 {
                     Attack();
                 }

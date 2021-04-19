@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     [Space(10)]
     [Header("AI_Movement")]
     public float stoppedDistance = 2.5f;
+    public float attackRangeDistance = 5f;
     protected Vector3 originalPosition;
 
     //protected Transform platformToBeconfined;
@@ -99,25 +100,7 @@ public class EnemyController : MonoBehaviour
     public virtual void Move_Upate() { 
     
     }
-    //public void Running() {
-    //    if (player)
-    //    {
-    //        if (IsCloseToTarget(player.position))
-    //        {
-    //            Attack();
-    //        }
-    //    }
-    //    else {
-    //        if (IsCloseToTarget(originalPosition))
-    //        {
-    //            cm.StopMoving();
-    //        }
-    //        else {
-    //            Move(originalPosition);
-    //        }
-    //    }
-    //}
-
+    
     public void TracingPlayer() {
         Move(player.position);
     }
@@ -161,6 +144,11 @@ public class EnemyController : MonoBehaviour
         return disBetween < stoppedDistance;
     }
 
+    public bool IsInAttackRange(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween < attackRangeDistance; 
+    }
+
     public void Attack() {
         Move(player.position);
         cbv.anim.Play(firstAttackAnimName);
@@ -181,10 +169,12 @@ public class EnemyController : MonoBehaviour
         Handles.DrawWireDisc(transform.position,transform.forward,detectedPlayerRange);
         //GUI.color = Color.white;
         //Handles.Label(transform.position, detectedPlayerRange.ToString("f1"));
-
+        
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, stoppedDistance);
-        
+
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, transform.forward, attackRangeDistance);
     }
 
     private void OnDrawGizmos()

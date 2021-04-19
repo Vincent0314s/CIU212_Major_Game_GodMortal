@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAnimationEvent_Ranged : MonoBehaviour
 {
-
     public GameObject arrow;
     public Transform attackPoint;
     public float shootForce = 2f;
