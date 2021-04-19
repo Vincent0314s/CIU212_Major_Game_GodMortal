@@ -18,6 +18,8 @@ public class LevelCheckPointEditor : Editor
                 _levelcheckpoint.startPointColor = EditorGUILayout.ColorField("StartPointColor", _levelcheckpoint.startPointColor);
                 break;
             case LevelCheckState.CheckPoint:
+                SerializedProperty checkPointT = serializedObject.FindProperty("type");
+                EditorGUILayout.PropertyField(checkPointT);
                 _levelcheckpoint.checkPointColor = EditorGUILayout.ColorField("CheckPointColor", _levelcheckpoint.checkPointColor);
 
 
