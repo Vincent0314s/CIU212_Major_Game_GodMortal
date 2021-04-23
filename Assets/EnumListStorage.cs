@@ -19,6 +19,7 @@ public enum AttackType
 {
 	Light,
 	Heavy,
+	Projectile,
 
 }
 public enum PlayerState 

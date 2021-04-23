@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     private static ItemManager _i;
@@ -15,6 +15,9 @@ public class ItemManager : MonoBehaviour
             return _i;
         }
     }
+    [Space]
+    [Header("UI")]
+    public Text UI_Item1text;
 
     public float healthPotionHealAmount = 15f;
     public float staminaPotionHealAmount = 5f;
@@ -22,6 +25,11 @@ public class ItemManager : MonoBehaviour
     private int healthPotionNumber;
     private int staminaPotionNumber;
     private int letterNumber;
+
+    private void Start()
+    {
+        UpdateItemSlotNumber();
+    }
 
     public void AddItems(Items _type) {
         switch (_type) {
@@ -35,6 +43,7 @@ public class ItemManager : MonoBehaviour
                 letterNumber += 1;
                 break;
         }
+        UpdateItemSlotNumber();
     }
 
     public void RemoveItems(Items _type)
@@ -55,6 +64,7 @@ public class ItemManager : MonoBehaviour
                 letterNumber -= 1;
                 break;
         }
+        UpdateItemSlotNumber();
     }
 
     public bool CanUsingItems(Items _type)
@@ -75,5 +85,9 @@ public class ItemManager : MonoBehaviour
                 break;
         }
         return false;
+    }
+
+    public void UpdateItemSlotNumber() {
+        UI_Item1text.text = healthPotionNumber.ToString();
     }
 }

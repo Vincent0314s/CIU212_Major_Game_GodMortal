@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     //private float dashTimer;
     //[Range(0.25f, 0.4f)]
     //public float dashDuration = 0.3f;
+    [Space]
+    [Header("RangedPower")]
+    public GameObject rangedPowerObject;
+    public float rangedPowerForce = 20f;
 
     [Space]
     [Header("KeyCode")]
@@ -39,11 +43,16 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_Jump;
     public KeyCode key_HealthPotion;
     public KeyCode key_StanimaPotion;
+    public KeyCode key_RangedPower;
+
+    PlayerAnimationEvent pae;
+ 
 
     void Start()
     {
         cm = GetComponent<CharacterMovement>();
         cbv = GetComponent<CharacterBaseValue>();
+        pae = GetComponentInChildren<PlayerAnimationEvent>();
         //dashTimer = dashDuration;
     }
 
@@ -63,14 +72,22 @@ public class PlayerController : MonoBehaviour
                     cbv.AddHP(ItemManager.i.healthPotionHealAmount);
                 }
             }
+
+            if (Input.GetKeyDown(key_StanimaPotion)) { 
+                //RecoverStanima
+            }
+
+            if (Input.GetKeyDown(key_RangedPower)) { 
+                
+            }
         }
     }
 
-  
 
     public void Idle() {
         MoveFunction();
         AttackInputFunction();
+        LaunchRangedPower();
         //isGoingRight = Input.GetKey(KeyCode.D);
         //isGoingLeft = Input.GetKey(KeyCode.A);
 
@@ -83,6 +100,7 @@ public class PlayerController : MonoBehaviour
         MoveFunction();
         AttackInputFunction();
         DashInputFunction();
+        LaunchRangedPower();
     }
 
     public void Jump() {
@@ -162,6 +180,14 @@ public class PlayerController : MonoBehaviour
         cbv.rb.velocity = Vector3.zero;
     }
 
+    void LaunchRangedPower() {
+        if (Input.GetKeyDown(key_RangedPower))
+        {
+            GameObject obj = Instantiate(rangedPowerObject,pae.attackPoint.position,Quaternion.identity);
+            obj.GetComponent<PlayerProjectile>().SetPlayerController(this);
+            obj.GetComponent<Rigidbody>().velocity = transform.right * rangedPowerForce;
+        }
+    }
 
     ///////////////////////Old
 

@@ -26,6 +26,7 @@ MonoBehaviour:
     enumVariable:
     - Light
     - Heavy
+    - Projectile
   - name: PlayerState
     enumVariable:
     - Idle
