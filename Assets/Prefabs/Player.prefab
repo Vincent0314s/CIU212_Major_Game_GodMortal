@@ -158,11 +158,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: 0
   dashDistance: 10
-  dashDuration: 0.3122
+  rangedPowerObject: {fileID: 5828855240236238648, guid: f14589a1f628ee04b870202433b6469a,
+    type: 3}
+  rangedPowerForce: 20
   key_LightAttack: 323
   key_HeavyAttack: 324
   key_Dash: 304
   key_Jump: 32
+  key_HealthPotion: 49
+  key_StanimaPotion: 50
+  key_RangedPower: 102
 --- !u!114 &8907928457952614788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +188,9 @@ MonoBehaviour:
     damage: 30
   - type: 1
     damage: 45
+  - type: 2
+    damage: 25
+  UI_HPBar: {fileID: 0}
 --- !u!114 &8907928457952614789
 MonoBehaviour:
   m_ObjectHideFlags: 0

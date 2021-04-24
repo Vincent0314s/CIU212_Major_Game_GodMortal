@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 2833083590354740323}
   m_Layer: 10
   m_Name: Enemy_Melee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,10 +170,7 @@ MonoBehaviour:
     m_Bits: 512
   reactionTimeRange: {x: 1, y: 2}
   stoppedDistance: 2.5
-  platformDetectedDis: 3.5
-  platformMask:
-    serializedVersion: 2
-    m_Bits: 2048
+  attackRangeDistance: 2.48
   firstAttackAnimName: Attack01
 --- !u!95 &1270094040543703997
 Animator:
@@ -208,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1073401454}
   lightAttackRadius: 1.2
-  lightAttackRangeColor: {r: 1, g: 1, b: 1, a: 1}
+  lightAttackRangeColor: {r: 1, g: 0.051886797, b: 0.051886797, a: 1}
   playerMask:
     serializedVersion: 2
     m_Bits: 512

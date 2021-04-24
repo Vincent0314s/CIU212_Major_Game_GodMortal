@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 931472572024795104}
   m_Layer: 10
   m_Name: Enemy_Ranged
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931472572024795119}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 110.75, y: 4.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -167,7 +167,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   reactionTimeRange: {x: 1, y: 2}
-  stoppedDistance: 13
+  stoppedDistance: 2.5
+  attackRangeDistance: 14.23
   firstAttackAnimName: Attack01
   temp: {fileID: 2100000, guid: ee7d7ace5c84b964c83870c3377c3f98, type: 2}
 --- !u!95 &2156899209423128145
