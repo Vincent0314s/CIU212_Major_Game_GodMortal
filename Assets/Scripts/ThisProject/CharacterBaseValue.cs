@@ -24,10 +24,6 @@ public class CharacterBaseValue : MonoBehaviour
     public float maxHP = 100f;
     public float currentHP { get; private set; }
 
-    [Header("Stamina")]
-    public float maxStamina = 100f;
-    private float currentStamina;
-
     [Header("Attack")]
     [ArrayElementTitle("type")]
     public List<AttackBasicValue> attackSetting = new List<AttackBasicValue>() {
@@ -35,9 +31,6 @@ public class CharacterBaseValue : MonoBehaviour
         new AttackBasicValue(AttackType.Heavy,45)
     };
 
-    [Space]
-    [Header("UI")]
-    public Image UI_HPBar;
     public bool isLightAttacking { get; private set; }
     public bool isHeavyAttacking { get; private set; }
     public bool isDead { get; private set; }
@@ -56,11 +49,9 @@ public class CharacterBaseValue : MonoBehaviour
         }
     }
 
-    public void InitPlayerState() {
+    public virtual void InitPlayerState() {
         isDead = false;
         currentHP = maxHP;
-        currentStamina = maxStamina;
-        UpdatePlayerHpBar();
     }
 
     public float GetDamageAmountFromAttackType(AttackType _type)
@@ -79,19 +70,14 @@ public class CharacterBaseValue : MonoBehaviour
         return currentHP / maxHP;
     }
 
-    public float GetStaminaPercentage() {
-        return currentStamina / maxStamina;
-    }
-
-    public void AddHP(float _amount) {
+    public virtual void AddHP(float _amount) {
         currentHP += _amount;
         if (currentHP > maxHP) {
             currentHP = maxHP;
         }
-        UpdatePlayerHpBar();
     }
 
-    public void GetHurt(float damage)
+    public virtual void GetHurt(float damage)
     {
         currentHP -= damage;
         if (currentHP > 0)
@@ -102,10 +88,9 @@ public class CharacterBaseValue : MonoBehaviour
             anim.Play("Dead");
             isDead = true;
         }
-        UpdatePlayerHpBar();
     }
 
-    public void GetHurt(float damage, Action deadEvent)
+    public virtual void GetHurt(float damage, Action deadEvent)
     {
         currentHP -= damage;
         if (currentHP > 0)
@@ -118,15 +103,8 @@ public class CharacterBaseValue : MonoBehaviour
             anim.Play("Dead");
             isDead = true;
         }
-        UpdatePlayerHpBar();
     }
-
-    public void UpdatePlayerHpBar() {
-        if (UI_HPBar)
-        {
-            UI_HPBar.fillAmount = GetHealthPercentage();
-        }
-    }
+    
 
     //isAttacking
     public bool IsLightAttacking(bool condition) {

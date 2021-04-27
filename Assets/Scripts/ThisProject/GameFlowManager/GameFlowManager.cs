@@ -16,9 +16,29 @@ public class GameFlowManager : MonoBehaviour
         }
     }
     public GameObject UI_GameOver;
+    public GameObject UI_PauseMenu;
 
     public void GameOver() {
         UI_GameOver.SetActive(true);
+    }
+
+    public void OpenPauseMenu() {
+        if (!UI_PauseMenu.activeInHierarchy) {
+            Time.timeScale = 0;
+            UI_PauseMenu.SetActive(true);
+        }
+    }
+
+    public void Resume() {
+        if (UI_PauseMenu.activeInHierarchy)
+        {
+            Time.timeScale = 1;
+            UI_PauseMenu.SetActive(false);
+        }
+    }
+
+    public void QuitGame() {
+        SceneController.QuitGame();
     }
 
 

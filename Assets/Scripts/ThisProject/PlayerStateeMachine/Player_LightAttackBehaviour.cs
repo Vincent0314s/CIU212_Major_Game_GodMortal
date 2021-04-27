@@ -18,6 +18,7 @@ public class Player_LightAttackBehaviour : StateMachineBehaviour
         pc = animator.GetComponentInParent<PlayerController>();
         pc.cm.StopMoving();
         canDoNextAttack = false;
+        StaminaController.ConsumeStamina(PlayerActionType.LightAttack);
         //currentDealyTimer = delayToDectectInput;
     }
 
@@ -29,7 +30,7 @@ public class Player_LightAttackBehaviour : StateMachineBehaviour
         {
             canDoNextAttack = true;
         }
-        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim)
+        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim && StaminaController.CanConsumeStamina())
         {
             animator.Play(animString);
         }

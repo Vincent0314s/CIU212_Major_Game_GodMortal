@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public CharacterMovement cm { get; private set; }
     public CharacterBaseValue cbv { get; private set; }
 
-    //public PlayerState playerState;
     public Levels whereisPlayer;
 
     private bool isGoingRight;
@@ -45,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_HealthPotion;
     public KeyCode key_StanimaPotion;
     public KeyCode key_RangedPower;
+    public KeyCode key_Escape;
 
     PlayerAnimationEvent pae;
  
@@ -82,9 +82,10 @@ public class PlayerController : MonoBehaviour
                 //RecoverStanima
             }
 
-            if (Input.GetKeyDown(key_RangedPower)) { 
-                
+            if (Input.GetKeyDown(key_Escape)) {
+                GameFlowManager.i.OpenPauseMenu();
             }
+            StaminaController.RecoverStamina();
         }
     }
 
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
         //cbv.rb.velocity = new Vector3(cbv.rb.velocity.x,0,cbv.rb.velocity.z);
         //cbv.rb.AddForce(Vector3.up * 15f,ForceMode.Impulse);
         //cm.JumpState(key_Jump);
-        if (Input.GetKeyDown(key_Jump)) {
+        if (Input.GetKeyDown(key_Jump) && StaminaController.CanConsumeStamina()) {
             cm.Jump();
         }
     }
@@ -147,21 +148,23 @@ public class PlayerController : MonoBehaviour
     void AttackInputFunction() {
         cbv.IsLightAttacking(key_LightAttack);
         cbv.IsHeavyAttacking(key_HeavyAttack);
-
-        if (cbv.isLightAttacking)
-        {
-            //cbv.anim.SetTrigger("LightAttackStart");
-            cbv.anim.Play("LightAttack01");
-        }
-        if (cbv.isHeavyAttacking) {
-            cbv.anim.Play("HeavyAttack01");
+        if (StaminaController.CanConsumeStamina()) {
+            if (cbv.isLightAttacking)
+            {
+                //cbv.anim.SetTrigger("LightAttackStart");
+                cbv.anim.Play("LightAttack01");
+            }
+            if (cbv.isHeavyAttacking)
+            {
+                cbv.anim.Play("HeavyAttack01");
+            }
         }
     }
 
 
 
     void DashInputFunction() {
-        isDashing = Input.GetKeyDown(key_Dash);
+        isDashing = Input.GetKeyDown(key_Dash) && StaminaController.CanConsumeStamina();
         if (isDashing)
         {
             cbv.anim.SetTrigger("Dash");
@@ -186,11 +189,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void LaunchRangedPower() {
-        if (Input.GetKeyDown(key_RangedPower))
+        if (Input.GetKeyDown(key_RangedPower) && StaminaController.CanConsumeStamina())
         {
             GameObject obj = Instantiate(rangedPowerObject,pae.attackPoint.position,Quaternion.identity);
             obj.GetComponent<PlayerProjectile>().SetPlayerController(this);
             obj.GetComponent<Rigidbody>().velocity = transform.right * rangedPowerForce;
+            StaminaController.ConsumeStamina(PlayerActionType.RangedPower);
         }
     }
 

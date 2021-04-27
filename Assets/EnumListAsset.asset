@@ -26,16 +26,17 @@ MonoBehaviour:
     enumVariable:
     - Light
     - Heavy
+    - Aerial
     - Projectile
-  - name: PlayerState
+  - name: PlayerActionType
     enumVariable:
-    - Idle
-    - Moving
+    - Jump
+    - DoubleJump
     - Dash
     - LightAttack
     - HeavyAttack
-    - Jump
-    - DobuleJump
+    - AerialAttack
+    - RangedPower
   - name: LevelCheckState
     enumVariable:
     - StartPoint

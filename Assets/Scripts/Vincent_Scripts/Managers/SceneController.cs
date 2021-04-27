@@ -24,7 +24,7 @@ public static class SceneController
         SceneManager.LoadScene(name,mode);
     }
 
-    public static void LoadScene(Scene scene)
+    public static void LoadScene(SceneInTheBuild scene)
     {
         SceneManager.LoadScene(scene.ToString());
     }
@@ -45,5 +45,8 @@ public static class SceneController
         return SceneManager.GetActiveScene().buildIndex;
     }
 
+    public static void QuitGame() {
+        Application.Quit();
+    }
 
 }

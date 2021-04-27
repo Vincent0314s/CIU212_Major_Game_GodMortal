@@ -1,4 +1,4 @@
-public enum Scene 
+public enum SceneInTheBuild 
 {
 	Vincent_TestCombat,
 

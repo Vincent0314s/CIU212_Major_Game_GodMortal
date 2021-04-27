@@ -53,7 +53,7 @@ public static class EnumListManager
     public static void AddSceneList() {
         using (StreamWriter sw = File.CreateText(filePath + sceneFileName + extension))
         {
-            sw.WriteLine("public enum " + "Scene" + " \n{");
+            sw.WriteLine("public enum " + "SceneInTheBuild" + " \n{");
             EditorBuildSettingsScene[] allScenes = EditorBuildSettings.scenes;
 
             foreach (var item in allScenes)

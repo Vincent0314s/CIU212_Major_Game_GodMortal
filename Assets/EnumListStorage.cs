@@ -19,18 +19,19 @@ public enum AttackType
 {
 	Light,
 	Heavy,
+	Aerial,
 	Projectile,
 
 }
-public enum PlayerState 
+public enum PlayerActionType 
 {
-	Idle,
-	Moving,
+	Jump,
+	DoubleJump,
 	Dash,
 	LightAttack,
 	HeavyAttack,
-	Jump,
-	DobuleJump,
+	AerialAttack,
+	RangedPower,
 
 }
 public enum LevelCheckState 

@@ -107,6 +107,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 doubleJumpTimes--;
+                StaminaController.ConsumeStamina(PlayerActionType.DoubleJump);
             }
         }
         else {
@@ -115,6 +116,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
             {
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StaminaController.ConsumeStamina(PlayerActionType.Jump);
             }
         }
     }

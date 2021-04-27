@@ -11,7 +11,7 @@ public class V_Button : MonoBehaviour,IPointerEnterHandler,IPointerDownHandler,I
     public Sprite mainSprite;
     //Foldable
     public bool ableToChangeScene = false;
-    public Scene sceneToChange;
+    public SceneInTheBuild sceneToChange;
 
     //Foldable
     public bool ableToAssignSFX = false;

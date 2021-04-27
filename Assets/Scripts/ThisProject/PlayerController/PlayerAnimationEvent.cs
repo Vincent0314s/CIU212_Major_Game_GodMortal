@@ -33,8 +33,8 @@ public class PlayerAnimationEvent : MonoBehaviour
         }
     }
 
- 
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (attackPoint) {
@@ -44,4 +44,5 @@ public class PlayerAnimationEvent : MonoBehaviour
             Handles.Label(attackPoint.position, lightAttackRadius.ToString("f1"));
         }
     }
+#endif
 }

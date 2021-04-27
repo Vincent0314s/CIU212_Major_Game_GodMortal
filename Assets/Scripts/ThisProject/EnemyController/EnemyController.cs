@@ -165,6 +165,7 @@ public class EnemyController : MonoBehaviour
         return UnityEngine.Random.Range(_range.x, _range.y);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Handles.color = circleColor;
@@ -178,6 +179,7 @@ public class EnemyController : MonoBehaviour
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRangeDistance);
     }
+#endif
 
     private void OnDrawGizmos()
     {

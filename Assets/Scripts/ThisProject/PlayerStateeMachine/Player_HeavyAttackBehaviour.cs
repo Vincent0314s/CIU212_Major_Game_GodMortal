@@ -17,6 +17,7 @@ public class Player_HeavyAttackBehaviour : StateMachineBehaviour
         pc = animator.GetComponentInParent<PlayerController>();
         pc.cm.StopMoving();
         canDoNextAttack = false;
+        StaminaController.ConsumeStamina(PlayerActionType.HeavyAttack);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
