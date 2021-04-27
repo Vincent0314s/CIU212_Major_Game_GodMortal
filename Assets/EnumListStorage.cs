@@ -60,3 +60,21 @@ public enum Items
 	Letter,
 
 }
+public enum Levels 
+{
+	WarArea_01,
+	WarArea_02,
+	WarArea_03,
+	MainHub_01,
+	MainHub_02,
+	MainHub_03,
+	LifeArea_01,
+	LifeArea_02,
+	LifeArea_03,
+	LifeArea_04,
+	DeathArea_01,
+	DeathArea_02,
+	DeathArea_03,
+	DeathArea_04,
+
+}

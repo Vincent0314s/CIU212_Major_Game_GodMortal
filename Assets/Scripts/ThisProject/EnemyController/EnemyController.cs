@@ -139,6 +139,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
+
     public bool IsCloseToTarget(Vector3 targetPos) {
         float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < stoppedDistance;

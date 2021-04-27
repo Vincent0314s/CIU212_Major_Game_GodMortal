@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a6638a972779d4484c44ae13526821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
+  whereisPlayer: 0
   dashDistance: 10
   rangedPowerObject: {fileID: 5828855240236238648, guid: f14589a1f628ee04b870202433b6469a,
     type: 3}
@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
+  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8

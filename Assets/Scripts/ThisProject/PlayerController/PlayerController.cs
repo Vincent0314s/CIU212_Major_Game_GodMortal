@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     public CharacterMovement cm { get; private set; }
     public CharacterBaseValue cbv { get; private set; }
 
-    public PlayerState playerState;
+    //public PlayerState playerState;
+    public Levels whereisPlayer;
 
     private bool isGoingRight;
     private bool isGoingLeft;
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
         cbv = GetComponent<CharacterBaseValue>();
         pae = GetComponentInChildren<PlayerAnimationEvent>();
         //dashTimer = dashDuration;
+    }
+
+    public void InitPlayerController() {
+        cbv.anim.Play("Idle");
     }
 
     void Update()

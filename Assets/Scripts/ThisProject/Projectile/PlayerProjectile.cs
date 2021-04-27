@@ -13,7 +13,7 @@ public class PlayerProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Enemy") {
-            collision.transform.GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Projectile));
+            collision.transform.GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Projectile), () => { collision.transform.GetComponent<EnemyController>().DisableCollision(); });
         }
         Destroy(this.gameObject);
     }

@@ -23,7 +23,7 @@ public class EnemyAnimationEvent_Melee : MonoBehaviour
         {
             for (int i = 0; i < colls.Length; i++)
             {
-                colls[i].GetComponent<CharacterBaseValue>().GetHurt(cbv.GetDamageAmountFromAttackType(AttackType.Light));
+                colls[i].GetComponent<CharacterBaseValue>().GetHurt(cbv.GetDamageAmountFromAttackType(AttackType.Light),()=> GameFlowManager.i.GameOver());
             }
         }
     }

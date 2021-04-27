@@ -32,7 +32,7 @@ public class LevelCheckPoint : MonoBehaviour
 
     private void Start()
     {
-        player = GameAssetManager.i.player;
+        player = GameAssetManager.i.currentPlayer.transform;
         
     }
 
@@ -73,73 +73,75 @@ public class LevelCheckPoint : MonoBehaviour
         }
     }
 
-    public void ActivatePositiveLevels() {
-        if (canActivatePositiveIndex)
-        {
-            for (int i = 0; i < levelToShowIndex_positive.Length; i++)
-            {
-                LevelManager.i.SetLevelActive(levelToShowIndex_positive[i], true);
-            }
-        }
-        if (canActivateNegativeIndex)
-        {
-            for (int i = 0; i < levelToShowIndex_negative.Length; i++)
-            {
-                LevelManager.i.SetLevelActive(levelToShowIndex_negative[i], false);
-            }
-        }
-    }
+    //public void ActivatePositiveLevels()
+    //{
+    //    if (canActivatePositiveIndex)
+    //    {
+    //        for (int i = 0; i < levelToShowIndex_positive.Length; i++)
+    //        {
+    //            LevelManager.i.SetLevelActive(levelToShowIndex_positive[i], true);
+    //        }
+    //    }
+    //    if (canActivateNegativeIndex)
+    //    {
+    //        for (int i = 0; i < levelToShowIndex_negative.Length; i++)
+    //        {
+    //            LevelManager.i.SetLevelActive(levelToShowIndex_negative[i], false);
+    //        }
+    //    }
+    //}
 
-    public void ActivateNegativeLevels() {
-        if (canActivatePositiveIndex)
-        {
-            for (int i = 0; i < levelToShowIndex_positive.Length; i++)
-            {
-                LevelManager.i.SetLevelActive(levelToShowIndex_positive[i], false);
-            }
-        }
-        if (canActivateNegativeIndex)
-        {
-            for (int i = 0; i < levelToShowIndex_negative.Length; i++)
-            {
-                LevelManager.i.SetLevelActive(levelToShowIndex_negative[i], true);
-            }
+    //public void ActivateNegativeLevels()
+    //{
+    //    if (canActivatePositiveIndex)
+    //    {
+    //        for (int i = 0; i < levelToShowIndex_positive.Length; i++)
+    //        {
+    //            LevelManager.i.SetLevelActive(levelToShowIndex_positive[i], false);
+    //        }
+    //    }
+    //    if (canActivateNegativeIndex)
+    //    {
+    //        for (int i = 0; i < levelToShowIndex_negative.Length; i++)
+    //        {
+    //            LevelManager.i.SetLevelActive(levelToShowIndex_negative[i], true);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
-    private void Update()
-    {
-        if (levelState == LevelCheckState.CheckPoint)
-        {
-            if (type == CheckPointType.Horizontal)
-            {
-                if (player.position.x > transform.position.x && activateLevelEvent == null)
-                {
-                    activateLevelEvent = ActivatePositiveLevels;
-                    activateLevelEvent?.Invoke();
-                }
-                else if (player.position.x < transform.position.x && activateLevelEvent != null)
-                {
-                    activateLevelEvent = ActivateNegativeLevels;
-                    activateLevelEvent?.Invoke();
-                    activateLevelEvent = null;
-                }
-            }
-            else {
-                if (player.position.y < transform.position.y && activateLevelEvent == null)
-                {
-                    activateLevelEvent = ActivatePositiveLevels;
-                    activateLevelEvent?.Invoke();
-                }
-                else if (player.position.y > transform.position.y && activateLevelEvent != null)
-                {
-                    activateLevelEvent = ActivateNegativeLevels;
-                    activateLevelEvent?.Invoke();
-                    activateLevelEvent = null;
-                }
-            }
-           
-        }
-    }
+    //private void Update()
+    //{
+    //    if (levelState == LevelCheckState.CheckPoint)
+    //    {
+    //        if (type == CheckPointType.Horizontal)
+    //        {
+    //            if (player.position.x > transform.position.x && activateLevelEvent == null)
+    //            {
+    //                activateLevelEvent = ActivatePositiveLevels;
+    //                activateLevelEvent?.Invoke();
+    //            }
+    //            else if (player.position.x < transform.position.x && activateLevelEvent != null)
+    //            {
+    //                activateLevelEvent = ActivateNegativeLevels;
+    //                activateLevelEvent?.Invoke();
+    //                activateLevelEvent = null;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (player.position.y < transform.position.y && activateLevelEvent == null)
+    //            {
+    //                activateLevelEvent = ActivatePositiveLevels;
+    //                activateLevelEvent?.Invoke();
+    //            }
+    //            else if (player.position.y > transform.position.y && activateLevelEvent != null)
+    //            {
+    //                activateLevelEvent = ActivateNegativeLevels;
+    //                activateLevelEvent?.Invoke();
+    //                activateLevelEvent = null;
+    //            }
+    //        }
+    //    }
+    //}
 }

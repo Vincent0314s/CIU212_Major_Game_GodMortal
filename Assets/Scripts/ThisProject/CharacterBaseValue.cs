@@ -49,13 +49,18 @@ public class CharacterBaseValue : MonoBehaviour
 
 
     void Start() {
-        currentHP = maxHP;
-        currentStamina = maxStamina;
-        UpdatePlayerHpBar();
+        InitPlayerState();
         if (isReadyToLoadComponment) {
             anim = GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody>();
         }
+    }
+
+    public void InitPlayerState() {
+        isDead = false;
+        currentHP = maxHP;
+        currentStamina = maxStamina;
+        UpdatePlayerHpBar();
     }
 
     public float GetDamageAmountFromAttackType(AttackType _type)
@@ -116,7 +121,7 @@ public class CharacterBaseValue : MonoBehaviour
         UpdatePlayerHpBar();
     }
 
-    private void UpdatePlayerHpBar() {
+    public void UpdatePlayerHpBar() {
         if (UI_HPBar)
         {
             UI_HPBar.fillAmount = GetHealthPercentage();
