@@ -194,7 +194,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void DisableCollision() {
+    public void Dead() {
+        transform.parent = null;
         cbv.rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         Destroy(this.gameObject,5f);

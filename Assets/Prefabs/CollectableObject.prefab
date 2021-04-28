@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8369262012738729902}
   - component: {fileID: 8369262012738729903}
   - component: {fileID: 8369262012738729900}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8369262013199422920
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +93,7 @@ GameObject:
   - component: {fileID: 8369262013199422922}
   - component: {fileID: 8369262013199422923}
   - component: {fileID: 8369262013199422924}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CollectableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

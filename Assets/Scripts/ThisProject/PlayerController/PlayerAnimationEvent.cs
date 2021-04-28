@@ -12,6 +12,7 @@ public class PlayerAnimationEvent : MonoBehaviour
     public float lightAttackRadius = 0.25f;
     public Color lightAttackRangeColor = Color.white;
     public LayerMask enemyMask;
+    public LayerMask destructiveObjectMask;
 
     private void Start()
     {
@@ -24,11 +25,21 @@ public class PlayerAnimationEvent : MonoBehaviour
     }
 
     public void LightAttackRange() {
-        Collider[] colls = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, enemyMask);
-        if (colls.Length > 0) {
-            for (int i = 0; i < colls.Length; i++)
+        //Enemy
+        Collider[] enemies = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, enemyMask);
+        if (enemies.Length > 0) {
+            for (int i = 0; i < enemies.Length; i++)
             {
-                colls[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light),()=> { colls[i].GetComponent<EnemyController>().DisableCollision(); });
+                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light),()=> { enemies[i].GetComponent<EnemyController>().Dead(); });
+            }
+        }
+        //Destructive object
+        Collider[] DestructiveObjects = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, destructiveObjectMask);
+        if (DestructiveObjects.Length > 0)
+        {
+            for (int i = 0; i < DestructiveObjects.Length; i++)
+            {
+                DestructiveObjects[i].GetComponent<DestructiveObject>().BeingBroken();
             }
         }
     }

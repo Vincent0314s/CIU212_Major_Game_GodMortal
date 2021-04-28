@@ -22,6 +22,15 @@ public class LevelManager : MonoBehaviour
     public GameObject levelInformationParentToLoad;
     public GameObject[] levelinfos;
 
+    private List<EnemySpawnPoint> enemyPoints = new List<EnemySpawnPoint>();
+    private void Awake()
+    {
+        for (int i = 0; i < GameObject.FindObjectsOfType<EnemySpawnPoint>().Length; i++)
+        {
+            enemyPoints.Add(GameObject.FindObjectsOfType<EnemySpawnPoint>()[i]);
+        }
+    }
+
     private void Start()
     {
         for (int i = 0; i < levels.Length; i++)
@@ -33,6 +42,7 @@ public class LevelManager : MonoBehaviour
             levelsToStart[i].SetActive(true);
         }
     }
+
 
     public void UpdateLayoutList() {
         levels = new GameObject[levelLayoutParentToLoad.transform.childCount];
@@ -55,6 +65,10 @@ public class LevelManager : MonoBehaviour
         if (_index != -1)
         {
             levels[_index].SetActive(_condition);
+            for (int i = 0; i < enemyPoints.Count; i++)
+            {
+                enemyPoints[i].SpawnEnemy();
+            }
         }
     }
 
@@ -68,9 +82,17 @@ public class LevelManager : MonoBehaviour
                 break;
             }
         }
+        for (int i = 0; i < enemyPoints.Count; i++)
+        {
+            //if (enemyPoints[i].gameObject.activeInHierarchy && enemyPoints[i].transform.childCount == 0)
+            //{
+            //    enemyPoints[i].SpawnEnemy();
+            //}
+            enemyPoints[i].SpawnEnemy();
+        }
+        GameAssetManager.i.currentPlayer.transform.position = resapwnPos;
         GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().InitPlayerState();
         GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().InitPlayerController();
-        GameAssetManager.i.currentPlayer.transform.position = resapwnPos;
         //Destroy(GameAssetManager.i.currentPlayer);
         //GameAssetManager.i.currentPlayer = null;
         //GameObject newPlayer = Instantiate(GameAssetManager.i.playerPrefab,resapwnPos,Quaternion.identity);

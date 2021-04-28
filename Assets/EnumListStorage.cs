@@ -61,6 +61,13 @@ public enum Items
 	Letter,
 
 }
+public enum EnemyType 
+{
+	Melee,
+	Ranged,
+	Flying,
+
+}
 public enum Levels 
 {
 	WarArea_01,
@@ -72,10 +79,8 @@ public enum Levels
 	LifeArea_01,
 	LifeArea_02,
 	LifeArea_03,
-	LifeArea_04,
 	DeathArea_01,
 	DeathArea_02,
 	DeathArea_03,
-	DeathArea_04,
 
 }

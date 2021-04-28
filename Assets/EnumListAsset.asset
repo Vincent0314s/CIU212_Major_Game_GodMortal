@@ -56,6 +56,11 @@ MonoBehaviour:
     - HealthPotion
     - StaminaPotion
     - Letter
+  - name: EnemyType
+    enumVariable:
+    - Melee
+    - Ranged
+    - Flying
   - name: Levels
     enumVariable:
     - WarArea_01
@@ -67,8 +72,6 @@ MonoBehaviour:
     - LifeArea_01
     - LifeArea_02
     - LifeArea_03
-    - LifeArea_04
     - DeathArea_01
     - DeathArea_02
     - DeathArea_03
-    - DeathArea_04

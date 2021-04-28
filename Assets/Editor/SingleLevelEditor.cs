@@ -12,6 +12,6 @@ public class SingleLevelEditor : Editor
         SingleLevel sl = target as SingleLevel;
 
         sl.MatchGameobjectName();
-        
+
     }
 }
