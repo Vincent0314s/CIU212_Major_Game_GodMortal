@@ -19,7 +19,7 @@ public class SettingManager : MonoBehaviour
         }
     }
 
-    public bool canInit;
+    //public bool canInit;
     public bool isCamera2D;
     Resolution[] allResolutions;
     List<Resolution> resolutionFor16_9 = new List<Resolution>();
@@ -159,14 +159,22 @@ public class SettingManager : MonoBehaviour
         masterMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
         masterMixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SoundEffectVolume"));
 
+        masterSlider.minValue = -60f;
+        masterSlider.maxValue = 20;
         masterSlider.onValueChanged.AddListener(delegate {
             SetMasterVolume(masterSlider);
           
         });
+
+        musicSlider.minValue = -60f;
+        musicSlider.maxValue = 20;
         musicSlider.onValueChanged.AddListener(delegate {
             SetMusicVolume(musicSlider);
        
         });
+
+        soundEffectSlider.minValue = -60f;
+        soundEffectSlider.maxValue = 20;
         soundEffectSlider.onValueChanged.AddListener(delegate {
             SetSoundEffectVolume(soundEffectSlider);
             

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameFlowManager : MonoBehaviour
+public class GameFlowManager : GameBasicFlowManager
 {
     private static GameFlowManager _i;
     public static GameFlowManager i
@@ -38,10 +38,5 @@ public class GameFlowManager : MonoBehaviour
             UI_PauseMenu.SetActive(false);
         }
     }
-
-    public void QuitGame() {
-        SceneController.QuitGame();
-    }
-
 
 }
