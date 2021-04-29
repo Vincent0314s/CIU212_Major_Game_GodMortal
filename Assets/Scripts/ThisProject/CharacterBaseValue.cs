@@ -22,7 +22,9 @@ public class CharacterBaseValue : MonoBehaviour
 
     [Header("HP")]
     public float maxHP = 100f;
-    public float currentHP { get; private set; }
+    public float currentHP { get; protected set; }
+
+    public HealthManager hm;
 
     [Header("Attack")]
     [ArrayElementTitle("type")]
@@ -33,7 +35,7 @@ public class CharacterBaseValue : MonoBehaviour
 
     public bool isLightAttacking { get; private set; }
     public bool isHeavyAttacking { get; private set; }
-    public bool isDead { get; private set; }
+    public bool isDead { get; protected set; }
 
     private float damage;
 
@@ -77,18 +79,18 @@ public class CharacterBaseValue : MonoBehaviour
         }
     }
 
-    public virtual void GetHurt(float damage)
-    {
-        currentHP -= damage;
-        if (currentHP > 0)
-        {
-            anim.Play("Hurt",0,0);
-        }
-        else {
-            anim.Play("Dead");
-            isDead = true;
-        }
-    }
+    //public virtual void GetHurt(float damage)
+    //{
+    //    currentHP -= damage;
+    //    if (currentHP > 0)
+    //    {
+    //        anim.Play("Hurt",0,0);
+    //    }
+    //    else {
+    //        anim.Play("Dead");
+    //        isDead = true;
+    //    }
+    //}
 
     public virtual void GetHurt(float damage, Action deadEvent)
     {

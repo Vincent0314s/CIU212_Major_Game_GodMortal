@@ -33,21 +33,31 @@ public class PlayerValue : CharacterBaseValue
     [ArrayElementTitle("actionType")]
     public List<StaminaValue> staminaList;
 
+    public float maxShield = 50;
+    private float currentShield;
+
     [Space]
     [Header("UI")]
     public Image UI_HPBar;
-    public Image UI_StBar;
+    public Image UI_StaminaBar;
+    public Image UI_ShieldBar;
 
 
     public override void InitPlayerState()
     {
         base.InitPlayerState();
+        currentShield = maxShield;
         currentStamina = maxStamina;
         UpdatePlayerHpBar();
+        UpdatePlayerShieldBar();
     }
     public float GetStaminaPercentage()
     {
         return currentStamina / maxStamina;
+    }
+
+    public float GetShieldPercentage() {
+        return currentShield / maxShield;
     }
 
     public override void AddHP(float _amount)
@@ -56,14 +66,32 @@ public class PlayerValue : CharacterBaseValue
         UpdatePlayerHpBar();
     }
 
-    public override void GetHurt(float damage)
-    {
-        base.GetHurt(damage);
-        UpdatePlayerHpBar();
-    }
+    //public override void GetHurt(float damage)
+    //{
+    //    base.GetHurt(damage);
+    //    UpdatePlayerHpBar();
+    //}
+
     public override void GetHurt(float damage, Action deadEvent)
     {
-        base.GetHurt(damage, deadEvent);
+        if (currentShield > 0)
+        {
+            currentShield -= damage;
+        }
+        else {
+            currentHP -= damage;
+            if (currentHP > 0)
+            {
+                anim.Play("Hurt", 0, 0);
+            }
+            else
+            {
+                deadEvent?.Invoke();
+                anim.Play("Dead");
+                isDead = true;
+            }
+        }
+        UpdatePlayerShieldBar();
         UpdatePlayerHpBar();
     }
 
@@ -75,10 +103,16 @@ public class PlayerValue : CharacterBaseValue
         }
     }
 
+    public void UpdatePlayerShieldBar() {
+        if (UI_ShieldBar) {
+            UI_ShieldBar.fillAmount = GetShieldPercentage();
+        }
+    }
+
     public void UpdatePlayerStBar() {
-        if (UI_StBar)
+        if (UI_StaminaBar)
         {
-            UI_StBar.fillAmount = GetStaminaPercentage();
+            UI_StaminaBar.fillAmount = GetStaminaPercentage();
         }
     }
 }

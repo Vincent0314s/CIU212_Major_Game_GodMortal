@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
                 GameFlowManager.i.OpenPauseMenu();
             }
             StaminaController.RecoverStamina();
+            
         }
     }
 
