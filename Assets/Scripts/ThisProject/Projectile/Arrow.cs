@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player") {
-            collision.transform.GetComponent<CharacterBaseValue>().GetHurt(ec.cbv.GetDamageAmountFromAttackType(AttackType.Light), ()=> GameFlowManager.i.GameOver());
+            collision.transform.GetComponent<CharacterBaseValue>().GetHurt(ec.cbv.GetDamageAmountFromAttackType(AttackType.Light));
         }
         Destroy(this.gameObject);
     }

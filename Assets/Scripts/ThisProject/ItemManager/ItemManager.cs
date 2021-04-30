@@ -88,6 +88,8 @@ public class ItemManager : MonoBehaviour
     }
 
     public void UpdateItemSlotNumber() {
-        UI_Item1text.text = healthPotionNumber.ToString();
+        if (UI_Item1text) { 
+             UI_Item1text.text = healthPotionNumber.ToString();
+        }
     }
 }

@@ -6,21 +6,29 @@ using System;
 [System.Serializable]
 public class HealthManager
 {
-    public float maxHP;
+    public float maxHP = 100f;
     private float currentHP;
+    private bool isDead;
+    public bool IsDead
+    {
+        get { return currentHP <= 0; }
+        private set {
+            isDead = value;
+        }
+    }
 
-    private Action OnDeadEvent;
+    public Action OnDeadEvent;
 
-    public HealthManager(float _currentHP, float _maxHP) {
-        currentHP = _currentHP;
-        maxHP = _maxHP;
+    public void Initialization() {
+        currentHP = maxHP;
+        isDead = false;
     }
 
     public float GetHealthPercentage() {
         return currentHP / maxHP;
     }
 
-    public void AddHP(float _amount) {
+    public void GetHeal(float _amount) {
         currentHP += _amount;
         if (currentHP >= maxHP) {
             currentHP = maxHP;
@@ -30,7 +38,41 @@ public class HealthManager
         }
     }
 
-    public void GetHurt(float _damage) {
-        AddHP(-_damage);
+    public void GetHeal(float _amount, Action _OnHurtEvent, Action _OnDeadEvent)
+    {
+        currentHP += _amount;
+        if (currentHP >= maxHP)
+        {
+            currentHP = maxHP;
+        }
+        else if (currentHP <= 0)
+        {
+            currentHP = 0;
+            OnDeadEvent?.Invoke();
+        }
+    }
+
+    public void GetHurt(float _amount)
+    {
+        currentHP -= _amount;
+        if (currentHP <= 0)
+        {
+            OnDeadEvent?.Invoke();
+        }
+    }
+
+    public void GetHurt(float _amount, Action _OnHurtEvent, Action _OnDeadEvent)
+    {
+        currentHP -= _amount;
+        if (currentHP > 0)
+        {
+            _OnHurtEvent?.Invoke();
+        }
+        else if (currentHP <= 0)
+        {
+            _OnDeadEvent?.Invoke();
+            OnDeadEvent?.Invoke();
+            currentHP = 0;
+        }
     }
 }

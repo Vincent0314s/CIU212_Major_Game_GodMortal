@@ -13,22 +13,28 @@ public class EnemySpawnPoint : MonoBehaviour
 
 
     public void SpawnEnemy() {
-        if (gameObject.activeInHierarchy && transform.childCount < 1) {
-            switch (type)
+        if (gameObject.activeInHierarchy) {
+            if (gameObject.transform.childCount < 1)
             {
-                case EnemyType.Melee:
-                    enemyPrefab = Resources.Load<GameObject>("Enemy/Enemy_Melee");
-                    GameObject m = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-                    m.transform.parent = transform;
-                    break;
-                case EnemyType.Ranged:
-                    enemyPrefab = Resources.Load<GameObject>("Enemy/Enemy_Ranged");
-                    GameObject r = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-                    r.transform.parent = transform;
-                    break;
-                case EnemyType.Flying:
+                switch (type)
+                {
+                    case EnemyType.Melee:
+                        enemyPrefab = Resources.Load<GameObject>("Enemy/Enemy_Melee");
+                        GameObject m = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                        m.transform.parent = transform;
+                        break;
+                    case EnemyType.Ranged:
+                        enemyPrefab = Resources.Load<GameObject>("Enemy/Enemy_Ranged");
+                        GameObject r = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                        r.transform.parent = transform;
+                        break;
+                    case EnemyType.Flying:
 
-                    break;
+                        break;
+                }
+            }
+            else {
+                transform.GetChild(0).GetComponent<EnemyController>().ResetPosition();
             }
         }
        

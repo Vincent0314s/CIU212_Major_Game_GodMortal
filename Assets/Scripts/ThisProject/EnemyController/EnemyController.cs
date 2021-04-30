@@ -201,6 +201,12 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject,5f);
     }
 
+    public void ResetPosition() {
+        if (originalPosition != Vector3.zero) { 
+            transform.position = originalPosition;
+        }
+    }
+
     //private void OnTriggerStay(Collider other)
     //{
     //    if (other.tag == "JumpTrigger") {

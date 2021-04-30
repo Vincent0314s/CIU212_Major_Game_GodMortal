@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 931472572024795107}
   - component: {fileID: 931472572024795105}
   - component: {fileID: 931472572024795118}
-  - component: {fileID: 931472572024795109}
   - component: {fileID: 931472572024795108}
   - component: {fileID: 931472572024795104}
+  - component: {fileID: 8043637291032584064}
   m_Layer: 10
   m_Name: Enemy_Ranged
   m_TagString: Enemy
@@ -106,25 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &931472572024795109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931472572024795119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8a5f3c66f5f48cca6207ef9d910e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReadyToLoadComponment: 1
-  maxHP: 100
-  maxStamina: 100
-  attackSetting:
-  - type: 0
-    damage: 15
-  UI_HPBar: {fileID: 0}
 --- !u!114 &931472572024795108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
+  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8
@@ -171,6 +153,24 @@ MonoBehaviour:
   attackRangeDistance: 14.23
   firstAttackAnimName: Attack01
   temp: {fileID: 2100000, guid: ee7d7ace5c84b964c83870c3377c3f98, type: 2}
+--- !u!114 &8043637291032584064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931472572024795119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46604baae82d6aa41b2ced35bc043ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyToLoadComponment: 1
+  healthSetting:
+    maxHP: 100
+  attackSetting:
+  - type: 0
+    damage: 15
 --- !u!95 &2156899209423128145
 Animator:
   serializedVersion: 3

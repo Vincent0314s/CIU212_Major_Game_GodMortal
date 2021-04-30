@@ -15,16 +15,12 @@ public class AttackBasicValue
         damage = _damage;
     }
 }
-
 public class CharacterBaseValue : MonoBehaviour
 {
     public bool isReadyToLoadComponment;
 
     [Header("HP")]
-    public float maxHP = 100f;
-    public float currentHP { get; protected set; }
-
-    public HealthManager hm;
+    public HealthManager healthSetting;
 
     [Header("Attack")]
     [ArrayElementTitle("type")]
@@ -35,8 +31,6 @@ public class CharacterBaseValue : MonoBehaviour
 
     public bool isLightAttacking { get; private set; }
     public bool isHeavyAttacking { get; private set; }
-    public bool isDead { get; protected set; }
-
     private float damage;
 
     public Animator anim { get; private set; }
@@ -44,16 +38,19 @@ public class CharacterBaseValue : MonoBehaviour
 
 
     void Start() {
-        InitPlayerState();
+        Initialzation();
         if (isReadyToLoadComponment) {
             anim = GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody>();
         }
     }
 
-    public virtual void InitPlayerState() {
-        isDead = false;
-        currentHP = maxHP;
+    public virtual void Initialzation() {
+        healthSetting.Initialization();
+        healthSetting.OnDeadEvent = () =>
+        {
+            Dead();
+        };
     }
 
     public float GetDamageAmountFromAttackType(AttackType _type)
@@ -68,45 +65,17 @@ public class CharacterBaseValue : MonoBehaviour
         return damage;
     }
 
-    public float GetHealthPercentage() {
-        return currentHP / maxHP;
-    }
-
+   
     public virtual void AddHP(float _amount) {
-        currentHP += _amount;
-        if (currentHP > maxHP) {
-            currentHP = maxHP;
-        }
+        healthSetting.GetHeal(_amount);
     }
 
-    //public virtual void GetHurt(float damage)
-    //{
-    //    currentHP -= damage;
-    //    if (currentHP > 0)
-    //    {
-    //        anim.Play("Hurt",0,0);
-    //    }
-    //    else {
-    //        anim.Play("Dead");
-    //        isDead = true;
-    //    }
-    //}
-
-    public virtual void GetHurt(float damage, Action deadEvent)
+    public virtual void GetHurt(float _damage)
     {
-        currentHP -= damage;
-        if (currentHP > 0)
-        {
-            anim.Play("Hurt",0,0);
-        }
-        else
-        {
-            deadEvent?.Invoke();
-            anim.Play("Dead");
-            isDead = true;
-        }
+        healthSetting.GetHurt(_damage,()=> anim.Play("Hurt",0,0),()=> anim.Play("Dead"));
     }
-    
+
+
 
     //isAttacking
     public bool IsLightAttacking(bool condition) {
@@ -131,4 +100,9 @@ public class CharacterBaseValue : MonoBehaviour
         isHeavyAttacking = Input.GetKeyDown(condition);
         return isHeavyAttacking;
     }
+
+    public virtual void Dead() { 
+
+    }
+   
 }

@@ -33,14 +33,15 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(levels.Length);
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].SetActive(false);
         }
-        for (int i = 0; i < levelsToStart.Length; i++)
-        {
-            levelsToStart[i].SetActive(true);
-        }
+        //for (int i = 0; i < levelsToStart.Length; i++)
+        //{
+        //    levelsToStart[i].SetActive(true);
+        //}
     }
 
 
@@ -62,7 +63,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void SetLevelActive(int _index, bool _condition) {
-        if (_index != -1)
+        if (_index != -1 && _index < levels.Length)
         {
             levels[_index].SetActive(_condition);
             for (int i = 0; i < enemyPoints.Count; i++)
@@ -73,33 +74,11 @@ public class LevelManager : MonoBehaviour
     }
 
     public void RespawnPlayer() {
-        Vector3 resapwnPos = Vector3.zero;
-        for (int i = 0; i < levelinfos.Length; i++)
-        {
-            if (GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().whereisPlayer == levelinfos[i].GetComponent<SingleLevel>().levelArea)
-            {
-                resapwnPos = levelinfos[i].transform.GetChild(1).position;
-                break;
-            }
-        }
         for (int i = 0; i < enemyPoints.Count; i++)
         {
-            //if (enemyPoints[i].gameObject.activeInHierarchy && enemyPoints[i].transform.childCount == 0)
-            //{
-            //    enemyPoints[i].SpawnEnemy();
-            //}
             enemyPoints[i].SpawnEnemy();
         }
-        GameAssetManager.i.currentPlayer.transform.position = resapwnPos;
-        GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().InitPlayerState();
+        GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().Initialzation();
         GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().InitPlayerController();
-        //Destroy(GameAssetManager.i.currentPlayer);
-        //GameAssetManager.i.currentPlayer = null;
-        //GameObject newPlayer = Instantiate(GameAssetManager.i.playerPrefab,resapwnPos,Quaternion.identity);
-        //newPlayer.GetComponent<CharacterBaseValue>().InitPlayerState();
-        //newPlayer.GetComponent<PlayerController>().InitPlayerController();
-        //GameAssetManager.i.currentPlayer = newPlayer;
-        
-       
     }
 }

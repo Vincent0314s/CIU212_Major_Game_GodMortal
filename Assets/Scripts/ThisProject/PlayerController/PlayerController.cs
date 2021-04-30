@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public CharacterBaseValue cbv { get; private set; }
 
     public Levels whereisPlayer;
+    public Vector3 respawonPosition;
 
     private bool isGoingRight;
     private bool isGoingLeft;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitPlayerController() {
         cbv.anim.Play("Idle");
+        transform.position = respawonPosition;
     }
 
     void Update()
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
         //ActionInput();
         //StateSetting();
         //AnimDisplay();
-        if (!cbv.isDead) {
+        if (!cbv.healthSetting.IsDead) {
             if (Input.GetKeyDown(key_HealthPotion))
             {
                 if (ItemManager.i.CanUsingItems(Items.HealthPotion))

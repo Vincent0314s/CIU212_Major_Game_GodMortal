@@ -33,31 +33,31 @@ public class PlayerValue : CharacterBaseValue
     [ArrayElementTitle("actionType")]
     public List<StaminaValue> staminaList;
 
-    public float maxShield = 50;
-    private float currentShield;
+    public ShieldManager shieldSetting;
 
     [Space]
     [Header("UI")]
     public Image UI_HPBar;
     public Image UI_StaminaBar;
     public Image UI_ShieldBar;
+  
 
-
-    public override void InitPlayerState()
+    public override void Initialzation()
     {
-        base.InitPlayerState();
-        currentShield = maxShield;
+        base.Initialzation();
+        shieldSetting.Initialization();
         currentStamina = maxStamina;
         UpdatePlayerHpBar();
         UpdatePlayerShieldBar();
     }
+
+    private void Update()
+    {
+        shieldSetting.RecoverShield(()=> UpdatePlayerShieldBar());
+    }
     public float GetStaminaPercentage()
     {
         return currentStamina / maxStamina;
-    }
-
-    public float GetShieldPercentage() {
-        return currentShield / maxShield;
     }
 
     public override void AddHP(float _amount)
@@ -66,46 +66,37 @@ public class PlayerValue : CharacterBaseValue
         UpdatePlayerHpBar();
     }
 
-    //public override void GetHurt(float damage)
-    //{
-    //    base.GetHurt(damage);
-    //    UpdatePlayerHpBar();
+    //public void AddShield() {
+    //    shieldSetting.RecoverShield();
+    //    UpdatePlayerShieldBar();
     //}
 
-    public override void GetHurt(float damage, Action deadEvent)
+
+    public override void GetHurt(float damage)
     {
-        if (currentShield > 0)
+        if (shieldSetting.HasShield)
         {
-            currentShield -= damage;
+            shieldSetting.GetHurt(damage);
+            anim.Play("Hurt",0,0);
         }
         else {
-            currentHP -= damage;
-            if (currentHP > 0)
-            {
-                anim.Play("Hurt", 0, 0);
-            }
-            else
-            {
-                deadEvent?.Invoke();
-                anim.Play("Dead");
-                isDead = true;
-            }
+            base.GetHurt(damage);
         }
-        UpdatePlayerShieldBar();
         UpdatePlayerHpBar();
+        UpdatePlayerShieldBar();
     }
 
     public void UpdatePlayerHpBar()
     {
         if (UI_HPBar)
         {
-            UI_HPBar.fillAmount = GetHealthPercentage();
+            UI_HPBar.fillAmount = healthSetting.GetHealthPercentage();
         }
     }
 
     public void UpdatePlayerShieldBar() {
         if (UI_ShieldBar) {
-            UI_ShieldBar.fillAmount = GetShieldPercentage();
+            UI_ShieldBar.fillAmount = shieldSetting.GetShieldPercentage();
         }
     }
 
@@ -114,5 +105,10 @@ public class PlayerValue : CharacterBaseValue
         {
             UI_StaminaBar.fillAmount = GetStaminaPercentage();
         }
+    }
+
+    public override void Dead()
+    {
+        GameFlowManager.i.GameOver();
     }
 }

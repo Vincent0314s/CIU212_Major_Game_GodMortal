@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 46125568030185999}
   - component: {fileID: 46125568030185997}
   - component: {fileID: 46125568030185986}
-  - component: {fileID: 46125568030185993}
   - component: {fileID: 46125568030185992}
   - component: {fileID: 2833083590354740323}
+  - component: {fileID: 4187558942738539441}
   m_Layer: 10
   m_Name: Enemy_Melee
   m_TagString: Enemy
@@ -106,27 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &46125568030185993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46125568030185987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8a5f3c66f5f48cca6207ef9d910e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReadyToLoadComponment: 1
-  maxHP: 100
-  maxStamina: 100
-  attackSetting:
-  - type: 0
-    damage: 30
-  - type: 1
-    damage: 45
-  UI_HPBar: {fileID: 0}
 --- !u!114 &46125568030185992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
+  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8
@@ -172,6 +152,24 @@ MonoBehaviour:
   stoppedDistance: 2.5
   attackRangeDistance: 2.48
   firstAttackAnimName: Attack01
+--- !u!114 &4187558942738539441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46125568030185987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46604baae82d6aa41b2ced35bc043ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyToLoadComponment: 1
+  healthSetting:
+    maxHP: 100
+  attackSetting:
+  - type: 0
+    damage: 30
 --- !u!95 &1270094040543703997
 Animator:
   serializedVersion: 3

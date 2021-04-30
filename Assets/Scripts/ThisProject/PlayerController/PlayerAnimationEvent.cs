@@ -30,7 +30,7 @@ public class PlayerAnimationEvent : MonoBehaviour
         if (enemies.Length > 0) {
             for (int i = 0; i < enemies.Length; i++)
             {
-                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light),()=> { enemies[i].GetComponent<EnemyController>().Dead(); });
+                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light));
             }
         }
         //Destructive object

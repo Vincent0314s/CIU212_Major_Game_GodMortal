@@ -16,7 +16,13 @@ public class SingleLevel : MonoBehaviour
             gameObject.name = levelArea.ToString();
         }
     }
-    private void OnDrawGizmosSelected()
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = areaBorderColor;
+    //    Gizmos.DrawCube(transform.GetChild(0).position, transform.localScale);
+    //}
+
+    private void OnDrawGizmos()
     {
         Gizmos.color = areaBorderColor;
         Gizmos.DrawCube(transform.GetChild(0).position, transform.localScale);
@@ -25,14 +31,21 @@ public class SingleLevel : MonoBehaviour
     public void CallTrigger(Collider _c) {
         if (_c.transform.tag == "Player") {
             _c.GetComponent<PlayerController>().whereisPlayer = levelArea;
+            _c.GetComponent<PlayerController>().respawonPosition = transform.GetChild(1).position;
             for (int i = 0; i < levelsToOpen.Length; i++)
             {
-                LevelManager.i.SetLevelActive(levelsToOpen[i], true);
+                if (!LevelManager.i.levels[levelsToOpen[i]].activeInHierarchy)
+                {
+                    LevelManager.i.SetLevelActive(levelsToOpen[i], true);
+                }
             }
 
             for (int i = 0; i < levelsToClose.Length; i++)
             {
-                LevelManager.i.SetLevelActive(levelsToClose[i], false);
+                if (LevelManager.i.levels[levelsToClose[i]].activeInHierarchy)
+                {
+                    LevelManager.i.SetLevelActive(levelsToClose[i], false);
+                }
             }
         }
     }

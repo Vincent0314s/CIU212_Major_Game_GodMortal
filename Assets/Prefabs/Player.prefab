@@ -68,6 +68,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024
+  destructiveObjectMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &8907928457952614798
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isReadyToLoadComponment: 1
-  maxHP: 100
+  healthSetting:
+    maxHP: 100
   attackSetting:
   - type: 0
     damage: 30
@@ -234,8 +238,13 @@ MonoBehaviour:
     amount: 10
   - actionType: 6
     amount: 15
+  shieldSetting:
+    maxShield: 50
+    recoverAmount: 10
+    recoverBySec: 5
   UI_HPBar: {fileID: 0}
-  UI_StBar: {fileID: 0}
+  UI_StaminaBar: {fileID: 0}
+  UI_ShieldBar: {fileID: 0}
 --- !u!1001 &1929966210740479938
 PrefabInstance:
   m_ObjectHideFlags: 0
