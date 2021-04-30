@@ -13,9 +13,10 @@ public class CameraControl : MonoBehaviour
 
     public Vector2 limitedHeight = new Vector2(1.5f,6.5f);
 
-    private void Awake()
+    private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        AssignPlayerToFocus();
+
     }
 
     void LateUpdate()
@@ -27,6 +28,10 @@ public class CameraControl : MonoBehaviour
         transform.position = new Vector3(transform.position.x,posY,transform.position.z);
 
         //transform.position = Vector3.Slerp(transform.position,target.position + offset, followSpeed);
+    }
+
+    public void AssignPlayerToFocus() {
+        target = GameAssetManager.i.currentPlayer.transform;
     }
 
 }

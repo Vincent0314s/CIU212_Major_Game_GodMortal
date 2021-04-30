@@ -68,6 +68,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024
+  destructiveObjectMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &8907928457952614798
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +84,8 @@ GameObject:
   - component: {fileID: 8907928457952614784}
   - component: {fileID: 8907928457952614799}
   - component: {fileID: 8907928457952614785}
-  - component: {fileID: 8907928457952614788}
   - component: {fileID: 8907928457952614789}
+  - component: {fileID: 7058069560047037975}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -156,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a6638a972779d4484c44ae13526821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
+  whereisPlayer: 0
   dashDistance: 10
   rangedPowerObject: {fileID: 5828855240236238648, guid: f14589a1f628ee04b870202433b6469a,
     type: 3}
@@ -168,29 +171,7 @@ MonoBehaviour:
   key_HealthPotion: 49
   key_StanimaPotion: 50
   key_RangedPower: 102
---- !u!114 &8907928457952614788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8907928457952614798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8a5f3c66f5f48cca6207ef9d910e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReadyToLoadComponment: 1
-  maxHP: 100
-  maxStamina: 100
-  attackSetting:
-  - type: 0
-    damage: 30
-  - type: 1
-    damage: 45
-  - type: 2
-    damage: 25
-  UI_HPBar: {fileID: 0}
+  key_Escape: 27
 --- !u!114 &8907928457952614789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
+  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8
@@ -214,6 +196,55 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2304
+--- !u!114 &7058069560047037975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907928457952614798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291fff0c67bdeb441a3bbc16e900d8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyToLoadComponment: 1
+  healthSetting:
+    maxHP: 100
+  attackSetting:
+  - type: 0
+    damage: 30
+  - type: 1
+    damage: 45
+  - type: 2
+    damage: 25
+  - type: 3
+    damage: 25
+  maxStamina: 100
+  currentStamina: 0
+  recoverSpeed: 15
+  staminaList:
+  - actionType: 0
+    amount: 5
+  - actionType: 1
+    amount: 20
+  - actionType: 2
+    amount: 20
+  - actionType: 3
+    amount: 30
+  - actionType: 4
+    amount: 20
+  - actionType: 5
+    amount: 10
+  - actionType: 6
+    amount: 15
+  shieldSetting:
+    maxShield: 50
+    recoverAmount: 10
+    recoverBySec: 5
+  UI_HPBar: {fileID: 0}
+  UI_StaminaBar: {fileID: 0}
+  UI_ShieldBar: {fileID: 0}
 --- !u!1001 &1929966210740479938
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,20 +14,71 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public GameObject levelParentToLoad;
+    public GameObject[] levelsToStart;
+
+    public GameObject levelLayoutParentToLoad;
     public GameObject[] levels;
 
-    public void UpdateList() {
-        levels = new GameObject[levelParentToLoad.transform.childCount];
-        for (int i = 0; i < levels.Length; i++)
+    public GameObject levelInformationParentToLoad;
+    public GameObject[] levelinfos;
+
+    private List<EnemySpawnPoint> enemyPoints = new List<EnemySpawnPoint>();
+    private void Awake()
+    {
+        for (int i = 0; i < GameObject.FindObjectsOfType<EnemySpawnPoint>().Length; i++)
         {
-            levels[i] = levelParentToLoad.transform.GetChild(i).gameObject;
+            enemyPoints.Add(GameObject.FindObjectsOfType<EnemySpawnPoint>()[i]);
         }
     }
 
-    public void SetLevelActive(int _index,bool _condition) {
-        if (_index != -1) { 
-            levels[_index].SetActive(_condition);
+    private void Start()
+    {
+        Debug.Log(levels.Length);
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].SetActive(false);
         }
+        //for (int i = 0; i < levelsToStart.Length; i++)
+        //{
+        //    levelsToStart[i].SetActive(true);
+        //}
+    }
+
+
+    public void UpdateLayoutList() {
+        levels = new GameObject[levelLayoutParentToLoad.transform.childCount];
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i] = levelLayoutParentToLoad.transform.GetChild(i).gameObject;
+        }
+     
+    }
+
+    public void UpdateLevelInfoList() { 
+        levelinfos = new GameObject[levelInformationParentToLoad.transform.childCount];
+        for (int i = 0; i < levelinfos.Length; i++)
+        {
+            levelinfos[i] = levelInformationParentToLoad.transform.GetChild(i).gameObject;
+        }
+    }
+
+    public void SetLevelActive(int _index, bool _condition) {
+        if (_index != -1 && _index < levels.Length)
+        {
+            levels[_index].SetActive(_condition);
+            for (int i = 0; i < enemyPoints.Count; i++)
+            {
+                enemyPoints[i].SpawnEnemy();
+            }
+        }
+    }
+
+    public void RespawnPlayer() {
+        for (int i = 0; i < enemyPoints.Count; i++)
+        {
+            enemyPoints[i].SpawnEnemy();
+        }
+        GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().Initialzation();
+        GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().InitPlayerController();
     }
 }

@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Vincent_TestCombat.unity
-    guid: 1c7e9402aa0264a4e9400f24346b0d1e
+    path: Assets/Scenes/MainMenu.unity
+    guid: bf1fe442ce601cb4092c183d84c0477e
+  - enabled: 1
+    path: Assets/Scenes/Prototype.unity
+    guid: e35cf09d29011f24d8752fb041fbc992
   m_configObjects: {}

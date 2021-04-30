@@ -139,6 +139,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
+
     public bool IsCloseToTarget(Vector3 targetPos) {
         float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < stoppedDistance;
@@ -163,6 +165,7 @@ public class EnemyController : MonoBehaviour
         return UnityEngine.Random.Range(_range.x, _range.y);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Handles.color = circleColor;
@@ -176,6 +179,7 @@ public class EnemyController : MonoBehaviour
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRangeDistance);
     }
+#endif
 
     private void OnDrawGizmos()
     {
@@ -190,10 +194,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void DisableCollision() {
+    public void Dead() {
+        transform.parent = null;
         cbv.rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         Destroy(this.gameObject,5f);
+    }
+
+    public void ResetPosition() {
+        if (originalPosition != Vector3.zero) { 
+            transform.position = originalPosition;
+        }
     }
 
     //private void OnTriggerStay(Collider other)

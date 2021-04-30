@@ -127,7 +127,7 @@ public class VButtonEditor : Editor
         if (vButton.ableToChangeScene)
         {
             EditorGUI.indentLevel++;
-            vButton.sceneToChange = (Scene)EditorGUILayout.EnumPopup("Scene to change", vButton.sceneToChange);
+            vButton.sceneToChange = (SceneInTheBuild)EditorGUILayout.EnumPopup("Scene to change", vButton.sceneToChange);
             EditorGUI.indentLevel--;
         }
 

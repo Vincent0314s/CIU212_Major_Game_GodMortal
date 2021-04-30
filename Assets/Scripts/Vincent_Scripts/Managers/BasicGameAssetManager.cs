@@ -37,7 +37,6 @@ public class BasicGameAssetManager : MonoBehaviour
         }
     }
 
-
     [Header("List")]
     [ArrayElementTitle("effect")]
     public List<V_Effect> visualEffects;
@@ -45,5 +44,7 @@ public class BasicGameAssetManager : MonoBehaviour
     public List<S_Effect> soundEffects;
     [ArrayElementTitle("effect")]
     public List<S_UI_Effect> UI_SoundClipArray;
+
+
 
 }

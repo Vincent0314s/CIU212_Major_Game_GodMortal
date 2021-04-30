@@ -14,11 +14,11 @@ public class GameAssetManager : MonoBehaviour
         }
     }
 
-    public Transform player { get; private set; }
+    public GameObject currentPlayer;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        currentPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
 }

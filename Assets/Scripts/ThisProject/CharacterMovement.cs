@@ -9,9 +9,11 @@ public class CharacterMovement : MonoBehaviour,IMovement
     [Range(3, 20)]
     public float MoveSpeed = 10f;
     private float currentMoveSpeed;
-
     [Range(0, 1)]
     public float turnSmoothValue = 0.35f;
+
+    public bool CanFly;
+
 
     public bool isJumping { get; private set; }
     public bool isOnGround { get; private set; }
@@ -86,12 +88,14 @@ public class CharacterMovement : MonoBehaviour,IMovement
     }
 
     public void OnGround() {
-        isOnGround = Physics.Raycast(transform.position + groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer)
-                  || Physics.Raycast(transform.position - groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer);
+        if (!CanFly) {
+            isOnGround = Physics.Raycast(transform.position + groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer)
+                 || Physics.Raycast(transform.position - groundDetectedOffset, Vector3.down, detectGroundDistance, groundLayer);
 
-        if (isOnGround)
-        {
-            doubleJumpTimes = 2;
+            if (isOnGround)
+            {
+                doubleJumpTimes = 2;
+            }
         }
     }
 
@@ -103,6 +107,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 doubleJumpTimes--;
+                StaminaController.ConsumeStamina(PlayerActionType.DoubleJump);
             }
         }
         else {
@@ -111,17 +116,20 @@ public class CharacterMovement : MonoBehaviour,IMovement
             {
                 rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StaminaController.ConsumeStamina(PlayerActionType.Jump);
             }
         }
     }
 
     void FixedUpdate() {
         rb.MovePosition(transform.position + moveDirection * currentMoveSpeed * Time.fixedDeltaTime);
-        if (!isOnGround)
-        {
-            if (rb.velocity.y < heightToFall)
+        if (!CanFly) {
+            if (!isOnGround)
             {
-                rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.fixedDeltaTime;
+                if (rb.velocity.y < heightToFall)
+                {
+                    rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.fixedDeltaTime;
+                }
             }
         }
     }
