@@ -18,9 +18,9 @@ public class GameFlowManager : GameBasicFlowManager
     public GameObject UI_GameOver;
     public GameObject UI_PauseMenu;
 
- 
 
     public void GameOver() {
+        Time.timeScale = 0;
         UI_GameOver.SetActive(true);
     }
 
@@ -34,9 +34,13 @@ public class GameFlowManager : GameBasicFlowManager
     public void Resume() {
         if (UI_PauseMenu.activeInHierarchy)
         {
-            Time.timeScale = 1;
+            ResetTimeScale();
             UI_PauseMenu.SetActive(false);
         }
+    }
+
+    public void ResetTimeScale() {
+        Time.timeScale = 1;
     }
 
 }

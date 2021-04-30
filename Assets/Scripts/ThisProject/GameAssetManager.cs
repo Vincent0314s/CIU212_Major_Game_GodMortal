@@ -15,7 +15,6 @@ public class GameAssetManager : MonoBehaviour
     }
 
     public GameObject currentPlayer;
-    public GameObject playerPrefab;
 
     private void Awake()
     {

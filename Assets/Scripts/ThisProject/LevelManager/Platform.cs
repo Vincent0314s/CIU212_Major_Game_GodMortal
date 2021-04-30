@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public Vector3 colliderOffset = new Vector3(0,1.8f,0);
-    public Vector3 colliderSize = new Vector3(0.01f,1.5f,1);
+    public Vector3 colliderSize = new Vector3(0.3f,1.5f,1);
     public Color colliderColor = Color.cyan;
 
     private GameObject leftCollider;

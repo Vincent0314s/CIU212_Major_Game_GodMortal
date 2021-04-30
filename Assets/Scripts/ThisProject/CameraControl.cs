@@ -13,9 +13,10 @@ public class CameraControl : MonoBehaviour
 
     public Vector2 limitedHeight = new Vector2(1.5f,6.5f);
 
-    private void Awake()
+    private void Start()
     {
         AssignPlayerToFocus();
+
     }
 
     void LateUpdate()

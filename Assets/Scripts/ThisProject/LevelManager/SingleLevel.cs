@@ -16,16 +16,14 @@ public class SingleLevel : MonoBehaviour
             gameObject.name = levelArea.ToString();
         }
     }
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color = areaBorderColor;
-    //    Gizmos.DrawCube(transform.GetChild(0).position, transform.localScale);
-    //}
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = areaBorderColor;
-        Gizmos.DrawCube(transform.GetChild(0).position, transform.localScale);
+        if (GetComponentInParent<LevelAreaInformationParent>().turnOnVisualizer) {
+            Gizmos.color = areaBorderColor;
+            Gizmos.DrawCube(transform.GetChild(0).position, transform.localScale);
+        }
+       
     }
 
     public void CallTrigger(Collider _c) {

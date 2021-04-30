@@ -34,26 +34,6 @@ public enum PlayerActionType
 	RangedPower,
 
 }
-public enum LevelCheckState 
-{
-	StartPoint,
-	CheckPoint,
-	EndPoint,
-
-}
-public enum CheckPointShape 
-{
-	Box,
-	Sphere,
-
-}
-public enum EnemySequence 
-{
-	Nothing,
-	TracingPlayer,
-	StayAwayFromPlayer,
-
-}
 public enum Items 
 {
 	HealthPotion,
