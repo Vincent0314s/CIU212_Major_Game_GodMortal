@@ -7,7 +7,7 @@ using System.IO;
 public static class EnumListManager
 {
     const string extension = ".cs";
-    public static string filePath = Application.dataPath+"/";
+    public static string filePath = Application.dataPath+ "/Lists/";
     public static string fileName = "EnumListStorage";
 
     public static string sceneFileName = "SceneListStorage";
