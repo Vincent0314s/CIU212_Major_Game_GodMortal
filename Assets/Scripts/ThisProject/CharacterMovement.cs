@@ -123,6 +123,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
     void FixedUpdate() {
         rb.MovePosition(transform.position + moveDirection * currentMoveSpeed * Time.fixedDeltaTime);
+
         if (!CanFly) {
             if (!isOnGround)
             {

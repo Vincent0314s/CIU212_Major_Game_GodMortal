@@ -111,4 +111,7 @@ public class PlayerValue : CharacterBaseValue
     {
         GameFlowManager.i.GameOver();
     }
+    public void CancelGravity() {
+        rb.useGravity = false;
+    }
 }

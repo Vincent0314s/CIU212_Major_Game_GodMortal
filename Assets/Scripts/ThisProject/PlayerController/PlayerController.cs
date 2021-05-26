@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private bool isGoingLeft;
     private bool isDashing;
 
+    private bool isGoingUp;
+    private bool isGoingDown;
+
     private Vector3 moveVector;
     [Space]
     [Header("Dash")]
@@ -37,6 +40,14 @@ public class PlayerController : MonoBehaviour
     public float rangedPowerForce = 20f;
 
     [Space]
+    [Header("ClimbingRope")]
+    public float climbingSpeed;
+    private float currentClimbingSpeed;
+    public Transform rope { set; private get; }
+
+
+
+    [Space]
     [Header("KeyCode")]
     public KeyCode key_LightAttack;
     public KeyCode key_HeavyAttack;
@@ -46,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_StanimaPotion;
     public KeyCode key_RangedPower;
     public KeyCode key_Escape;
+    public KeyCode key_Interact;
 
     PlayerAnimationEvent pae;
  
@@ -97,6 +109,7 @@ public class PlayerController : MonoBehaviour
         MoveFunction();
         AttackInputFunction();
         LaunchRangedPower();
+        AttachToRope();
         //isGoingRight = Input.GetKey(KeyCode.D);
         //isGoingLeft = Input.GetKey(KeyCode.A);
 
@@ -110,6 +123,7 @@ public class PlayerController : MonoBehaviour
         AttackInputFunction();
         DashInputFunction();
         LaunchRangedPower();
+        AttachToRope();
     }
 
     public void Jump() {
@@ -199,6 +213,27 @@ public class PlayerController : MonoBehaviour
             obj.GetComponent<Rigidbody>().velocity = transform.right * rangedPowerForce;
             StaminaController.ConsumeStamina(PlayerActionType.RangedPower);
         }
+    }
+
+    void AttachToRope() {
+        if (rope) {
+            Debug.Log(rope.position.x);
+            if (Input.GetKeyDown(key_Interact)) {
+                cbv.anim.SetBool("isClimbing", true);
+            }
+        }
+    }
+
+    public void ClimbingRope() {
+        isGoingUp = Input.GetKey(KeyCode.W);
+        isGoingDown = Input.GetKey(KeyCode.S);
+      
+        float moveY = 0;
+        if (isGoingUp) moveY = 1;
+        if (isGoingDown) moveY = -1;
+        moveVector = new Vector3(0, moveY, 0).normalized;
+        GetComponent<IMovement>().SetVelocity(moveVector);
+
     }
 
 
