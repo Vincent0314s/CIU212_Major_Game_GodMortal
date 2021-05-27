@@ -120,13 +120,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
-  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8
   heightToFall: 1
-  canDoubleJump: 0
-  groundDetectedOffset: {x: 0.36, y: 0, z: 0}
+  groundDetectedOffsetX: 0.36
+  groundDetectedOffsetY: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 2304
@@ -143,14 +142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleColor: {r: 1, g: 1, b: 1, a: 1}
-  detectedPlayerRange: 6
+  detectedPlayerRange: 8
   detectPlayerBySec: 0.5
   playerMask:
     serializedVersion: 2
     m_Bits: 512
   reactionTimeRange: {x: 1, y: 2}
   stoppedDistance: 2.5
-  attackRangeDistance: 2.48
+  attackRangeDistance: 2.5
+  considerDistance: 6
   firstAttackAnimName: Attack01
 --- !u!114 &4187558942738539441
 MonoBehaviour:

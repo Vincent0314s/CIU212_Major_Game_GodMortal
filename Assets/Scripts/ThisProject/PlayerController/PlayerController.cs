@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
     public GameObject rangedPowerObject;
     public float rangedPowerForce = 20f;
 
-    [Space]
-    [Header("ClimbingRope")]
     public Transform rope;
     public bool isClimbing { get; private set; }
     //public Transform rope { set; private get; }
@@ -130,6 +128,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsPressingItemSlot_01() {
         if (ItemManager.i.CanUsingItems(Items.HealthPotion) && Input.GetKeyDown(key_HealthPotion)) {
+            ItemManager.i.RemoveItems(Items.HealthPotion);
             return true;
         }
         return false;
@@ -138,6 +137,7 @@ public class PlayerController : MonoBehaviour
     public bool IsPressingItemSlot_02() {
         if (ItemManager.i.CanUsingItems(Items.StaminaPotion) && Input.GetKeyDown(key_StanimaPotion))
         {
+            ItemManager.i.RemoveItems(Items.StaminaPotion);
             return true;
         }
         return false;
@@ -216,6 +216,17 @@ public class PlayerController : MonoBehaviour
     public void DoubleJump_Enter() {
         pm.DoubleJump();
     }
+
+    public void DoubleJump_Update() {
+        MoveHorizontally();
+        float moveX = 0;
+        if (isGoingRight) moveX = 1;
+        if (isGoingLeft) moveX = -1;
+        moveVector = new Vector3(moveX, 0, 0).normalized;
+        GetComponent<IMovement>().SetVelocity(moveVector);
+    }
+
+
 
     void MoveFunction() {
         MoveHorizontally();

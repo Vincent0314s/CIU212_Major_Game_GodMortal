@@ -25,6 +25,8 @@ public class Platform : MonoBehaviour
 
             leftCollider.tag = "PlatformCollider";
             rightCollider.tag = "PlatformCollider";
+            leftCollider.layer = 11;
+            rightCollider.layer = 11;
 
             leftCollider.transform.SetParent(transform, true);
             rightCollider.transform.SetParent(transform, true);
@@ -37,8 +39,8 @@ public class Platform : MonoBehaviour
             rightCollider.transform.localPosition = new Vector3(colliderOffset.x, colliderOffset.y, colliderOffset.z);
 
 
-            leftCollider.GetComponent<BoxCollider>().isTrigger = true;
-            rightCollider.GetComponent<BoxCollider>().isTrigger = true;
+            //leftCollider.GetComponent<BoxCollider>().isTrigger = true;
+            //rightCollider.GetComponent<BoxCollider>().isTrigger = true;
 
             DestroyImmediate(leftCollider.GetComponent<MeshRenderer>());
             DestroyImmediate(rightCollider.GetComponent<MeshRenderer>());

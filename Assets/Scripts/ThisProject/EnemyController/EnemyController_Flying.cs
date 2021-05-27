@@ -14,44 +14,44 @@ public class EnemyController_Flying : EnemyController
             }
             else
             {
-                if (IsCloseToTarget(player.position))
-                {
-                    Attack();
-                }
-                else
-                {
-                    TracingPlayer();
-                }
+                //if (IsCloseToChangingCircle(player.position))
+                //{
+                //    Attack();
+                //}
+                //else
+                //{
+                //    TracingPlayer();
+                //}
             }
         }
         else
         {
-            if (!IsCloseToTarget(originalPosition))
-            {
-                Move(originalPosition);
-            }
+            //if (!IsCloseToChangingCircle(originalPosition))
+            //{
+            //    Move(originalPosition);
+            //}
         }
     }
 
     public override void Move_Upate()
     {
-        if (player)
-        {
-            if (IsCloseToTarget(player.position))
-            {
-                Attack();
-            }
-        }
-        else
-        {
-            if (IsCloseToTarget(originalPosition))
-            {
-                cm.StopMoving();
-            }
-            else
-            {
-                Move(originalPosition);
-            }
-        }
+        //if (player)
+        //{
+        //    if (IsCloseToChangingCircle(player.position))
+        //    {
+        //        Attack();
+        //    }
+        //}
+        //else
+        //{
+        //    if (IsCloseToChangingCircle(originalPosition))
+        //    {
+        //        cm.StopMoving();
+        //    }
+        //    else
+        //    {
+        //        Move(originalPosition);
+        //    }
+        //}
     }
 }

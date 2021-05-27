@@ -120,13 +120,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   turnSmoothValue: 0.35
-  CanFly: 0
   detectGroundDistance: 1.5
   jumpForce: 17
   fallValue: 8
   heightToFall: 1
-  canDoubleJump: 0
-  groundDetectedOffset: {x: 0.36, y: 0, z: 0}
+  groundDetectedOffsetX: 0.36
+  groundDetectedOffsetY: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 2304
@@ -150,7 +149,7 @@ MonoBehaviour:
     m_Bits: 512
   reactionTimeRange: {x: 1, y: 2}
   stoppedDistance: 2.5
-  attackRangeDistance: 14.23
+  attackRangeDistance: 14.26
   firstAttackAnimName: Attack01
   temp: {fileID: 2100000, guid: ee7d7ace5c84b964c83870c3377c3f98, type: 2}
 --- !u!114 &8043637291032584064

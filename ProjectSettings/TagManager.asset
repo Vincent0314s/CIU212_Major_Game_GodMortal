@@ -19,11 +19,11 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
+  - PlatfromBorder
   - Destructive
   - Collecable
   - Fragment
-  - 
+  - Projectile
   - 
   - 
   - 

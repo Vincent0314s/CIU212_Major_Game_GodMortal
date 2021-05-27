@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
     [Header("AI_Movement")]
     public float stoppedDistance = 2.5f;
     public float attackRangeDistance = 5f;
+    public float considerDistance = 5f;
     protected Vector3 originalPosition;
 
     //protected Transform platformToBeconfined;
@@ -44,7 +45,6 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     public Transform player { get; private set; }
-    protected Transform platform;
     protected Vector3 moveVector;
 
     public CharacterMovement cm { get; private set; }
@@ -57,6 +57,8 @@ public class EnemyController : MonoBehaviour
         player = null;
         originalPosition = transform.position;
     }
+
+   
 
     //void DetectConfinedPlatform() {
     //    RaycastHit hit;
@@ -95,6 +97,10 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Idle_Update() { 
     
+    }
+
+    public virtual void Move_Enter() {
+
     }
 
     public virtual void Move_Upate() { 
@@ -146,9 +152,19 @@ public class EnemyController : MonoBehaviour
         return disBetween < stoppedDistance;
     }
 
+    public bool IsTargetOutOfRange(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween > detectedPlayerRange;
+    }
+
     public bool IsInAttackRange(Vector3 targetPos) {
         float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < attackRangeDistance; 
+    }
+
+    public bool IsCloseToConsiderRange(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween < considerDistance;
     }
 
     public void Attack() {
@@ -178,6 +194,9 @@ public class EnemyController : MonoBehaviour
 
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRangeDistance);
+
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(transform.position, transform.forward, considerDistance);
     }
 #endif
 
@@ -187,9 +206,10 @@ public class EnemyController : MonoBehaviour
         //Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "PlatformCollider") {
+        if (collision.gameObject.tag == "PlatformCollider")
+        {
             StopTracinPlayer();
         }
     }
