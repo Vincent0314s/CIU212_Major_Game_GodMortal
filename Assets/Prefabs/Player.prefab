@@ -84,8 +84,8 @@ GameObject:
   - component: {fileID: 8907928457952614784}
   - component: {fileID: 8907928457952614799}
   - component: {fileID: 8907928457952614785}
-  - component: {fileID: 8907928457952614789}
   - component: {fileID: 7058069560047037975}
+  - component: {fileID: 2254138543508148841}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -160,10 +160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whereisPlayer: 0
+  respawonPosition: {x: 0, y: 0, z: 0}
   dashDistance: 10
   rangedPowerObject: {fileID: 5828855240236238648, guid: f14589a1f628ee04b870202433b6469a,
     type: 3}
   rangedPowerForce: 20
+  climbingSpeed: 0
   key_LightAttack: 323
   key_HeavyAttack: 324
   key_Dash: 304
@@ -172,30 +174,7 @@ MonoBehaviour:
   key_StanimaPotion: 50
   key_RangedPower: 102
   key_Escape: 27
---- !u!114 &8907928457952614789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8907928457952614798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  turnSmoothValue: 0.35
-  CanFly: 0
-  detectGroundDistance: 1.5
-  jumpForce: 17
-  fallValue: 8
-  heightToFall: 1
-  canDoubleJump: 1
-  groundDetectedOffset: {x: 0.36, y: 0, z: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2304
+  key_Interact: 0
 --- !u!114 &7058069560047037975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,24 +199,11 @@ MonoBehaviour:
     damage: 25
   - type: 3
     damage: 25
-  maxStamina: 100
-  currentStamina: 0
-  recoverSpeed: 15
-  staminaList:
-  - actionType: 0
-    amount: 5
-  - actionType: 1
-    amount: 20
-  - actionType: 2
-    amount: 20
-  - actionType: 3
-    amount: 30
-  - actionType: 4
-    amount: 20
-  - actionType: 5
-    amount: 10
-  - actionType: 6
-    amount: 15
+  staminaSetting:
+    maxStamina: 100
+    recoverSpeed: 0
+    staminaConsumeList: []
+  staminaConsumeList: []
   shieldSetting:
     maxShield: 50
     recoverAmount: 10
@@ -245,6 +211,28 @@ MonoBehaviour:
   UI_HPBar: {fileID: 0}
   UI_StaminaBar: {fileID: 0}
   UI_ShieldBar: {fileID: 0}
+--- !u!114 &2254138543508148841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907928457952614798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e29584836bdd4f42b4f1dd76fa51551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 10
+  turnSmoothValue: 0.35
+  detectGroundDistance: 1.5
+  jumpForce: 17
+  fallValue: 8
+  heightToFall: 1
+  groundDetectedOffset: {x: 0.36, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &1929966210740479938
 PrefabInstance:
   m_ObjectHideFlags: 0

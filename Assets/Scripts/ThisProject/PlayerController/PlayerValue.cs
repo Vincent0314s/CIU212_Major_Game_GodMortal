@@ -4,49 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class StaminaValue {
-    
-    public PlayerActionType actionType;
-    public float amount;
-}
+
 
 public class PlayerValue : CharacterBaseValue
 {
-    private static PlayerValue _i;
-    public static PlayerValue i {
-        get {
-            if (_i == null) {
-                _i = GameObject.FindObjectOfType<PlayerValue>();
-            }
-            return _i;
-        }
-    }
-
 
     [Header("Stamina")]
-    public float maxStamina = 100f;
-    [HideInInspector]
-    public float currentStamina;
-    public float recoverSpeed;
+    public StaminaManager staminaSetting = new StaminaManager();
 
-    [ArrayElementTitle("actionType")]
-    public List<StaminaValue> staminaList;
-
-    public ShieldManager shieldSetting;
+    [Space]
+    [Header("Shield")]
+    public ShieldManager shieldSetting = new ShieldManager();
 
     [Space]
     [Header("UI")]
     public Image UI_HPBar;
     public Image UI_StaminaBar;
     public Image UI_ShieldBar;
-  
+
+    public CapsuleCollider selfCollider;
+
+    PlayerMovement pm;
 
     public override void Initialzation()
     {
         base.Initialzation();
+        selfCollider = GetComponent<CapsuleCollider>();
+        pm = GetComponent<PlayerMovement>();
         shieldSetting.Initialization();
-        currentStamina = maxStamina;
+        staminaSetting.Initialization();
         UpdatePlayerHpBar();
         UpdatePlayerShieldBar();
     }
@@ -54,11 +40,10 @@ public class PlayerValue : CharacterBaseValue
     private void Update()
     {
         shieldSetting.RecoverShield(()=> UpdatePlayerShieldBar());
+        staminaSetting.RecoverStamina(()=> UpdatePlayerStaminaBar());
+        anim.SetBool("isOnGround",pm.isOnGround);
     }
-    public float GetStaminaPercentage()
-    {
-        return currentStamina / maxStamina;
-    }
+   
 
     public override void AddHP(float _amount)
     {
@@ -100,10 +85,10 @@ public class PlayerValue : CharacterBaseValue
         }
     }
 
-    public void UpdatePlayerStBar() {
+    public void UpdatePlayerStaminaBar() {
         if (UI_StaminaBar)
         {
-            UI_StaminaBar.fillAmount = GetStaminaPercentage();
+            UI_StaminaBar.fillAmount = staminaSetting.GetStaminaPercentage();
         }
     }
 
@@ -111,7 +96,5 @@ public class PlayerValue : CharacterBaseValue
     {
         GameFlowManager.i.GameOver();
     }
-    public void CancelGravity() {
-        rb.useGravity = false;
-    }
+ 
 }

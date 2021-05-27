@@ -16,54 +16,30 @@ public class Player_LightAttackBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        pc.cm.StopMoving();
+        pc.pm.StopMoving();
         canDoNextAttack = false;
-        StaminaController.ConsumeStamina(PlayerActionType.LightAttack);
         //currentDealyTimer = delayToDectectInput;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.LightAttackInput();
-       
-        if (pc.cbv.isLightAttacking)
-        {
-            canDoNextAttack = true;
+        if (!canDoNextAttack) {
+            if (pc.IsPressingLightAttack()) {
+                canDoNextAttack = true;
+            }
         }
-        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim && StaminaController.CanConsumeStamina())
+
+        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim)
         {
             animator.Play(animString);
         }
 
-        //if (currentDealyTimer > 0)
-        //{
-        //    currentDealyTimer -= Time.deltaTime;
-        //}
-        //else
-        //{
-        //    if (pc.cbv.isLightAttacking)
-        //    {
-        //        canDoNextAttack = true;
-        //    }
-        //    if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim)
-        //    {
-        //        animator.Play(animString);
-        //    }
-        //}
+      
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        //if (!canDoNextAttack)
-        //{
-        //    PlayerController.i.playerState = PlayerState.Idle;
-        //}
-        //else
-        //{
-        //    PlayerController.i.playerState = PlayerState.LightAttack;
-        //}
         
     }
 
