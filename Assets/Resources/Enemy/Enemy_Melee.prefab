@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 46125568030185999}
   - component: {fileID: 46125568030185997}
   - component: {fileID: 46125568030185986}
-  - component: {fileID: 46125568030185992}
   - component: {fileID: 2833083590354740323}
   - component: {fileID: 4187558942738539441}
+  - component: {fileID: 6840203797946095249}
   m_Layer: 10
   m_Name: Enemy_Melee
   m_TagString: Enemy
@@ -106,29 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &46125568030185992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46125568030185987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  turnSmoothValue: 0.35
-  detectGroundDistance: 1.5
-  jumpForce: 17
-  fallValue: 8
-  heightToFall: 1
-  groundDetectedOffsetX: 0.36
-  groundDetectedOffsetY: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2304
 --- !u!114 &2833083590354740323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66eae58ec90973429d2597e59a889a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dir: 0
   circleColor: {r: 1, g: 1, b: 1, a: 1}
   detectedPlayerRange: 8
   detectPlayerBySec: 0.5
@@ -170,6 +148,29 @@ MonoBehaviour:
   attackSetting:
   - type: 0
     damage: 30
+--- !u!114 &6840203797946095249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46125568030185987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2e4d750e1e527468dbb93b50c67cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 10
+  turnSmoothValue: 0.35
+  detectGroundDistance: 1.5
+  jumpForce: 17
+  fallValue: 8
+  heightToFall: 2
+  groundDetectedOffsetX: 0.36
+  groundDetectedOffsetY: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &1270094040543703997
 Animator:
   serializedVersion: 3

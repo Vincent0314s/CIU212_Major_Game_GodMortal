@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_MoveToRopeBehaviour : StateMachineBehaviour
+public class Enemy_Fly_IdleBehaviour : StateMachineBehaviour
 {
-    PlayerController pc;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    EnemyController ec;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc = animator.GetComponentInParent<PlayerController>();
+        ec = animator.GetComponentInParent<EnemyController>();
+        ec.Idle_Enter();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.MoveToRope_Update();
+        ec.Idle_Update();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

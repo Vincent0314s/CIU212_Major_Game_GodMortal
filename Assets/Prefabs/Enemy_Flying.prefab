@@ -31,8 +31,8 @@ GameObject:
   - component: {fileID: 944652222318432182}
   - component: {fileID: 944652222318432181}
   - component: {fileID: 944652222318432176}
-  - component: {fileID: 944652222318432183}
   - component: {fileID: 944652222318432177}
+  - component: {fileID: 166880225}
   m_Layer: 0
   m_Name: Enemy_Flying
   m_TagString: Untagged
@@ -66,7 +66,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.62
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &944652222318432181
 Rigidbody:
@@ -82,7 +82,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &944652222318432176
 MonoBehaviour:
@@ -97,36 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isReadyToLoadComponment: 1
-  maxHP: 100
-  maxStamina: 100
+  healthSetting:
+    maxHP: 100
   attackSetting:
   - type: 0
-    damage: 30
-  UI_HPBar: {fileID: 0}
---- !u!114 &944652222318432183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944652222318432187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  turnSmoothValue: 0.35
-  CanFly: 1
-  detectGroundDistance: 1.5
-  jumpForce: 5
-  fallValue: 2.5
-  heightToFall: 2
-  canDoubleJump: 0
-  groundDetectedOffset: {x: 0, y: 0, z: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+    damage: 10
 --- !u!114 &944652222318432177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,16 +114,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5eb7ada0881b04bbd96175e7106ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dir: 0
   circleColor: {r: 1, g: 1, b: 1, a: 1}
-  detectedPlayerRange: 10
+  detectedPlayerRange: 16
   detectPlayerBySec: 0.2
   playerMask:
     serializedVersion: 2
     m_Bits: 512
   reactionTimeRange: {x: 0.5, y: 1}
-  stoppedDistance: 2.5
-  attackRangeDistance: 1.24
+  stoppedDistance: 1.11
+  attackRangeDistance: 3.36
+  considerDistance: 6.5
   firstAttackAnimName: Attack01
+  bouncingTime: 1
+  currentBouncingTime: 0
+--- !u!114 &166880225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944652222318432187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1d31d35e98bdd42b9c755ba6f35794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 10
+  turnSmoothValue: 0.35
+  detectGroundDistance: 1.5
+  jumpForce: 5
+  fallValue: 2.5
+  heightToFall: 2
+  groundDetectedOffsetX: 0.36
+  groundDetectedOffsetY: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  sprintSpeed: 15
+  attackSpeeed: 30
 --- !u!1001 &944652220952655522
 PrefabInstance:
   m_ObjectHideFlags: 0

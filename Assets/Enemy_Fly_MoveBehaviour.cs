@@ -8,6 +8,7 @@ public class Enemy_Fly_MoveBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ec = animator.GetComponentInParent<EnemyController>();
+        ec.Move_Enter();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

@@ -15,6 +15,12 @@ public class PlayerMovement : CharacterMovement
         currentdoubleJumpTimes = doubleJumpTimes;
     }
 
+    private void Update()
+    {
+        Flip();
+        OnGround();
+    }
+
     public override void OnGround()
     {
         base.OnGround();

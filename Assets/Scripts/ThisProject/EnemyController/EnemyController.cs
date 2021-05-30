@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
         Left
     }
 
-    private Direction dir;
+    public Direction dir;
 
     [Space(10)]
     [Header("Detect Player")]
@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
     public string firstAttackAnimName = "Attack01";
 
     [SerializeField]
-    public Transform player { get; private set; }
+    public Transform player { get; protected set; }
     protected Vector3 moveVector;
 
     public CharacterMovement cm { get; private set; }
@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
     //    }
     //}
 
-    IEnumerator DetectPlayer() {
+    public virtual IEnumerator DetectPlayer() {
         while (player == null) {
             yield return new WaitForSeconds(detectPlayerBySec);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Idle_Enter() {
+    public virtual void Idle_Enter() {
         currentReactionTimer = 0;
         StartCoroutine("DetectPlayer");
 
@@ -128,20 +128,31 @@ public class EnemyController : MonoBehaviour
                 cm.SetVelocity(moveVector);
                 break;
         }
+        dir = _dir;
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
-    public void Move(Vector3 targetPos) {
-        float disbetOriginalPos = Vector3.Distance(transform.position, targetPos);
-        if (disbetOriginalPos > 0.2f)
+
+    public virtual void Move(Vector3 targetPos) {
+        //float disbetOriginalPos = Vector3.Distance(transform.position, targetPos);
+        //if (disbetOriginalPos > stoppedDistance)
+        //{
+        //    if (targetPos.x < transform.position.x)
+        //    {
+        //        Move(Direction.Left);
+        //    }
+        //    else if (targetPos.x > transform.position.x)
+        //    {
+        //        Move(Direction.Right);
+        //    }
+        //}
+
+        if (targetPos.x < transform.position.x)
         {
-            if (targetPos.x < transform.position.x)
-            {
-                Move(Direction.Left);
-            }
-            else if (targetPos.x > transform.position.x)
-            {
-                Move(Direction.Right);
-            }
+            Move(Direction.Left);
+        }
+        else if (targetPos.x > transform.position.x)
+        {
+            Move(Direction.Right);
         }
     }
 
@@ -206,7 +217,7 @@ public class EnemyController : MonoBehaviour
         //Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PlatformCollider")
         {
@@ -226,31 +237,4 @@ public class EnemyController : MonoBehaviour
             transform.position = originalPosition;
         }
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.tag == "JumpTrigger") {
-    //        if (currentTimeStayInJumpArea < reactToJumpPlatformTimer)
-    //        {
-    //            currentTimeStayInJumpArea += Time.deltaTime;
-    //        }
-    //        else {
-    //            if (!isInJumpArea) {
-    //                JumpEvent = MoveBackAndJump;
-    //                JumpEvent?.Invoke();
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "JumpTrigger") {
-    //        currentTimeStayInJumpArea = 0;
-    //        isInJumpArea = false;
-    //        JumpEvent = null;
-    //    }
-    //}
-
-
 }

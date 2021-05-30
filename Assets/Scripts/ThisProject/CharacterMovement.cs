@@ -44,11 +44,6 @@ public class CharacterMovement : MonoBehaviour,IMovement
         moveDirection = velocityVector;
     }
 
-    void Update() {
-        Flip();
-        OnGround();
-    }
-
     public void Flip() {
         if (moveDirection.x > 0)
         {
@@ -61,8 +56,9 @@ public class CharacterMovement : MonoBehaviour,IMovement
     }
 
     public void FacingRight(bool _condition) {
-        transform.eulerAngles = _condition ?new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
+        transform.eulerAngles = _condition ?new Vector3(0, 0, transform.eulerAngles.z) : new Vector3(0, 180, transform.eulerAngles.z);
     }
+  
 
     public virtual void OnGround() {
         isOnGround = Physics.Raycast(transform.position + new Vector3(groundDetectedOffsetX,groundDetectedOffsetY,0), Vector3.down, detectGroundDistance, groundLayer)
@@ -90,6 +86,9 @@ public class CharacterMovement : MonoBehaviour,IMovement
         //}
     }
 
+    public void SetSpeed(float _newSpeed) {
+        currentMoveSpeed = _newSpeed;
+    }
 
     public void StopMoving() {
         moveDirection = Vector3.zero;
