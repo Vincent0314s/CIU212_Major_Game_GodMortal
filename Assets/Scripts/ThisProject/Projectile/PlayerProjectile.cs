@@ -12,9 +12,10 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Enemy") {
+        if (collision.transform.tag == "Enemy")
+        {
             collision.transform.GetComponent<CharacterBaseValue>().GetHurt(pc.pv.GetDamageAmountFromAttackType(AttackType.Projectile));
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 }

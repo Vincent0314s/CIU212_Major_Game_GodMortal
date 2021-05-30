@@ -207,7 +207,8 @@ public class PlayerController : MonoBehaviour
         moveVector = new Vector3(moveX, 0, 0).normalized;
         GetComponent<IMovement>().SetVelocity(moveVector);
 
-
+        LaunchRangedPowerFunction();
+        AerialAttack();
         if (IsPressingJump()) {
             pv.anim.SetTrigger("DoubleJump");
         }
@@ -224,6 +225,9 @@ public class PlayerController : MonoBehaviour
         if (isGoingLeft) moveX = -1;
         moveVector = new Vector3(moveX, 0, 0).normalized;
         GetComponent<IMovement>().SetVelocity(moveVector);
+
+        LaunchRangedPowerFunction();
+        AerialAttack();
     }
 
 
@@ -245,6 +249,13 @@ public class PlayerController : MonoBehaviour
         }
         if (IsPressingHeavyAttack()) {
             pv.anim.Play("HeavyAttack01");
+        }
+    }
+
+    void AerialAttack() {
+        if (IsPressingLightAttack())
+        {
+            pv.anim.Play("AerialAttack");
         }
     }
 

@@ -6,7 +6,7 @@ public class EnemyController_Flying : EnemyController
 {
 
     public float bouncingTime = 2.5f;
-    public float currentBouncingTime;
+    private float currentBouncingTime;
     private EnemyMovement_Flying ef;
 
     public override void Start()
@@ -42,7 +42,7 @@ public class EnemyController_Flying : EnemyController
     {
         while (player == null)
         {
-            yield return new WaitForSeconds(detectPlayerBySec);
+            yield return new WaitForSeconds(1.5f);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
             if (colls.Length > 0)
             {
@@ -61,8 +61,8 @@ public class EnemyController_Flying : EnemyController
     {
         if (player)
         {
-            LookatTarget(player.position + new Vector3(0, 1.3f, 0));
-            Move(player.position + new Vector3(0, 1.3f, 0));
+            LookatTarget(player.position);
+            Move(player.position);
             currentBouncingTime = 0;
         }
         else
@@ -80,10 +80,10 @@ public class EnemyController_Flying : EnemyController
     {
         if (player)
         {
-            LookatTarget(player.position + new Vector3(0,1.3f,0));
-            Move(player.position + new Vector3(0,1.3f,0));
+            LookatTarget(player.position);
+            Move(player.position);
             currentBouncingTime = 0;
-            if (IsInAttackRange(player.position + new Vector3(0, 1.3f, 0)))
+            if (IsInAttackRange(player.position))
             {
                 ef.SetSpeed(ef.attackSpeeed);
             }

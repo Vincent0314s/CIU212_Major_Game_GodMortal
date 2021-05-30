@@ -33,9 +33,9 @@ GameObject:
   - component: {fileID: 944652222318432176}
   - component: {fileID: 944652222318432177}
   - component: {fileID: 166880225}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_Flying
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &944652222318432181
 Rigidbody:
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5eb7ada0881b04bbd96175e7106ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: 0
   circleColor: {r: 1, g: 1, b: 1, a: 1}
   detectedPlayerRange: 16
   detectPlayerBySec: 0.2
@@ -127,7 +126,6 @@ MonoBehaviour:
   considerDistance: 6.5
   firstAttackAnimName: Attack01
   bouncingTime: 1
-  currentBouncingTime: 0
 --- !u!114 &166880225
 MonoBehaviour:
   m_ObjectHideFlags: 0

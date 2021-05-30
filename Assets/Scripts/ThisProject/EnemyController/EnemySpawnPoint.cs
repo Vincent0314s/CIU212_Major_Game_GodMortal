@@ -29,7 +29,9 @@ public class EnemySpawnPoint : MonoBehaviour
                         r.transform.parent = transform;
                         break;
                     case EnemyType.Flying:
-
+                        enemyPrefab = Resources.Load<GameObject>("Enemy/Enemy_Flying");
+                        GameObject f = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                        f.transform.parent = transform;
                         break;
                 }
             }

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
         Left
     }
 
-    public Direction dir;
+    private Direction dir;
 
     [Space(10)]
     [Header("Detect Player")]
