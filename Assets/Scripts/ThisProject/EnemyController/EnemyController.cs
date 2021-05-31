@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
     [Header("AI_Movement")]
     public float stoppedDistance = 2.5f;
     public float attackRangeDistance = 5f;
+    public float considerDistance = 5f;
     protected Vector3 originalPosition;
 
     //protected Transform platformToBeconfined;
@@ -43,8 +44,7 @@ public class EnemyController : MonoBehaviour
     public string firstAttackAnimName = "Attack01";
 
     [SerializeField]
-    public Transform player { get; private set; }
-    protected Transform platform;
+    public Transform player { get; protected set; }
     protected Vector3 moveVector;
 
     public CharacterMovement cm { get; private set; }
@@ -58,6 +58,8 @@ public class EnemyController : MonoBehaviour
         originalPosition = transform.position;
     }
 
+   
+
     //void DetectConfinedPlatform() {
     //    RaycastHit hit;
     //    if (Physics.Raycast(transform.position, Vector3.down, out hit,platformDetectedDis, platformMask)) {
@@ -65,7 +67,7 @@ public class EnemyController : MonoBehaviour
     //    }
     //}
 
-    IEnumerator DetectPlayer() {
+    public virtual IEnumerator DetectPlayer() {
         while (player == null) {
             yield return new WaitForSeconds(detectPlayerBySec);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
@@ -86,7 +88,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Idle_Enter() {
+    public virtual void Idle_Enter() {
         currentReactionTimer = 0;
         StartCoroutine("DetectPlayer");
 
@@ -95,6 +97,10 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Idle_Update() { 
     
+    }
+
+    public virtual void Move_Enter() {
+
     }
 
     public virtual void Move_Upate() { 
@@ -122,20 +128,31 @@ public class EnemyController : MonoBehaviour
                 cm.SetVelocity(moveVector);
                 break;
         }
+        dir = _dir;
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
-    public void Move(Vector3 targetPos) {
-        float disbetOriginalPos = Vector3.Distance(transform.position, targetPos);
-        if (disbetOriginalPos > 0.2f)
+
+    public virtual void Move(Vector3 targetPos) {
+        //float disbetOriginalPos = Vector3.Distance(transform.position, targetPos);
+        //if (disbetOriginalPos > stoppedDistance)
+        //{
+        //    if (targetPos.x < transform.position.x)
+        //    {
+        //        Move(Direction.Left);
+        //    }
+        //    else if (targetPos.x > transform.position.x)
+        //    {
+        //        Move(Direction.Right);
+        //    }
+        //}
+
+        if (targetPos.x < transform.position.x)
         {
-            if (targetPos.x < transform.position.x)
-            {
-                Move(Direction.Left);
-            }
-            else if (targetPos.x > transform.position.x)
-            {
-                Move(Direction.Right);
-            }
+            Move(Direction.Left);
+        }
+        else if (targetPos.x > transform.position.x)
+        {
+            Move(Direction.Right);
         }
     }
 
@@ -146,9 +163,19 @@ public class EnemyController : MonoBehaviour
         return disBetween < stoppedDistance;
     }
 
+    public bool IsTargetOutOfRange(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween > detectedPlayerRange;
+    }
+
     public bool IsInAttackRange(Vector3 targetPos) {
         float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < attackRangeDistance; 
+    }
+
+    public bool IsCloseToConsiderRange(Vector3 targetPos) {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween < considerDistance;
     }
 
     public void Attack() {
@@ -178,6 +205,9 @@ public class EnemyController : MonoBehaviour
 
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRangeDistance);
+
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(transform.position, transform.forward, considerDistance);
     }
 #endif
 
@@ -187,9 +217,10 @@ public class EnemyController : MonoBehaviour
         //Gizmos.DrawLine(transform.position,transform.position + Vector3.down * platformDetectedDis);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "PlatformCollider") {
+        if (collision.gameObject.tag == "PlatformCollider")
+        {
             StopTracinPlayer();
         }
     }
@@ -206,31 +237,4 @@ public class EnemyController : MonoBehaviour
             transform.position = originalPosition;
         }
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.tag == "JumpTrigger") {
-    //        if (currentTimeStayInJumpArea < reactToJumpPlatformTimer)
-    //        {
-    //            currentTimeStayInJumpArea += Time.deltaTime;
-    //        }
-    //        else {
-    //            if (!isInJumpArea) {
-    //                JumpEvent = MoveBackAndJump;
-    //                JumpEvent?.Invoke();
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "JumpTrigger") {
-    //        currentTimeStayInJumpArea = 0;
-    //        isInJumpArea = false;
-    //        JumpEvent = null;
-    //    }
-    //}
-
-
 }

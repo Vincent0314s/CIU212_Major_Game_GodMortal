@@ -1,6 +1,6 @@
 public enum VisualEffect 
 {
-	A,
+	B,
 
 }
 public enum SoundEffect 

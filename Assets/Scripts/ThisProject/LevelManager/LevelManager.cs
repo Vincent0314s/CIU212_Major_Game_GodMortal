@@ -33,7 +33,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(levels.Length);
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].SetActive(false);

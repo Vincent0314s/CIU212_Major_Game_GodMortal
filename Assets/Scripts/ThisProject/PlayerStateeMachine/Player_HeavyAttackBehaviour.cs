@@ -15,20 +15,21 @@ public class Player_HeavyAttackBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        pc.cm.StopMoving();
+        pc.pm.StopMoving();
         canDoNextAttack = false;
-        StaminaController.ConsumeStamina(PlayerActionType.HeavyAttack);
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.HeavyAttackInput();
-
-        if (pc.cbv.isHeavyAttacking) {
-            canDoNextAttack = true;
+        if (!canDoNextAttack) {
+            if (pc.IsPressingHeavyAttack()) {
+                canDoNextAttack = true;
+            }
         }
-        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim) { 
+        if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim)
+        {
             animator.Play(animString);
         }
     }

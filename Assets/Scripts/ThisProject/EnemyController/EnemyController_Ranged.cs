@@ -50,7 +50,7 @@ public class EnemyController_Ranged : EnemyController
     {
         if (player)
         {
-            if (IsCloseToTarget(player.position))
+            if (IsInAttackRange(player.position))
             {
                 Attack();
             }

@@ -19,9 +19,14 @@ public class PlayerAnimationEvent : MonoBehaviour
         pc = GetComponentInParent<PlayerController>();
     }
 
+    private void Update()
+    {
+        transform.localPosition = new Vector3(0,0.266f,0);
+    }
+
     public void ForwardForce() {
         //pc.cbv.rb.AddForce(pc.transform.right * forwardForceValue);
-        pc.cbv.rb.velocity = pc.transform.right * forwardForceValue;
+        pc.pv.rb.velocity = pc.transform.right * forwardForceValue;
     }
 
     public void LightAttackRange() {
@@ -30,7 +35,7 @@ public class PlayerAnimationEvent : MonoBehaviour
         if (enemies.Length > 0) {
             for (int i = 0; i < enemies.Length; i++)
             {
-                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.cbv.GetDamageAmountFromAttackType(AttackType.Light));
+                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.pv.GetDamageAmountFromAttackType(AttackType.Light));
             }
         }
         //Destructive object

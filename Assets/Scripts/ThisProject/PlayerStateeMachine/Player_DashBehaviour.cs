@@ -9,18 +9,17 @@ public class Player_DashBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        StaminaController.ConsumeStamina(PlayerActionType.Dash);
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.Dash();
+        pc.Dash_Update();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.DashExit();
-
+        pc.Dash_Exit();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

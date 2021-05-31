@@ -15,7 +15,7 @@ public class Player_IdleBehaviour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.Idle();
+        pc.Idle_Update();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

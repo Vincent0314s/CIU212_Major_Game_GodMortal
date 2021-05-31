@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyController_Melee : EnemyController
 {
+
+    private float currentConsiderationTime;
+
     public override void Idle_Update()
     {
         if (player)
@@ -14,14 +17,15 @@ public class EnemyController_Melee : EnemyController
             }
             else
             {
-                if (IsCloseToTarget(player.position))
+                if (IsInAttackRange(player.position))
                 {
                     Attack();
                 }
-                else
-                {
+                else {
                     TracingPlayer();
                 }
+              
+               
             }
         }
         else
@@ -37,9 +41,29 @@ public class EnemyController_Melee : EnemyController
     {
         if (player)
         {
-            if (IsCloseToTarget(player.position))
+            if (IsInAttackRange(player.position))
             {
                 Attack();
+            }
+            if (IsTargetOutOfRange(player.position))
+            {
+                StopTracinPlayer();
+            }
+            else {
+                if (IsCloseToConsiderRange(player.position))
+                {
+                    if (currentConsiderationTime < 3.5f)
+                    {
+                        currentConsiderationTime += Time.deltaTime;
+                    }
+                    else {
+                        currentConsiderationTime = 0;
+                        TracingPlayer();
+                    }
+                }
+                else {
+                    TracingPlayer();
+                }
             }
         }
         else

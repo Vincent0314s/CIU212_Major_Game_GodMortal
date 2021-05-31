@@ -15,7 +15,7 @@ public class EnumListEditor : EditorWindow
     };
 
     private MultipleEnumList _multiepleEnumList;
-    string path = "Assets/EnumListAsset.asset";
+    string path = "Assets/Lists/EnumListAsset.asset";
 
 
 
