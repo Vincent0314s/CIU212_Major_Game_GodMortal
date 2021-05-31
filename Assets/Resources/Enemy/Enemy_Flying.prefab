@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleColor: {r: 1, g: 1, b: 1, a: 1}
-  detectedPlayerRange: 16
+  detectedPlayerRange: 10
   detectPlayerBySec: 0.2
   playerMask:
     serializedVersion: 2

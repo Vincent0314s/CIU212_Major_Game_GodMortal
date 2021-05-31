@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //private static PlayerController _i;
-    //public static PlayerController i {
-    //    get {
-    //        if (_i == null) {
-    //            _i = FindObjectOfType<PlayerController>();
-    //        }
-    //        return _i;
-    //    }
-    //}
 
     public PlayerMovement pm { get; private set; }
     public PlayerValue pv { get; private set; }
@@ -190,7 +181,7 @@ public class PlayerController : MonoBehaviour
         pv.rb.velocity = Vector3.zero;
     }
     public void JumpFunction() {
-        if (IsPressingJump()) {
+        if (IsPressingJump() && pm.isOnGround) {
             pv.anim.SetTrigger("Jump");
         }
     }

@@ -87,9 +87,11 @@ public class EnemyController_Flying : EnemyController
             {
                 ef.SetSpeed(ef.attackSpeeed);
             }
-            else { 
-                 ef.SetSpeed(ef.sprintSpeed);
+            else
+            {
+                ef.SetSpeed(ef.sprintSpeed);
             }
+
         }
         else {
             ef.SetSpeed(ef.MoveSpeed);
@@ -108,9 +110,11 @@ public class EnemyController_Flying : EnemyController
 
     public override void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
         if (collision.gameObject.tag == "Player") {
             collision.gameObject.GetComponent<CharacterBaseValue>().GetHurt(cbv.GetDamageAmountFromAttackType(AttackType.Light));
+            StopTracinPlayer();
+        }
+        if (collision.gameObject.layer == 8) {
             StopTracinPlayer();
         }
     }
