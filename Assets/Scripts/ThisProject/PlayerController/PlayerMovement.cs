@@ -41,6 +41,8 @@ public class PlayerMovement : CharacterMovement
                 currentDebuffTime = 0;
             }
         }
+
+        cbv.anim.SetFloat("VelocityY", cbv.rb.velocity.y);
     }
 
     public override void OnGround()
@@ -63,6 +65,7 @@ public class PlayerMovement : CharacterMovement
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+
         if (!isOnGround && !pc.isClimbing)
         {
             if (cbv.rb.velocity.y < heightToFall)
