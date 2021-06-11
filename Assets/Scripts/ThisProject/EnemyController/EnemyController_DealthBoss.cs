@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyController_DealthBoss : EnemyController
 {
     private EnemyMovement_Flying ef;
+    [Space]
+    [Header("NewValues")]
+    public float IdleTime = 1.5f;
     public Transform platformParent;
     private Transform[] platforms;
     private Transform currentPlayerPlatform;
@@ -51,7 +54,7 @@ public class EnemyController_DealthBoss : EnemyController
     {
         while (player == null)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(IdleTime);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
             if (colls.Length > 0)
             {

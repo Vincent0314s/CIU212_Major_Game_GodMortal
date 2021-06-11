@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3963604750012721997}
   - component: {fileID: 8118922347292464797}
   - component: {fileID: -6027250339574639817}
+  - component: {fileID: 7528669821687715879}
   m_Layer: 8
   m_Name: H_Snow_03
   m_TagString: Untagged
@@ -142,3 +143,16 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 1.8, z: 0}
   colliderSize: {x: 0.01, y: 1.5, z: 1}
   colliderColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!65 &7528669821687715879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242716162475996191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.75, y: 0.31, z: 3.63}
+  m_Center: {x: 0, y: -0.2, z: 0}

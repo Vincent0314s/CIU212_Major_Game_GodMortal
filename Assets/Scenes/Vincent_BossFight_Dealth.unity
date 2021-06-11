@@ -1888,6 +1888,8 @@ GameObject:
   - component: {fileID: 648272922}
   - component: {fileID: 648272921}
   - component: {fileID: 648272925}
+  - component: {fileID: 648272927}
+  - component: {fileID: 648272926}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1985,6 +1987,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStaying: 0
   stayTimeToRecord: 1.5
+--- !u!65 &648272926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648272920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &648272927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648272920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ae207a7b48b9246aeae68c446f03fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderOffset: {x: 0, y: 1.8, z: 0}
+  colliderSize: {x: 0.3, y: 1.5, z: 1}
+  colliderColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &656280365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,6 +4006,8 @@ GameObject:
   - component: {fileID: 1204565165}
   - component: {fileID: 1204565167}
   - component: {fileID: 1204565166}
+  - component: {fileID: 1204565169}
+  - component: {fileID: 1204565168}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -4125,6 +4157,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 58
   m_CollisionDetection: 0
+--- !u!65 &1204565168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204565160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0.000000059604645, y: -0.5, z: 0}
+--- !u!114 &1204565169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204565160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ae207a7b48b9246aeae68c446f03fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderOffset: {x: 0, y: 1.8, z: 0}
+  colliderSize: {x: 0.3, y: 1.5, z: 1}
+  colliderColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &1221923888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6213,7 +6273,7 @@ PrefabInstance:
     - target: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.35
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 8907928457952614787, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
@@ -14570,6 +14630,10 @@ PrefabInstance:
       propertyPath: considerDistance
       value: 23.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1570103598, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
+      propertyPath: detectedPlayerRange
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 3458195370828352759, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
       propertyPath: m_Name
@@ -14578,7 +14642,7 @@ PrefabInstance:
     - target: {fileID: 3458195370828352759, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3458195370828352762, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
