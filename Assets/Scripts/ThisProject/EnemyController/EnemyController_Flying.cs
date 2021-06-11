@@ -111,7 +111,7 @@ public class EnemyController_Flying : EnemyController
     public override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") {
-            collision.gameObject.GetComponent<CharacterBaseValue>().GetHurt(cbv.GetDamageAmountFromAttackType(AttackType.Light));
+            collision.gameObject.GetComponent<CharacterBaseValue>().GetHurt(cbv.GetDamageAmountFromAttackType(AttackType.Light),true);
             StopTracinPlayer();
         }
         if (collision.gameObject.layer == 8) {

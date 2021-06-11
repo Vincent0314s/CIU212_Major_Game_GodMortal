@@ -35,7 +35,7 @@ public class PlayerAnimationEvent : MonoBehaviour
         if (enemies.Length > 0) {
             for (int i = 0; i < enemies.Length; i++)
             {
-                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.pv.GetDamageAmountFromAttackType(AttackType.Light));
+                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.pv.GetDamageAmountFromAttackType(AttackType.Light),true);
             }
         }
         //Destructive object

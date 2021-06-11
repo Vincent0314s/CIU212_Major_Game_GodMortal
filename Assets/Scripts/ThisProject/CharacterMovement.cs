@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour,IMovement
     [Header("Movement")]
     [Range(3, 20)]
     public float MoveSpeed = 10f;
-    private float currentMoveSpeed;
+    protected float currentMoveSpeed;
     [Range(0, 1)]
     public float turnSmoothValue = 0.35f;
 

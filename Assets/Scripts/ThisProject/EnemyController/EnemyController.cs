@@ -163,11 +163,6 @@ public class EnemyController : MonoBehaviour
         return disBetween < stoppedDistance;
     }
 
-    public bool IsTargetOutOfRange(Vector3 targetPos) {
-        float disBetween = Vector3.Distance(targetPos, transform.position);
-        return disBetween > detectedPlayerRange;
-    }
-
     public bool IsInAttackRange(Vector3 targetPos) {
         float disBetween = Vector3.Distance(targetPos, transform.position);
         return disBetween < attackRangeDistance; 
@@ -178,10 +173,16 @@ public class EnemyController : MonoBehaviour
         return disBetween < considerDistance;
     }
 
+    public bool IsTargetOutOfRange(Vector3 targetPos)
+    {
+        float disBetween = Vector3.Distance(targetPos, transform.position);
+        return disBetween > detectedPlayerRange;
+    }
     public void Attack() {
         Move(player.position);
         cbv.anim.Play(firstAttackAnimName);
     }
+
 
     public float GetRandomTime(float _min, float _max) {
         return UnityEngine.Random.Range(_min,_max);

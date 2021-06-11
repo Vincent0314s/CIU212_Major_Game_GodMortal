@@ -4,11 +4,10 @@ using UnityEngine;
 
 public static class VisualEffectManager
 {
-    public static void CreateVisualEffect(VisualEffect effect, Vector3 pos, Quaternion angle)
+    public static GameObject CreateVisualEffect(VisualEffect effect, Vector3 pos, Quaternion angle)
     {
-        GameObject.Instantiate(GetVisualEffect(effect), pos, angle);
+        return GameObject.Instantiate(GetVisualEffect(effect), pos, angle);
     }
-
 
     private static GameObject GetVisualEffect(VisualEffect visualeffect)
     {
