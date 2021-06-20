@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1958695880771200165}
   - component: {fileID: 1958695880771200164}
   - component: {fileID: 1958695880771200167}
+  - component: {fileID: 5367276502418597903}
   m_Layer: 0
   m_Name: H_Grass_03
   m_TagString: Untagged
@@ -61,6 +62,19 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 1.8, z: 0}
   colliderSize: {x: 0.3, y: 1.5, z: 1}
   colliderColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!65 &5367276502418597903
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958695880771200166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.77, y: 0.37, z: 3.56}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!1 &3259654228491410465
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,9 +66,15 @@ public class CharacterBaseValue : MonoBehaviour
         healthSetting.GetHeal(_amount);
     }
 
-    public virtual void GetHurt(float _damage)
+    public virtual void GetHurt(float _damage, bool _canPlayAnimation)
     {
-        healthSetting.GetHurt(_damage,()=> anim.Play("Hurt",0,0),()=> anim.Play("Dead"));
+        if (_canPlayAnimation)
+        {
+            healthSetting.GetHurt(_damage, () => anim.Play("Hurt", 0, 0), () => anim.Play("Dead"));
+        }
+        else {
+            healthSetting.GetHurt(_damage, null, () => anim.Play("Dead"));
+        }
     }
 
     public virtual void Dead() { 

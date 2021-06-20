@@ -57,16 +57,20 @@ public class PlayerValue : CharacterBaseValue
     //}
 
 
-    public override void GetHurt(float damage)
+    public override void GetHurt(float damage, bool _canPlayAnimation)
     {
         if (shieldSetting.HasShield)
         {
             shieldSetting.GetHurt(damage);
-            anim.Play("Hurt",0,0);
+            if (_canPlayAnimation) { 
+               anim.Play("Hurt", 0, 0);
+            }
         }
-        else {
-            base.GetHurt(damage);
+        else
+        {
+            base.GetHurt(damage, _canPlayAnimation);
         }
+
         UpdatePlayerHpBar();
         UpdatePlayerShieldBar();
     }

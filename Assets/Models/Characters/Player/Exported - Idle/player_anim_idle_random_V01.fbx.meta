@@ -1,0 +1,302 @@
+fileFormatVersion: 2
+guid: 815440aacc30e4842aae34b72ee0d7fd
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 5616494229604945380
+    second: idle_random_V01
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tTransform 'anim_player_idle:Master_player_CHA:GreidRig_Pelvis'
+      for human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: player_anim_idle_base_V01(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      parentName: player_anim_idle_base_V01(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:Greid_mesh
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:axe_mesh
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: 0.73873305, y: 1.1899874, z: -0.27269882}
+      rotation: {x: -0.040837787, y: -0.027790742, z: 0.5136367, w: 0.85658467}
+      scale: {x: 1.0000048, y: 0.99999934, z: 0.99999857}
+    - name: anim_player_idle:Master_player_CHA:shield_mesh_grp
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:shield_deployed_mesh
+      parentName: anim_player_idle:Master_player_CHA:shield_mesh_grp
+      position: {x: -0.73335224, y: 1.2103356, z: -0.0007719081}
+      rotation: {x: 0.6820287, y: 0.28635666, z: 0.6144697, w: -0.27434254}
+      scale: {x: 0.9999936, y: 1.0000037, z: 1.0000039}
+    - name: anim_player_idle:Master_player_CHA:shield_mesh
+      parentName: anim_player_idle:Master_player_CHA:shield_mesh_grp
+      position: {x: -0.06673004, y: 1.2328242, z: -0.20109384}
+      rotation: {x: 0.063587576, y: 0.7042409, z: 0.7042429, w: -0.06358736}
+      scale: {x: 1.0000002, y: 0.99999994, z: 0.99999994}
+    - name: anim_player_idle:Master_player_CHA:sword_holsterd_GRP
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: 0.17349455, y: 0.845546, z: -0.03352913}
+      rotation: {x: -0.3879678, y: -0.5212745, z: 0.56369096, w: 0.5099082}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:scabard
+      parentName: anim_player_idle:Master_player_CHA:sword_holsterd_GRP
+      position: {x: -0.9410243, y: 0.009038339, z: 0.23059542}
+      rotation: {x: -0.07480758, y: 0.7188901, z: -0.08122201, w: 0.68629724}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: anim_player_idle:Master_player_CHA:sword_mesh
+      parentName: anim_player_idle:Master_player_CHA:sword_holsterd_GRP
+      position: {x: 0.13633186, y: -0.0012991738, z: 0.0006593895}
+      rotation: {x: 0.5059241, y: 0.4918235, z: 0.50659096, w: 0.4954958}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: anim_player_idle:Master_player_CHA:knife_mesh
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: -0.17185655, y: 0.8548732, z: 0.034507643}
+      rotation: {x: 0.22951393, y: -0.2790734, z: -0.09425687, w: 0.9276622}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:sword_deployed_mesh
+      parentName: anim_player_idle:Master_player_CHA:Greid_Mesh_GRP
+      position: {x: 0.44350806, y: 0.9167206, z: -0.062598795}
+      rotation: {x: 0.8086341, y: -0.5071121, z: 0.13663658, w: 0.2651013}
+      scale: {x: 1.0000025, y: 1.0000031, z: 0.99999285}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      parentName: player_anim_idle_base_V01(Clone)
+      position: {x: 0.000000047813337, y: 0.88943005, z: -0.024352772}
+      rotation: {x: 0.49912703, y: -0.5008716, z: -0.4991269, w: 0.5008715}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Spine1
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      position: {x: -0.0031101836, y: -0.020008588, z: -0.003761715}
+      rotation: {x: -0.000000014901161, y: -0, z: -0.06609273, w: 0.9978135}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.9999998}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Spine2
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Spine1
+      position: {x: -0.25844142, y: -0.008106893, z: 0.0008727528}
+      rotation: {x: -0.000000012909604, y: -0.000000032842337, z: 0.1419337, w: 0.98987615}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000002}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Ribcage
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Spine2
+      position: {x: -0.23916854, y: -0.000000006198933, z: -0.000000052569817}
+      rotation: {x: 0.00000013467535, y: 0.0000009346866, z: -0.50003326, w: 0.86600626}
+      scale: {x: 0.9999996, y: 0.99999946, z: 1.0000001}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_ShieldBone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Ribcage
+      position: {x: 0.22329864, y: -0.11232487, z: 0.06030845}
+      rotation: {x: -0.07491196, y: 0.076839775, z: 0.69403636, w: 0.711897}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Neck
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Ribcage
+      position: {x: -0.0007931521, y: -0.0034924792, z: -0.000000006918576}
+      rotation: {x: -0.000000041282913, y: -0.000000022110376, z: -0.1815179, w: 0.9833877}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_Head
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Neck
+      position: {x: -0.100125104, y: -0.000000059899364, z: -0.00000001801079}
+      rotation: {x: 0.000000029802319, y: 0.000000014901159, z: 0.18151785, w: 0.98338765}
+      scale: {x: 0.99999976, y: 0.99999976, z: 0.99999994}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LCollarbone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Ribcage
+      position: {x: 0.043669887, y: 0.10543432, z: 0.030406214}
+      rotation: {x: 0.05202032, y: 0.71501905, z: 0.17764176, w: 0.67415506}
+      scale: {x: 0.9999999, y: 1.0000002, z: 0.99999976}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LUpperarm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LCollarbone
+      position: {x: -0.174403, y: -0.00000015091186, z: 0.00000013485048}
+      rotation: {x: 0.12822868, y: -0.0027119813, z: -0.17327832, w: 0.97648597}
+      scale: {x: 0.9999997, y: 1.0000004, z: 1.0000004}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LForearm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LUpperarm
+      position: {x: -0.26238737, y: -0.00000021210774, z: 0.0000004768574}
+      rotation: {x: 0.04719707, y: -0.02262919, z: -0.019117532, w: 0.9984462}
+      scale: {x: 1.0000005, y: 0.9999989, z: 1.0000017}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LPalm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LForearm
+      position: {x: -0.24307123, y: 0.0000036550423, z: -0.0000004559744}
+      rotation: {x: -0.7514718, y: -0.04648234, z: -0.043593064, w: 0.6566805}
+      scale: {x: 1.0000006, y: 1.0000012, z: 0.99999845}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_shieldDeployedBone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LPalm
+      position: {x: -0.054619025, y: -0.015520935, z: 0.00000083208084}
+      rotation: {x: -0.000006424229, y: 0.000008735801, z: -0.59613043, w: 0.8028876}
+      scale: {x: 1.0000011, y: 1.000001, z: 0.9999985}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RArmCollarbone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Ribcage
+      position: {x: 0.040295593, y: 0.11009714, z: -0.021846699}
+      rotation: {x: 0.047268767, y: 0.7153558, z: -0.17323272, w: -0.6752941}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RArmUpperarm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RArmCollarbone
+      position: {x: -0.17440288, y: 0.00000014443599, z: -0.00000009620197}
+      rotation: {x: -0.12848152, y: 0.001546174, z: -0.1733512, w: 0.9764423}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.9999998}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RArmForearm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RArmUpperarm
+      position: {x: -0.26238713, y: 0.000000004930921, z: -0.0000005503428}
+      rotation: {x: -0.04719713, y: 0.022631967, z: -0.018974492, w: 0.9984489}
+      scale: {x: 1.0000002, y: 0.9999996, z: 1.0000015}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RArmPalm
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RArmForearm
+      position: {x: -0.24307135, y: 0.0000034617804, z: 0.00000066555793}
+      rotation: {x: 0.7525144, y: 0.026755298, z: -0.02734652, w: 0.65746355}
+      scale: {x: 1.0000006, y: 1.0000007, z: 0.9999993}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_swordBone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RArmPalm
+      position: {x: -0.06380085, y: -0.014974975, z: 0.0053763175}
+      rotation: {x: 0.0017581623, y: -0.7094146, z: 0.001664211, w: 0.70478725}
+      scale: {x: 0.99999815, y: 1.0000019, z: 1.0000008}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_knifeBone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      position: {x: -0.09178496, y: 0.035722323, z: 0.1789655}
+      rotation: {x: -0.037214935, y: 0.3683675, z: 0.9288606, w: -0.011767492}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LLegThigh
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      position: {x: -0.017192611, y: 0.046885267, z: 0.08785235}
+      rotation: {x: 0.014437854, y: 0.99931586, z: 0.028541565, w: 0.018567547}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LLegCalf
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LLegThigh
+      position: {x: -0.357361, y: 0.000004378557, z: 0.0000034046172}
+      rotation: {x: -0.0011341855, y: -0.0065724375, z: 0.0272142, w: 0.9996074}
+      scale: {x: 0.9999999, y: 0.9999996, z: 1}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LLegFoot
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LLegCalf
+      position: {x: -0.45164198, y: 0, z: 0}
+      rotation: {x: -0.046727326, y: 0.003986713, z: -0.48589835, w: 0.8727563}
+      scale: {x: 0.99999875, y: 1.0000013, z: 1.0000002}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_LLegDigit11
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_LLegFoot
+      position: {x: -0.14582275, y: 0.015289898, z: 0.0014615344}
+      rotation: {x: -0.0010130851, y: 0.004476178, z: -0.31039923, w: 0.95059526}
+      scale: {x: 1.0000002, y: 1, z: 1.0000002}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RLegThigh
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      position: {x: -0.017192611, y: 0.04688527, z: -0.08785235}
+      rotation: {x: 0.014443306, y: 0.9993182, z: -0.028455283, w: -0.018568305}
+      scale: {x: 1, y: 1, z: 1.0000004}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RLegCalf
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RLegThigh
+      position: {x: -0.35736126, y: 0.0000043809414, z: -0.0000033950805}
+      rotation: {x: 0.0011559745, y: 0.006613723, z: 0.027210865, w: 0.99960715}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000002}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RLegFoot
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RLegCalf
+      position: {x: -0.45164198, y: 0, z: 0.000000009536743}
+      rotation: {x: 0.04680594, y: -0.003997355, z: -0.48589587, w: 0.8727534}
+      scale: {x: 0.99999845, y: 1.0000014, z: 1.0000004}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_RLegDigit11
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_RLegFoot
+      position: {x: -0.14582275, y: 0.015289854, z: -0.0014615344}
+      rotation: {x: 0.0010130146, y: -0.004476358, z: -0.31039926, w: 0.9505952}
+      scale: {x: 0.9999999, y: 1.0000004, z: 1}
+    - name: anim_player_idle:Master_player_CHA:GreidRig_scabardBone
+      parentName: anim_player_idle:Master_player_CHA:GreidRig_Pelvis
+      position: {x: -0.013626891, y: 0.020199863, z: -0.1727462}
+      rotation: {x: 0.023239076, y: 0.110289484, z: 0.9936239, w: -0.0028030276}
+      scale: {x: 0.99999964, y: 0.9999996, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

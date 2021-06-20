@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7747737567154188913}
   - component: {fileID: 7747737567154188915}
   - component: {fileID: 7747737567154188914}
+  - component: {fileID: 1197315913868586290}
   m_Layer: 8
   m_Name: H_Sand_01
   m_TagString: Untagged
@@ -142,3 +143,16 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 1.8, z: 0}
   colliderSize: {x: 0.01, y: 1.5, z: 1}
   colliderColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!65 &1197315913868586290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747737567154188912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.75, y: 0.31, z: 3.6}
+  m_Center: {x: 0, y: -0.2, z: 0}

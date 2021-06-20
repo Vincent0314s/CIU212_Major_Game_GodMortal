@@ -102,4 +102,45 @@ public class Platform : MonoBehaviour
         }
     }
 
+    ////////////////////////////////////
+
+    private BoxCollider[] boxColliders;
+
+    private void Start()
+    {
+        boxColliders = GetComponents<BoxCollider>();
+        
+        if (boxColliders.Length > 0) {
+            Debug.Log(boxColliders[0].isTrigger);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") {
+            foreach (var item in boxColliders)
+            {
+                item.isTrigger = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            boxColliders[0].isTrigger = false;
+            boxColliders[0].gameObject.layer = 8;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            if (Input.GetKeyDown(KeyCode.S)) {
+                boxColliders[0].isTrigger = true;
+                boxColliders[0].gameObject.layer = 0;
+            }
+        }
+    }
 }

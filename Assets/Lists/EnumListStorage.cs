@@ -1,6 +1,6 @@
 public enum VisualEffect 
 {
-	B,
+	DealthBoss_DotArea,
 
 }
 public enum SoundEffect 
