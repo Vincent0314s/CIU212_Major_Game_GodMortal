@@ -7,6 +7,6 @@ public class EnemyMovement_Ground : CharacterMovement
     private void Update()
     {
         Flip();
-        OnGround();
+        OnGround(true);
     }
 }

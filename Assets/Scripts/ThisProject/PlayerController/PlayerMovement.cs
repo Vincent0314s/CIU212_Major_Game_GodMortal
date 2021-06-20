@@ -5,8 +5,10 @@ using System;
 
 public class PlayerMovement : CharacterMovement
 {
-    public int doubleJumpTimes = 1;
-    private int currentdoubleJumpTimes;
+    public int extraJumpCounts = 1;
+    private int currentJumpTimes;
+    private float fallingSpeed = 0;
+
 
     [Header("Debuff")]
     public bool isBeingDebuff;
@@ -14,22 +16,22 @@ public class PlayerMovement : CharacterMovement
     public float slowdownDebuffTime = 5f;
     public float rootDebuffTime = 3.5f;
     private float currentDebuffTime;
-    [SerializeField]
-    private Transform currentStandingPlatform;
 
     PlayerController pc;
+
+
 
     public override void Start()
     {
         base.Start();
         pc = GetComponent<PlayerController>();
-        currentdoubleJumpTimes = doubleJumpTimes;
+        ResetJumpCounts();
     }
 
     private void Update()
     {
         Flip();
-        OnGround();
+        //OnGround();
         if (isBeingDebuff) {
             if (currentDebuffTime > 0)
             {
@@ -41,23 +43,28 @@ public class PlayerMovement : CharacterMovement
                 currentDebuffTime = 0;
             }
         }
-
-        cbv.anim.SetFloat("VelocityY", cbv.rb.velocity.y);
+        cbv.anim.SetBool("isOnGround",isOnGround);
+        cbv.anim.SetBool("Falling", IsFalling());
+        cbv.anim.SetInteger("JumpTimes", currentJumpTimes);
+        cbv.anim.SetFloat("FallingSpeed", Mathf.MoveTowards(0, 1, fallingSpeed));
     }
-
-    public override void OnGround()
+    
+    public override void Jump()
     {
-        base.OnGround();
-        currentdoubleJumpTimes = doubleJumpTimes;
+        base.Jump();
+        fallingSpeed = 0;
+    }
+    public bool IsFalling() {
+        if (cbv.rb.velocity.y < 0 && !isOnGround && !pc.isClimbing && !isOnSlope) {
+            fallingSpeed += Time.deltaTime * 2f;
+            return true;
+        }
+        return false;
     }
 
     public void DoubleJump() {
-        //if (currentdoubleJumpTimes > 0 && !isOnGround)
-        //{
-        //    cbv.rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
-        //    cbv.rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        //    doubleJumpTimes--;
-        //}
+        currentJumpTimes = 0;
+        fallingSpeed = 0;
         cbv.rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
         cbv.rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
@@ -90,5 +97,9 @@ public class PlayerMovement : CharacterMovement
         isBeingDebuff = true;
         currentDebuffTime = rootDebuffTime;
         SetSpeed(0);
+    }
+
+    public void ResetJumpCounts() {
+        currentJumpTimes = extraJumpCounts;
     }
 }

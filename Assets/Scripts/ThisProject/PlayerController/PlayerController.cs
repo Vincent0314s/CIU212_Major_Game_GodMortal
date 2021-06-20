@@ -160,6 +160,9 @@ public class PlayerController : MonoBehaviour
         LaunchRangedPowerFunction();
         AttachToRopeFunction();
         JumpFunction();
+        EnableGroundCheck();
+        pm.OnSlope(true);
+
     }
 
     public void Run_Update() {
@@ -169,6 +172,9 @@ public class PlayerController : MonoBehaviour
         LaunchRangedPowerFunction();
         AttachToRopeFunction();
         JumpFunction();
+        EnableGroundCheck();
+        pm.OnSlope(true);
+
     }
 
     public void Dash_Update()
@@ -188,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump_Enter() {
         pm.Jump();
+        DisableGroundCheck();
     }
 
     public void Jump_Update() {
@@ -207,6 +214,7 @@ public class PlayerController : MonoBehaviour
 
     public void DoubleJump_Enter() {
         pm.DoubleJump();
+        DisableGroundCheck();
     }
 
     public void DoubleJump_Update() {
@@ -318,6 +326,15 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, ropeDestination, 0.1f);
         isClimbing = Mathf.Abs(Vector3.Distance(transform.position, ropeDestination)) < 1f;
         pv.anim.SetBool("isClimbing", isClimbing);
+    }
+
+    public void EnableGroundCheck() {
+        pm.OnGround(true);
+    }
+
+    public void DisableGroundCheck() {
+        pm.OnGround(false);
+        pm.OnSlope(false);
     }
 
 

@@ -21,12 +21,17 @@ public class PlayerAnimationEvent : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition = new Vector3(0,0.266f,0);
+        transform.localPosition = new Vector3(0, 0.266f, 0);
     }
 
     public void ForwardForce() {
         //pc.cbv.rb.AddForce(pc.transform.right * forwardForceValue);
         pc.pv.rb.velocity = pc.transform.right * forwardForceValue;
+        //pc.pv.rb.AddForce(pc.transform.right*forwardForceValue,ForceMode.VelocityChange);
+    }
+
+    public void Jump() {
+        pc.Jump_Enter();
     }
 
     public void LightAttackRange() {

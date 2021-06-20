@@ -15,6 +15,10 @@ public class Player_DoubleJumpBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc.DoubleJump_Update();
+        if (animator.GetFloat("FallingSpeed") > 0.6f)
+        {
+            pc.EnableGroundCheck();
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

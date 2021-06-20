@@ -5,16 +5,23 @@ using UnityEngine;
 public class Player_JumpBehaviour : StateMachineBehaviour
 {
     PlayerController pc;
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
+
         pc.Jump_Enter();
     }
+
+    
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc.Jump_Update();
+        if (animator.GetFloat("FallingSpeed") > 0.6f) {
+            pc.EnableGroundCheck();
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

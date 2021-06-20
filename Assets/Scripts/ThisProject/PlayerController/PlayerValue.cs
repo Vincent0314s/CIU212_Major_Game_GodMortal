@@ -41,7 +41,6 @@ public class PlayerValue : CharacterBaseValue
     {
         shieldSetting.RecoverShield(()=> UpdatePlayerShieldBar());
         staminaSetting.RecoverStamina(()=> UpdatePlayerStaminaBar());
-        anim.SetBool("isOnGround",pm.isOnGround);
     }
    
 

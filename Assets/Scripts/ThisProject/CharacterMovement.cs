@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour,IMovement
+public class CharacterMovement : MonoBehaviour, IMovement
 {
     [Space]
     [Header("Movement")]
@@ -16,19 +16,25 @@ public class CharacterMovement : MonoBehaviour,IMovement
 
     [Space]
     [Header("Jump")]
-    [Range(0,3)]
+    [Range(0, 3)]
     public float detectGroundDistance = 1.5f;
     public float jumpForce = 5f;
     public float fallValue = 2.5f;
-    [Range(0,5)]
+    [Range(0, 5)]
     [Tooltip("How long can player stay in the air, 0 is longest")]
     public float heightToFall = 2f;
+    
+    [Space]
+    [Header("OnGround")]
     public float groundDetectedOffsetX= 0.36f;
     public float groundDetectedOffsetY;
+    public bool isOnSlope { get; private set; }
+    public float slopeDistance;
+    RaycastHit slopeHit;
 
     public LayerMask groundLayer;
 
-    private Vector3 moveDirection;
+    protected Vector3 moveDirection;
     protected CharacterBaseValue cbv;
 
     void Awake() {
@@ -58,15 +64,34 @@ public class CharacterMovement : MonoBehaviour,IMovement
     public void FacingRight(bool _condition) {
         transform.eulerAngles = _condition ?new Vector3(0, 0, transform.eulerAngles.z) : new Vector3(0, 180, transform.eulerAngles.z);
     }
-  
 
-    public virtual void OnGround() {
-        isOnGround = Physics.Raycast(transform.position + new Vector3(groundDetectedOffsetX,groundDetectedOffsetY,0), Vector3.down, detectGroundDistance, groundLayer)
-                 || Physics.Raycast(transform.position - new Vector3(groundDetectedOffsetX,-groundDetectedOffsetY,0), Vector3.down, detectGroundDistance, groundLayer);
-
+    public void OnSlope(bool _b) {
+        if (_b)
+        {
+            isOnSlope = Physics.Raycast(transform.position, Vector3.down, slopeDistance, groundLayer);
+        }
+        else {
+            isOnSlope = false;
+        }
     }
 
-    public void Jump() {
+    public void OnGround(bool _b) {
+        if (_b)
+        {
+            isOnGround = Physics.Raycast(transform.position + new Vector3(groundDetectedOffsetX, groundDetectedOffsetY, 0), Vector3.down, detectGroundDistance, groundLayer)
+                    || Physics.Raycast(transform.position - new Vector3(groundDetectedOffsetX, -groundDetectedOffsetY, 0), Vector3.down, detectGroundDistance, groundLayer);
+            //if (Physics.Raycast(transform.position,Vector3.down, out slopeHit, slopeDistance, groundLayer)) {
+            //    //cbv.rb.AddForce((transform.position - slopeHit.point).normalized * 9.8f);
+            //}
+
+        }
+        else {
+            isOnGround = false;
+        }
+       
+    }
+
+    public virtual void Jump() {
         if (isOnGround)
         {
             cbv.rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
@@ -101,6 +126,9 @@ public class CharacterMovement : MonoBehaviour,IMovement
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + new Vector3(groundDetectedOffsetX,groundDetectedOffsetY,0), transform.position + new Vector3(groundDetectedOffsetX, groundDetectedOffsetY, 0) + Vector3.down * detectGroundDistance);
         Gizmos.DrawLine(transform.position - new Vector3(groundDetectedOffsetX,-groundDetectedOffsetY,0), transform.position - new Vector3(groundDetectedOffsetX, -groundDetectedOffsetY, 0) + Vector3.down * detectGroundDistance);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position,Vector3.down*slopeDistance);
     }
 
 
