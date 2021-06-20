@@ -137,16 +137,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleColor: {r: 1, g: 1, b: 1, a: 1}
-  detectedPlayerRange: 25
+  detectedPlayerRange: 35
   detectPlayerBySec: 0.5
   playerMask:
     serializedVersion: 2
     m_Bits: 512
   reactionTimeRange: {x: 0.5, y: 2}
-  stoppedDistance: 15.68
+  stoppedDistance: 15.83
   attackRangeDistance: 2.8
-  considerDistance: 23.87
+  considerDistance: 23.7
   firstAttackAnimName: ShortRangeAttack
+  IdleTime: 1.5
   platformParent: {fileID: 0}
   rangeMedium:
     percentageSection:

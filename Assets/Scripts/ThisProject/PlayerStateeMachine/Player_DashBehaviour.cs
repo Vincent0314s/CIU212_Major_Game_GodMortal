@@ -5,11 +5,10 @@ using UnityEngine;
 public class Player_DashBehaviour : StateMachineBehaviour
 {
     PlayerController pc;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-
+        //pc.pm.StopMoving();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

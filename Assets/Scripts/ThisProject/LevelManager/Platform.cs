@@ -109,10 +109,6 @@ public class Platform : MonoBehaviour
     private void Start()
     {
         boxColliders = GetComponents<BoxCollider>();
-        
-        if (boxColliders.Length > 0) {
-            Debug.Log(boxColliders[0].isTrigger);
-        }
     }
 
     private void OnTriggerEnter(Collider other)

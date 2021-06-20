@@ -11,6 +11,7 @@ public class Player_IdleBehaviour : StateMachineBehaviour
     {
         pc = animator.GetComponentInParent<PlayerController>();
         //pc.cm.StopMoving();
+        pc.pm.ResetJumpCounts();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
