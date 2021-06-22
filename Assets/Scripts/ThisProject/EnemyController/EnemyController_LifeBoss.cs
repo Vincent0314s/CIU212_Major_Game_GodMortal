@@ -10,7 +10,6 @@ public class EnemyController_LifeBoss : EnemyController
 
     [Space]
     [Header("NewValues")]
-    public float IdleTime = 1.5f;
     public Transform platformParent;
     private Transform[] platforms;
     [SerializeField]
@@ -55,7 +54,7 @@ public class EnemyController_LifeBoss : EnemyController
     {
         while (player == null)
         {
-            yield return new WaitForSeconds(IdleTime);
+            yield return new WaitForSeconds(1.5f);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
             if (colls.Length > 0)
             {
@@ -68,36 +67,46 @@ public class EnemyController_LifeBoss : EnemyController
     {
         StartCoroutine("DetectPlayer");
         currentRevocerTime = 0;
+        currentReactionTimer = 0;
+        reactionTimer = GetRandomTime(reactionTimeRange);
     }
 
     public override void Idle_Update()
     {
         if (player)
         {
-            if (CanUse50Healing() || CanUse25Healing())
+            Debug.Log(reactionTimer);
+            if (currentReactionTimer < reactionTimer)
             {
-                cbv.anim.Play("Healing");
+                currentReactionTimer += Time.deltaTime;
             }
-            switch (decisionMaking.GetCertainPercentageFromList())
-            {
-                case "Move":
-                    cbv.anim.SetTrigger("Move");
-                    break;
-                case "Attack":
-                    cbv.anim.Play("Attack");
-                    break;
-                case "Summon":
-                    if (currentCreatures.Count == 0) { 
-                        cbv.anim.Play("Summon");
-                    }
-                    break;
-                case "Binding":
-                    if (!currentBindingArea) { 
-                        cbv.anim.Play("Binding");
-                    }
-                    break;
+            else {
+                if (CanUse50Healing() || CanUse25Healing())
+                {
+                    cbv.anim.Play("Healing");
+                }
+                switch (decisionMaking.GetCertainPercentageFromList())
+                {
+                    case "Move":
+                        cbv.anim.SetTrigger("Move");
+                        break;
+                    case "Attack":
+                        cbv.anim.Play("Attack");
+                        break;
+                    case "Summon":
+                        if (currentCreatures.Count == 0)
+                        {
+                            cbv.anim.Play("Summon");
+                        }
+                        break;
+                    case "Binding":
+                        if (!currentBindingArea)
+                        {
+                            cbv.anim.Play("Binding");
+                        }
+                        break;
+                }
             }
-            
         }
     }
 
