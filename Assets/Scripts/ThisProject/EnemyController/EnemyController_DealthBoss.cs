@@ -127,7 +127,7 @@ public class EnemyController_DealthBoss : EnemyController
     }
 
     public void SummoonDOTArea() {
-        currentDOTArea = VisualEffectManager.CreateVisualEffect(VisualEffect.DealthBoss_DotArea, currentPlayerPlatform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
+        currentDOTArea = VisualEffectManager.CreateVisualEffect(VisualEffect.DeathBoss_DotArea, currentPlayerPlatform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
     }
 
     public void BreakLinkofPlatform() {

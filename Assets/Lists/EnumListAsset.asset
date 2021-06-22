@@ -15,7 +15,9 @@ MonoBehaviour:
   enumLists:
   - name: VisualEffect
     enumVariable:
-    - DealthBoss_DotArea
+    - DeathBoss_DotArea
+    - LifeBoss_NormalAttack
+    - LifeBoss_BindingArea
   - name: SoundEffect
     enumVariable: []
   - name: UI_SoundEffects
@@ -61,3 +63,7 @@ MonoBehaviour:
     - DeathArea_01
     - DeathArea_02
     - DeathArea_03
+  - name: Abilities
+    enumVariable:
+    - LifeBoss_Attack
+    - LifeBoss_Binding
