@@ -6717,45 +6717,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 317451338, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
-      propertyPath: whereisPlayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468354675204233463, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: forwardForceValue
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588072863456058003, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254138543508148841, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: slopeDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254138543508148841, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: slowdownPercentage
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3932945462165950518, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: enemyMask.m_Bits
-      value: 66560
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152017490028312413, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616780289728248208, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d6a09d8021b2945f0baaa37c79d4f1d8, type: 2}
     - target: {fileID: 7058069560047037975, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: UI_HPBar
@@ -6830,11 +6791,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907928457952614798, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
