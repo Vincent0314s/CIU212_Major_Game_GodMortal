@@ -6717,6 +6717,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6616780289728248208, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616780289728248208, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7058069560047037975, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: UI_HPBar
@@ -9988,7 +9998,7 @@ PrefabInstance:
     - target: {fileID: 6396915346711008044, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
@@ -13508,7 +13518,7 @@ PrefabInstance:
     - target: {fileID: 3458195370828352759, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3458195370828352762, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
