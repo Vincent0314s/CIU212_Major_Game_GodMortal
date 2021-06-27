@@ -1,6 +1,8 @@
 public enum VisualEffect 
 {
-	DealthBoss_DotArea,
+	DeathBoss_DotArea,
+	LifeBoss_NormalAttack,
+	LifeBoss_BindingArea,
 
 }
 public enum SoundEffect 
@@ -62,5 +64,11 @@ public enum Levels
 	DeathArea_01,
 	DeathArea_02,
 	DeathArea_03,
+
+}
+public enum Abilities 
+{
+	LifeBoss_Attack,
+	LifeBoss_Binding,
 
 }

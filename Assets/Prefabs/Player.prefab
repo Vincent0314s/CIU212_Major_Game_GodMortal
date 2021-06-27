@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70205d99f5aa22a40997c62a52c81faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardForceValue: 5
+  forwardForceValue: 50
   attackPoint: {fileID: 1146610970}
   lightAttackRadius: 1
   lightAttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
@@ -108,7 +108,7 @@ MonoBehaviour:
   lightAttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 66560
   destructiveObjectMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -286,15 +286,15 @@ MonoBehaviour:
   heightToFall: 1
   groundDetectedOffsetX: 0.36
   groundDetectedOffsetY: -0.05
+  slopeDistance: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  doubleJumpTimes: 1
+  extraJumpCounts: 1
   isBeingDebuff: 0
-  slowdownPercentage: 0.7
+  slowdownPercentage: 0.3
   slowdownDebuffTime: 5
   rootDebuffTime: 3.5
-  currentStandingPlatform: {fileID: 0}
 --- !u!114 &317451338
 MonoBehaviour:
   m_ObjectHideFlags: 0

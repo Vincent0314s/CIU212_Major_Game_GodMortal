@@ -10,7 +10,7 @@ public class Enemy_BossDealth_MoveBehaviour : StateMachineBehaviour
         ec = animator.GetComponentInParent<EnemyController>();
     }
 
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
     {
         ec.Move_Upate();
     }

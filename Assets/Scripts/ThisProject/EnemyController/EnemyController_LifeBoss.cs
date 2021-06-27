@@ -10,12 +10,24 @@ public class EnemyController_LifeBoss : EnemyController
 
     [Space]
     [Header("NewValues")]
-    public float IdleTime = 1.5f;
     public Transform platformParent;
     private Transform[] platforms;
     [SerializeField]
     private Transform currentPlayerPlatform;
-    private GameObject currentDOTArea;
+    private GameObject currentAttackArea;
+    private GameObject currentBindingArea;
+    public GameObject creature;
+    private List<GameObject> currentCreatures = new List<GameObject>();
+
+    [Space]
+    [Header("Healing")]
+    public float less50CDTime = 30f;
+    public float less25CDTime = 60f;
+    public float healingPercentage = 5f;
+    private bool isFullHp;
+
+    private float current50CDTime;
+    private float current25CDTime;
 
     [Space]
     [Header("Percentage")]
@@ -42,7 +54,7 @@ public class EnemyController_LifeBoss : EnemyController
     {
         while (player == null)
         {
-            yield return new WaitForSeconds(IdleTime);
+            yield return new WaitForSeconds(1.5f);
             Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
             if (colls.Length > 0)
             {
@@ -54,39 +66,50 @@ public class EnemyController_LifeBoss : EnemyController
     public override void Idle_Enter()
     {
         StartCoroutine("DetectPlayer");
+        currentRevocerTime = 0;
+        currentReactionTimer = 0;
+        reactionTimer = GetRandomTime(reactionTimeRange);
     }
 
     public override void Idle_Update()
     {
         if (player)
         {
-            switch (decisionMaking.GetCertainPercentageFromList())
+            Debug.Log(reactionTimer);
+            if (currentReactionTimer < reactionTimer)
             {
-                case "Move":
-                    cbv.anim.SetTrigger("Move");
-                    break;
-                case "Attack":
-                    cbv.anim.Play("Attack");
-                    break;
-                case "Summon":
-                    cbv.anim.Play("Summon");
-                    break;
-                case "Binding":
-                    cbv.anim.Play("Binding");
-                    break;
+                currentReactionTimer += Time.deltaTime;
+            }
+            else {
+                if (CanUse50Healing() || CanUse25Healing())
+                {
+                    cbv.anim.Play("Healing");
+                }
+                switch (decisionMaking.GetCertainPercentageFromList())
+                {
+                    case "Move":
+                        cbv.anim.SetTrigger("Move");
+                        break;
+                    case "Attack":
+                        cbv.anim.Play("Attack");
+                        break;
+                    case "Summon":
+                        if (currentCreatures.Count == 0)
+                        {
+                            cbv.anim.Play("Summon");
+                        }
+                        break;
+                    case "Binding":
+                        if (!currentBindingArea)
+                        {
+                            cbv.anim.Play("Binding");
+                        }
+                        break;
+                }
             }
         }
-
     }
 
-    public override void Move_Enter()
-    {
-
-    }
-    public override void Move_Upate()
-    {
-    
-    }
 
     void DeTectPlayerCurrentPlatform()
     {
@@ -100,9 +123,55 @@ public class EnemyController_LifeBoss : EnemyController
         }
     }
 
-    public void SummoonDOTArea()
+    public void NormalAttack()
     {
-        currentDOTArea = VisualEffectManager.CreateVisualEffect(VisualEffect.DealthBoss_DotArea, currentPlayerPlatform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
+        currentAttackArea = VisualEffectManager.CreateVisualEffect(VisualEffect.LifeBoss_NormalAttack, currentPlayerPlatform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
+    }
+
+    public void SummonBindingArea() { 
+        currentBindingArea = VisualEffectManager.CreateVisualEffect(VisualEffect.LifeBoss_BindingArea, currentPlayerPlatform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
+    }
+
+    public void SummonCreatures() {
+        GameObject o1 = Instantiate(creature, transform.position + new Vector3(3, 4.5f, 0), Quaternion.identity);
+        GameObject o2 = Instantiate(creature, transform.position + new Vector3(-3, 4.5f, 0), Quaternion.identity);
+        currentCreatures.Add(o1);
+        currentCreatures.Add(o2);
+    }
+
+    private float healingInterval = 1f;
+    private float currentInterval;
+
+    private int recoverTime = 3;
+    private int currentRevocerTime;
+
+    public void Healing_Update() {
+        if ((currentInterval < healingInterval) && currentRevocerTime < recoverTime)
+        {
+            currentInterval += Time.deltaTime;
+        }
+        else
+        {
+            currentRevocerTime += 1;
+            cbv.healthSetting.GetHeal(CalculateRecoverPercentage());
+        }
+    }
+
+    public bool CanUse50Healing() {
+        if ((cbv.healthSetting.GetHealthPercentage() < 0.5f && cbv.healthSetting.GetHealthPercentage() > 0.25f && current50CDTime >= less50CDTime)) {
+            return true;
+        }
+        return false;
+    }
+    public bool CanUse25Healing() {
+        if ((cbv.healthSetting.GetHealthPercentage() < 0.25f && current25CDTime >= less25CDTime)) {
+            return true;
+        }
+        return false;
+    }
+
+    private float CalculateRecoverPercentage() {
+        return healingPercentage / 100;
     }
 
 }
