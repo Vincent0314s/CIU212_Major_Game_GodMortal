@@ -6717,6 +6717,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 317451338, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
+      propertyPath: whereisPlayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6616780289728248208, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: m_Avatar
@@ -11517,7 +11521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fea0a62414a2b646b5cfaf7ef337d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 8369262013199422920, guid: 6e065b82cf6485b479edb85f3241fc23,
+  itemPrefab: {fileID: 8132280570983875834, guid: c96031a2726de0a4da765811f17f15c1,
     type: 3}
 --- !u!65 &3899497473309651399
 BoxCollider:
@@ -13518,7 +13522,7 @@ PrefabInstance:
     - target: {fileID: 3458195370828352759, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3458195370828352762, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
