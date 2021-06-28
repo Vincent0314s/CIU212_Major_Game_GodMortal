@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviour, IMovement
     public float groundDetectedOffsetY;
     public bool isOnSlope { get; private set; }
     public float slopeDistance;
-    RaycastHit slopeHit;
+    protected RaycastHit slopeHit;
 
     public LayerMask groundLayer;
 
@@ -68,7 +68,15 @@ public class CharacterMovement : MonoBehaviour, IMovement
     public void OnSlope(bool _b) {
         if (_b)
         {
-            isOnSlope = Physics.Raycast(transform.position, Vector3.down, slopeDistance, groundLayer);
+            if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, slopeDistance, groundLayer)) {
+                if (slopeHit.normal != Vector3.up)
+                {
+                    isOnSlope = true;
+                }
+                else {
+                    isOnSlope = false;
+                }
+            }
         }
         else {
             isOnSlope = false;

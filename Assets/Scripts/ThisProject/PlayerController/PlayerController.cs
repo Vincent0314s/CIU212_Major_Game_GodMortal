@@ -179,7 +179,8 @@ public class PlayerController : MonoBehaviour
 
     public void Dash_Update()
     {
-        pv.rb.velocity = transform.right * dashDistance;
+        pm.OnSlope(true);
+        pv.rb.velocity = pm.DashDirection() * dashDistance;
     }
 
     public void Dash_Exit()

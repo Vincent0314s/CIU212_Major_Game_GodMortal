@@ -102,4 +102,9 @@ public class PlayerMovement : CharacterMovement
     public void ResetJumpCounts() {
         currentJumpTimes = extraJumpCounts;
     }
+
+    public Vector3 DashDirection() {
+        return Vector3.ProjectOnPlane(transform.right, slopeHit.normal);
+        //return transform.right;
+    }
 }

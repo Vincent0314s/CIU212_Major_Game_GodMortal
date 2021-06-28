@@ -403,18 +403,6 @@ MonoBehaviour:
   timeToPlayNextAnim: 0.8
   animString: LightHeavy01
   canDoNextAttack: 0
---- !u!114 &-5751419778727842801
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cf63b219fe3fc4382fed5f9155ae79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1101 &-5499966335091054766
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -580,8 +568,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4865143184542936730}
-  m_StateMachineBehaviours:
-  - {fileID: -5751419778727842801}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
