@@ -19,7 +19,8 @@ public class Player_JumpBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc.Jump_Update();
-        if (animator.GetFloat("FallingSpeed") > 0.6f) {
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.75f)
+        {
             pc.EnableGroundCheck();
         }
     }
