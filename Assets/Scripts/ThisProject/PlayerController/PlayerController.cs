@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         AttachToRopeFunction();
         JumpFunction();
         EnableGroundCheck();
-        pm.OnSlope(true);
+        pm.cgc.OnSlope(true);
 
     }
 
@@ -173,13 +173,13 @@ public class PlayerController : MonoBehaviour
         AttachToRopeFunction();
         JumpFunction();
         EnableGroundCheck();
-        pm.OnSlope(true);
+        pm.cgc.OnSlope(true);
 
     }
 
     public void Dash_Update()
     {
-        pm.OnSlope(true);
+        pm.cgc.OnSlope(true);
         pv.rb.velocity = pm.DashDirection() * dashDistance;
     }
 
@@ -188,13 +188,13 @@ public class PlayerController : MonoBehaviour
         pv.rb.velocity = Vector3.zero;
     }
     public void JumpFunction() {
-        if (IsPressingJump() && pm.isOnGround) {
+        if (IsPressingJump() && pm.cgc.isOnGround) {
             pv.anim.SetTrigger("Jump");
         }
     }
 
     public void Jump_Enter() {
-        pm.Jump();
+        pm.cj.Jump();
         DisableGroundCheck();
     }
 
@@ -312,10 +312,6 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
             pv.anim.SetBool("isClimbing", isClimbing);
         }
-
-
-
-
     }
 
     public void Rope_Exit() {
@@ -330,12 +326,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public void EnableGroundCheck() {
-        pm.OnGround(true);
+        pm.cgc.OnGround(true);
     }
 
     public void DisableGroundCheck() {
-        pm.OnGround(false);
-        pm.OnSlope(false);
+        pm.cgc.OnGround(false);
+        pm.cgc.OnSlope(false);
     }
 
 

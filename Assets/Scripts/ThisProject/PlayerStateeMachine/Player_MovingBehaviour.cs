@@ -9,7 +9,7 @@ public class Player_MovingBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        pc.pm.ResetJumpCounts();
+        pc.pm.cj.ResetJumpCounts();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

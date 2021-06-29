@@ -15,7 +15,7 @@ public class Player_HeavyAttackBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        pc.pm.StopMoving();
+        pc.pm.cgm.StopMoving();
         canDoNextAttack = false;
 
     }

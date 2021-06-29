@@ -10,7 +10,7 @@ public class Player_HurtBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-        pc.pm.StopMoving();
+        pc.pm.cgm.StopMoving();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

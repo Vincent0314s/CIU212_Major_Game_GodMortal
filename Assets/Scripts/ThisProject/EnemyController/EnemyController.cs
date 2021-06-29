@@ -47,12 +47,12 @@ public class EnemyController : MonoBehaviour
     public Transform player { get; protected set; }
     protected Vector3 moveVector;
 
-    public CharacterMovement cm { get; private set; }
+    public Character_GroundMovement cm { get; private set; }
     public CharacterBaseValue cbv { get; private set; }
 
     public virtual void Start()
     {
-        cm = GetComponent<CharacterMovement>();
+        cm = GetComponent<Character_GroundMovement>();
         cbv = GetComponent<CharacterBaseValue>();
         player = null;
         originalPosition = transform.position;

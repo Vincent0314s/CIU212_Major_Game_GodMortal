@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerMovement : CharacterMovement
+public class PlayerMovement : MonoBehaviour
 {
-    public int extraJumpCounts = 1;
-    private int currentJumpTimes;
-    private float fallingSpeed = 0;
+    //public int extraJumpCounts = 1;
+    //private int currentJumpTimes;
 
+    //BlendPoseValue
+    private float fallingSpeed = 0;
 
     [Header("Debuff")]
     public bool isBeingDebuff;
@@ -18,20 +19,20 @@ public class PlayerMovement : CharacterMovement
     private float currentDebuffTime;
 
     PlayerController pc;
+    public Character_Jump cj { get; private set; }
+    public Character_GroundMovement cgm { get; private set; }
+    public Character_GroundCheck cgc { get; private set; }
 
-
-
-    public override void Start()
+    public void Start()
     {
-        base.Start();
         pc = GetComponent<PlayerController>();
-        ResetJumpCounts();
+        cj = GetComponent<Character_Jump>();
+        cgc = GetComponent<Character_GroundCheck>();
+        cgm = GetComponent<Character_GroundMovement>();
     }
 
     private void Update()
     {
-        Flip();
-        //OnGround();
         if (isBeingDebuff) {
             if (currentDebuffTime > 0)
             {
@@ -43,19 +44,19 @@ public class PlayerMovement : CharacterMovement
                 currentDebuffTime = 0;
             }
         }
-        cbv.anim.SetBool("isOnGround",isOnGround);
-        cbv.anim.SetBool("Falling", IsFalling());
-        cbv.anim.SetInteger("JumpTimes", currentJumpTimes);
-        cbv.anim.SetFloat("FallingSpeed", Mathf.MoveTowards(0, 1, fallingSpeed));
+        pc.pv.anim.SetBool("isOnGround",cgc.isOnGround);
+        pc.pv.anim.SetBool("Falling", IsFalling());
+        pc.pv.anim.SetInteger("JumpTimes", cj.currentJumpTimes);
+        pc.pv.anim.SetFloat("FallingSpeed", Mathf.MoveTowards(0, 1, fallingSpeed));
     }
     
-    public override void Jump()
-    {
-        base.Jump();
-        fallingSpeed = 0;
-    }
+    //public void Jump()
+    //{
+    //    fallingSpeed = 0;
+    //}
+
     public bool IsFalling() {
-        if (cbv.rb.velocity.y < 0 && !isOnGround && !pc.isClimbing && !isOnSlope) {
+        if (pc.pv.rb.velocity.y < 0 && !cgc.isOnGround && !pc.isClimbing && !cgc.isOnSlope) {
             fallingSpeed += Time.deltaTime * 2f;
             return true;
         }
@@ -63,48 +64,38 @@ public class PlayerMovement : CharacterMovement
     }
 
     public void DoubleJump() {
-        currentJumpTimes = 0;
+        cj.SetJumpCounts(0);
         fallingSpeed = 0;
-        cbv.rb.velocity = new Vector3(cbv.rb.velocity.x, 0, cbv.rb.velocity.z);
-        cbv.rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        cj.Jump();
     }
 
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
-        base.FixedUpdate();
-
-        if (!isOnGround && !pc.isClimbing)
+        if (!cgc.isOnSlope && !pc.isClimbing)
         {
-            if (cbv.rb.velocity.y < heightToFall)
-            {
-                cbv.rb.velocity += Vector3.up * Physics.gravity.y * (fallValue - 1) * Time.fixedDeltaTime;
-            }
+            cj.UpdateFallingGravity();
         }
     }
 
     public void BeingSlowDown() {
         isBeingDebuff = true;
         currentDebuffTime = slowdownDebuffTime;
-        SetSpeed(currentMoveSpeed *= slowdownPercentage);
+        cgm.SetSpeedByPercentage(slowdownPercentage);
     }
 
     public void RecoverSpeed() {
         isBeingDebuff = false;
-        SetSpeed(MoveSpeed);
+        cgm.ResetSpeed();
     }
 
     public void BeingRoot() {
         isBeingDebuff = true;
         currentDebuffTime = rootDebuffTime;
-        SetSpeed(0);
-    }
-
-    public void ResetJumpCounts() {
-        currentJumpTimes = extraJumpCounts;
+        cgm.SetSpeed(0);
     }
 
     public Vector3 DashDirection() {
-        return Vector3.ProjectOnPlane(transform.right, slopeHit.normal);
+        return Vector3.ProjectOnPlane(transform.right, cgc.slopeHit.normal);
         //return transform.right;
     }
 }
