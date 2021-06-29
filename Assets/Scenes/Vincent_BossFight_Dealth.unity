@@ -7049,17 +7049,32 @@ PrefabInstance:
     - target: {fileID: 6857955452576246062, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: detectGroundDistance
-      value: 1.55
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6857955452576246062, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: groundDetectedOffsetX
-      value: 0.55
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857955452576246062, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: groundDetectedOffsetY
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054528700338781131, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: fallValue
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7054528700338781131, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054528700338781131, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
+        type: 3}
+      propertyPath: heightToFall
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058069560047037975, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}

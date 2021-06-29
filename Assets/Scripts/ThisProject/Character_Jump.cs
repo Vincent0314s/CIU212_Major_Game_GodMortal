@@ -6,11 +6,11 @@ public class Character_Jump : MonoBehaviour
 {
     [Space]
     [Header("Jump")]
-    public float jumpForce = 5f;
-    public float fallValue = 2.5f;
+    public float jumpForce = 17f;
+    public float fallValue = 8f;
     [Range(0, 5)]
     [Tooltip("How long can player stay in the air, 0 is longest")]
-    public float heightToFall = 2f;
+    public float heightToFall = 1f;
     public bool defaultJumpCondition;
 
     public int extraJumpCounts = 1;

@@ -6,6 +6,7 @@ public class Character_GroundCheck : MonoBehaviour
 {
     [Space]
     [Header("GroundCheck")]
+    [Range(0,3)]
     public float detectGroundDistance = 1.5f;
     public float groundDetectedOffsetX = 0.36f;
     public float groundDetectedOffsetY;

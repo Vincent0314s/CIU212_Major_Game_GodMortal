@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
             fallingSpeed += Time.deltaTime * 2f;
             return true;
         }
+        fallingSpeed = 0;
         return false;
     }
 
