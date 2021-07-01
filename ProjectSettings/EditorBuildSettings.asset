@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Exportable/MainMenu.unity
     guid: bf1fe442ce601cb4092c183d84c0477e
   - enabled: 1
-    path: Assets/Scenes/Vincent_TestCombat.unity
+    path: Assets/Scenes/Combat/Vincent_TestCombat.unity
     guid: c83d220b55ebb394b96c92f97b279250
   m_configObjects: {}

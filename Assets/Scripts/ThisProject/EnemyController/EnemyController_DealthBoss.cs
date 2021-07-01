@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController_DealthBoss : EnemyController
 {
     private Character_FlyingMovement cfm;
+    private ObstacleDetection od;
+
     [Space]
     [Header("NewValues")]
     public float IdleTime = 1.5f;
@@ -12,6 +14,8 @@ public class EnemyController_DealthBoss : EnemyController
     private Transform[] platforms;
     private Transform currentPlayerPlatform;
     private GameObject currentDOTArea;
+    
+
 
     [Space]
     [Header("Percentage")]
@@ -20,12 +24,15 @@ public class EnemyController_DealthBoss : EnemyController
     {
         base.Start();
         cfm = GetComponent<Character_FlyingMovement>();
+        od = GetComponent<ObstacleDetection>();
         platforms = new Transform[platformParent.childCount];
         rangeMedium.Initialization();
         for (int i = 0; i < platforms.Length; i++)
         {
             platforms[i] = platformParent.GetChild(i);
         }
+
+        player = GameAssetManager.i.currentPlayer.transform;
     }
 
     private void Update()
@@ -36,49 +43,63 @@ public class EnemyController_DealthBoss : EnemyController
     public override void Move(Vector3 targetPos)
     {
 
-        if (player.position.x > transform.position.x)
+        if (targetPos.x > transform.position.x)
         {
             cfm.FacingRight(true);
         }
-        else if (player.position.x < transform.position.x)
+        else if (targetPos.x < transform.position.x)
         {
             cfm.FacingRight(false);
         }
-        moveVector = player.position - transform.position;
+        moveVector = targetPos - transform.position;
         moveVector.Normalize();
         cfm.SetVelocity(moveVector);
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
 
-    public override IEnumerator DetectPlayer()
-    {
-        while (player == null)
-        {
-            yield return new WaitForSeconds(IdleTime);
-            Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
-            if (colls.Length > 0)
-            {
-                player = colls[0].transform;
-            }
-        }
-    }
+    //public override IEnumerator DetectPlayer()
+    //{
+    //    while (player == null)
+    //    {
+    //        yield return new WaitForSeconds(IdleTime);
+    //        Collider[] colls = Physics.OverlapSphere(transform.position, detectedPlayerRange, playerMask);
+    //        if (colls.Length > 0)
+    //        {
+    //            player = colls[0].transform;
+    //        }
+    //    }
+    //}
 
     public override void Idle_Enter()
     {
-        StartCoroutine("DetectPlayer");
+        player = GameAssetManager.i.currentPlayer.transform;
     }
 
     public override void Idle_Update()
     {
-        if (player) {
-            Move(player.position);
-            if (IsInAttackRange(player.position))
+        if (player)
+        {
+
+            if (od.isBeingBlocked)
             {
-                Attack();
-                StopTracinPlayer();
+                if (moveVector.y > 0)
+                {
+                    Move(new Vector3(player.position.x, player.position.y + 5f, 6));
+                }
+                else
+                {
+                    Move(new Vector3(player.position.x, player.position.y, 6));
+                }
+            }
+            else {
+                Move(player.position);
+                if (IsInAttackRange(player.position))
+                {
+                    Attack();
+                    StopTracinPlayer();
+                }
             }
         }
-      
     }
 
     public override void Move_Enter()
@@ -89,31 +110,51 @@ public class EnemyController_DealthBoss : EnemyController
     {
         if (player)
         {
-            Move(player.position);
-            if (IsInAttackRange(player.position)) {
-                Attack();
-                StopTracinPlayer();
-            } else if (IsCloseToTarget(player.position) && !IsInAttackRange(player.position))
+            if (od.isBeingBlocked)
             {
-                if (rangeMedium.GetCertainPercentageFromList() == "Debuff")
+                if (moveVector.y > 0)
                 {
-                    PlayerMovement pm = player.GetComponent<PlayerMovement>();
-                    if (!pm.isBeingDebuff)
+                    Move(new Vector3(player.position.x, player.position.y + 5f, 6));
+                }
+                else
+                {
+                    Move(new Vector3(player.position.x, player.position.y, 6));
+                }
+            }
+            else {
+                Move(player.position);
+
+                if (IsInAttackRange(player.position))
+                {
+                    Attack();
+                    StopTracinPlayer();
+                }
+                else if (IsCloseToTarget(player.position) && !IsInAttackRange(player.position))
+                {
+                    if (rangeMedium.GetCertainPercentageFromList() == "Debuff")
                     {
-                        cbv.anim.Play("Debuff");
+                        PlayerMovement pm = player.GetComponent<PlayerMovement>();
+                        if (!pm.isBeingDebuff)
+                        {
+                            cbv.anim.Play("Debuff");
+                        }
+                    }
+                    else
+                    {
+                        if (!currentDOTArea && currentPlayerPlatform)
+                        {
+                            cbv.anim.Play("DOT");
+                        }
                     }
                 }
-                else {
-                    if (!currentDOTArea && currentPlayerPlatform)
-                    {
-                        cbv.anim.Play("DOT");
-                    }
+                else if (IsCloseToConsiderRange(player.position) && !IsCloseToTarget(player.position))
+                {
+                    cbv.anim.Play("Telegraphed");
                 }
-            } else if (IsCloseToConsiderRange(player.position) && !IsCloseToTarget(player.position)) {
-                cbv.anim.Play("Telegraphed");
             }
         }
-       
+           
+
     }
 
     void DeTectPlayerCurrentPlatform() {
