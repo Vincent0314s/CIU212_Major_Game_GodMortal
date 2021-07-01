@@ -7,12 +7,12 @@ public class EnemyController_Flying : EnemyController
 
     public float bouncingTime = 2.5f;
     private float currentBouncingTime;
-    private EnemyMovement_Flying ef;
+    private Character_FlyingMovement cfm;
 
     public override void Start()
     {
         base.Start();
-        ef = GetComponent<EnemyMovement_Flying>();
+        cfm = GetComponent<Character_FlyingMovement>();
     }
 
     Vector3 RandomPatrolPoint() {
@@ -34,7 +34,7 @@ public class EnemyController_Flying : EnemyController
     public override void Move(Vector3 targetPos)
     {
         moveVector = transform.right;
-        ef.SetVelocity(moveVector);
+        cfm.SetVelocity(moveVector);
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
 
@@ -85,16 +85,16 @@ public class EnemyController_Flying : EnemyController
             currentBouncingTime = 0;
             if (IsInAttackRange(player.position))
             {
-                ef.SetSpeed(ef.attackSpeeed);
+                cfm.SetSpeed(cfm.flying_AttackSpeed);
             }
             else
             {
-                ef.SetSpeed(ef.sprintSpeed);
+                cfm.SetSpeed(cfm.flying_SprintSpeed);
             }
 
         }
         else {
-            ef.SetSpeed(ef.MoveSpeed);
+            cfm.SetSpeed(cfm.MoveSpeed);
             if (currentBouncingTime < bouncingTime)
             {
                 currentBouncingTime += Time.deltaTime;

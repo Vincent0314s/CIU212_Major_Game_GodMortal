@@ -30,9 +30,9 @@ GameObject:
   - component: {fileID: 944652222318432180}
   - component: {fileID: 944652222318432182}
   - component: {fileID: 944652222318432181}
-  - component: {fileID: 944652222318432176}
   - component: {fileID: 944652222318432177}
-  - component: {fileID: 166880225}
+  - component: {fileID: 5922804527017952997}
+  - component: {fileID: 1097239477}
   m_Layer: 10
   m_Name: Enemy_Flying
   m_TagString: Enemy
@@ -84,24 +84,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &944652222318432176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944652222318432187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8a5f3c66f5f48cca6207ef9d910e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReadyToLoadComponment: 1
-  healthSetting:
-    maxHP: 100
-  attackSetting:
-  - type: 0
-    damage: 10
 --- !u!114 &944652222318432177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +105,10 @@ MonoBehaviour:
   reactionTimeRange: {x: 0.5, y: 1}
   stoppedDistance: 1.11
   attackRangeDistance: 3.36
-  considerDistance: 6.5
+  considerDistance: 7.82
   firstAttackAnimName: Attack01
   bouncingTime: 1
---- !u!114 &166880225
+--- !u!114 &5922804527017952997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,22 +117,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 944652222318432187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f1d31d35e98bdd42b9c755ba6f35794, type: 3}
+  m_Script: {fileID: 11500000, guid: 46604baae82d6aa41b2ced35bc043ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyToLoadComponment: 1
+  healthSetting:
+    maxHP: 100
+  attackSetting:
+  - type: 0
+    damage: 30
+  - type: 1
+    damage: 45
+--- !u!114 &1097239477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944652222318432187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6763956ff22e8044bb715ab7686aec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  turnSmoothValue: 0.35
-  detectGroundDistance: 1.5
-  jumpForce: 5
-  fallValue: 2.5
-  heightToFall: 2
-  groundDetectedOffsetX: 0.36
-  groundDetectedOffsetY: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  sprintSpeed: 15
-  attackSpeeed: 30
+  flying_SprintSpeed: 15
+  flying_AttackSpeed: 30
 --- !u!1001 &944652220952655522
 PrefabInstance:
   m_ObjectHideFlags: 0

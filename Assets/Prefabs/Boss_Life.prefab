@@ -19,6 +19,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1615162021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792644249261609136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad3ce8216d74ca478f4ddd2d4dfa1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6369697806257358658
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +74,6 @@ GameObject:
   - component: {fileID: 6396915346711008034}
   - component: {fileID: 6396915346711008045}
   - component: {fileID: 7095567189641800350}
-  - component: {fileID: 6396915346711008051}
   - component: {fileID: 6396915346711008050}
   m_Layer: 17
   m_Name: Boss_Life
@@ -70,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6396915346711008033
 Transform:
   m_ObjectHideFlags: 0
@@ -143,29 +154,6 @@ MonoBehaviour:
   attackSetting:
   - type: 0
     damage: 30
---- !u!114 &6396915346711008051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6396915346711008044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2e4d750e1e527468dbb93b50c67cae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  turnSmoothValue: 0.35
-  detectGroundDistance: 1.5
-  jumpForce: 5
-  fallValue: 2.5
-  heightToFall: 2
-  groundDetectedOffsetX: 0.36
-  groundDetectedOffsetY: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &6396915346711008050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,29 +167,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleColor: {r: 1, g: 1, b: 1, a: 1}
-  detectedPlayerRange: 6
+  detectedPlayerRange: 20
   detectPlayerBySec: 0.5
   playerMask:
     serializedVersion: 2
     m_Bits: 512
-  reactionTimeRange: {x: 0.5, y: 2}
+  reactionTimeRange: {x: 3, y: 4}
   stoppedDistance: 2.5
   attackRangeDistance: 5
   considerDistance: 5
   firstAttackAnimName: Attack01
-  teleportPoints: []
-  IdleTime: 1.5
+  teleportPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   platformParent: {fileID: 0}
+  currentPlayerPlatform: {fileID: 0}
+  creature: {fileID: 944652222318432187, guid: c4505d867f33ed341ad1bbe0a5fcd068, type: 3}
+  less50CDTime: 30
+  less25CDTime: 60
+  healingPercentage: 5
   decisionMaking:
     percentageSection:
     - name: Move
-      percentage: 80
-    - name: Attack
       percentage: 60
+    - name: Attack
+      percentage: 80
     - name: Summon
       percentage: 20
     - name: Binding
-      percentage: 20
+      percentage: 45
     percentageSum: 0
 --- !u!1001 &3026452999712779745
 PrefabInstance:

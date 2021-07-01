@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 931472572024795118}
   - component: {fileID: 931472572024795104}
   - component: {fileID: 8043637291032584064}
-  - component: {fileID: 1998896763949463960}
+  - component: {fileID: 1791789476632845804}
   m_Layer: 10
   m_Name: Enemy_Ranged
   m_TagString: Enemy
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecfad6205b44fa4d9406dfc5259e119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: 0
   circleColor: {r: 1, g: 1, b: 1, a: 1}
   detectedPlayerRange: 15
   detectPlayerBySec: 0.5
@@ -149,7 +148,7 @@ MonoBehaviour:
   attackSetting:
   - type: 0
     damage: 15
---- !u!114 &1998896763949463960
+--- !u!114 &1791789476632845804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,20 +157,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 931472572024795119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2e4d750e1e527468dbb93b50c67cae, type: 3}
+  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  turnSmoothValue: 0.35
-  detectGroundDistance: 1.5
-  jumpForce: 5
-  fallValue: 2.5
-  heightToFall: 2
-  groundDetectedOffsetX: 0.36
-  groundDetectedOffsetY: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!95 &2156899209423128145
 Animator:
   serializedVersion: 3

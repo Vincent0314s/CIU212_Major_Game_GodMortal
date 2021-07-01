@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (!cgc.isOnSlope && !pc.isClimbing)
+        if (!cgc.isOnGround && !pc.isClimbing)
         {
             cj.UpdateFallingGravity();
         }

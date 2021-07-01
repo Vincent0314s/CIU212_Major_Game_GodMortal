@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController_DealthBoss : EnemyController
 {
-    private EnemyMovement_Flying ef;
+    private Character_FlyingMovement cfm;
     [Space]
     [Header("NewValues")]
     public float IdleTime = 1.5f;
@@ -19,7 +19,7 @@ public class EnemyController_DealthBoss : EnemyController
     public override void Start()
     {
         base.Start();
-        ef = GetComponent<EnemyMovement_Flying>();
+        cfm = GetComponent<Character_FlyingMovement>();
         platforms = new Transform[platformParent.childCount];
         rangeMedium.Initialization();
         for (int i = 0; i < platforms.Length; i++)
@@ -38,15 +38,15 @@ public class EnemyController_DealthBoss : EnemyController
 
         if (player.position.x > transform.position.x)
         {
-            ef.FacingRight(true);
+            cfm.FacingRight(true);
         }
         else if (player.position.x < transform.position.x)
         {
-            ef.FacingRight(false);
+            cfm.FacingRight(false);
         }
         moveVector = player.position - transform.position;
         moveVector.Normalize();
-        ef.SetVelocity(moveVector);
+        cfm.SetVelocity(moveVector);
         cbv.anim.SetFloat("Speed", Mathf.Abs(moveVector.x));
     }
 

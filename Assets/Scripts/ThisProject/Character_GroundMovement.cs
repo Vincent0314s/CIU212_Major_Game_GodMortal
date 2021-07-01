@@ -45,7 +45,7 @@ public class Character_GroundMovement : MonoBehaviour, IMovement
         ResetSpeed();
     }
 
-    void Update() {
+    public virtual void Update() {
         Flip();
     }
 

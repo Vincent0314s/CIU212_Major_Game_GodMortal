@@ -6,7 +6,6 @@ public class EnemyController_Melee : EnemyController
 {
 
     private float currentConsiderationTime;
-
     public override void Idle_Update()
     {
         if (player)
