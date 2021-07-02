@@ -7,7 +7,7 @@ using System;
 public class ShieldManager
 {
     public float maxShield = 50;
-    private float currentShield;
+    public float currentShield { get; private set; }
     public float recoverAmount = 10;
     public float recoverBySec = 5f;
     private float currentRecoverSec;
@@ -28,6 +28,9 @@ public class ShieldManager
         }
     }
 
+    public void SetCurrentShield(float _newShield) {
+        currentShield = _newShield;
+    }
     public void Initialization() {
         currentShield = maxShield;
         currentRecoverSec = 0;

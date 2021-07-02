@@ -75,7 +75,6 @@ public class EnemyController_LifeBoss : EnemyController
     {
         if (player)
         {
-            Debug.Log(reactionTimer);
             if (currentReactionTimer < reactionTimer)
             {
                 currentReactionTimer += Time.deltaTime;

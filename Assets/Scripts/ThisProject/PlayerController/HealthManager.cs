@@ -7,7 +7,7 @@ using System;
 public class HealthManager
 {
     public float maxHP = 100f;
-    private float currentHP;
+    public float currentHP { get; private set; }
     private bool isDead;
     public bool IsDead
     {
@@ -18,6 +18,10 @@ public class HealthManager
     }
 
     public Action OnDeadEvent;
+
+    public void SetCurrentHP(float _newHP) {
+        currentHP = _newHP;
+    }
 
     public void Initialization() {
         currentHP = maxHP;

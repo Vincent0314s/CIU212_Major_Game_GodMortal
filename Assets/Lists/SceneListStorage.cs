@@ -1,6 +1,6 @@
 public enum SceneInTheBuild 
 {
 	MainMenu,
-	Vincent_TestCombat,
+	Vincent_DeathBossPathFinding,
 
 }

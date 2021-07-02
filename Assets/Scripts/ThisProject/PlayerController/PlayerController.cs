@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool IsPressingLightAttack() {
-        if (pv.staminaSetting.CanConsumeStamina() && Input.GetKeyDown(key_LightAttack))
+        if (pv.staminaSetting.CanConsumeStamina() && Input.GetKeyDown(key_LightAttack) && Time.timeScale == 1)
         {
             pv.staminaSetting.ConsumeStamina(PlayerActionType.LightAttack);
             return true;

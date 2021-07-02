@@ -42,7 +42,9 @@ public class CharacterBaseValue : MonoBehaviour
     }
 
     public virtual void Initialzation() {
-        healthSetting.Initialization();
+        if (!LoadFromMainMenu.isLoadFromMainMenu) { 
+            healthSetting.Initialization();
+        }
         healthSetting.OnDeadEvent = () =>
         {
             Dead();

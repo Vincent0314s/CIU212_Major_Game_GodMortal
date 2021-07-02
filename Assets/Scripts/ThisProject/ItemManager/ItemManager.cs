@@ -22,14 +22,15 @@ public class ItemManager : MonoBehaviour
     public float healthPotionHealAmount = 15f;
     public float staminaPotionHealAmount = 5f;
 
-    private int healthPotionNumber;
-    private int staminaPotionNumber;
-    private int letterNumber;
+    public int healthPotionNumber { get; private set; }
+    public int staminaPotionNumber { get; private set; }
+    public int letterNumber { get; private set; }
 
     private void Start()
     {
         UpdateItemSlotNumber();
     }
+
 
     public void AddItems(Items _type) {
         switch (_type) {
@@ -41,6 +42,44 @@ public class ItemManager : MonoBehaviour
                 break;
             case Items.Letter:
                 letterNumber += 1;
+                break;
+        }
+        UpdateItemSlotNumber();
+    }
+
+    public void AddItems(Items _type, int _newNumbers)
+    {
+        switch (_type)
+        {
+            case Items.HealthPotion:
+                healthPotionNumber += _newNumbers;
+                break;
+            case Items.StaminaPotion:
+                staminaPotionNumber += _newNumbers;
+                break;
+            case Items.Letter:
+                letterNumber += _newNumbers;
+                break;
+        }
+        UpdateItemSlotNumber();
+    }
+
+    public void AddItems(Items _type, int _newNumbers,bool _clearItemsFirst)
+    {
+        if (_clearItemsFirst) {
+            healthPotionNumber = 0;
+            staminaPotionNumber = 0;
+        }
+        switch (_type)
+        {
+            case Items.HealthPotion:
+                healthPotionNumber += _newNumbers;
+                break;
+            case Items.StaminaPotion:
+                staminaPotionNumber += _newNumbers;
+                break;
+            case Items.Letter:
+                letterNumber += _newNumbers;
                 break;
         }
         UpdateItemSlotNumber();

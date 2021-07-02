@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 317451338}
   - component: {fileID: 7054528700338781131}
   - component: {fileID: 6857955452576246062}
+  - component: {fileID: 438025652}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBeingDebuff: 0
-  slowdownPercentage: 0.3
+  slowdownPercentage: 0.7
   slowdownDebuffTime: 5
   rootDebuffTime: 3.5
 --- !u!114 &317451338
@@ -296,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8800471cb08c1094181f92b46053bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whereisPlayer: 2
+  whereisPlayer: 0
 --- !u!114 &7054528700338781131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,11 +310,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ebcf9c1e70e5e41934754f901185a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 17
+  fallValue: 8
+  heightToFall: 1
   defaultJumpCondition: 0
-  detectGroundDistance: 1.5
-  jumpForce: 5
-  fallValue: 2.5
-  heightToFall: 1.36
   extraJumpCounts: 1
 --- !u!114 &6857955452576246062
 MonoBehaviour:
@@ -329,11 +329,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectGroundDistance: 1.5
   groundDetectedOffsetX: 0.36
-  groundDetectedOffsetY: 0
-  slopeDistance: 0
+  groundDetectedOffsetY: -0.05
+  slopeDistance: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &438025652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907928457952614798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 10
 --- !u!1001 &797215943982477768
 PrefabInstance:
   m_ObjectHideFlags: 0

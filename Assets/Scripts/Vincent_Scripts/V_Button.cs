@@ -51,9 +51,22 @@ public class V_Button : MonoBehaviour,IPointerEnterHandler,IPointerDownHandler,I
 
     public Animator anim;
 
+    private void Start()
+    {
+        image = GetComponent<Image>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mouseState = MouseState.Hover;
+        switch (Transition) {
+            case transition.Color:
+                image.color = highLightedColor;
+                break;
+            case transition.Sprite:
+                image.sprite = highLightedSprite;
+                break;
+        }
+
+        //mouseState = MouseState.Hover;
         OnEnter?.Invoke();
         if (ableToAssignSFX) {
             SoundManager.PlaySound(hover);
@@ -62,7 +75,16 @@ public class V_Button : MonoBehaviour,IPointerEnterHandler,IPointerDownHandler,I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        mouseState = MouseState.Click;
+        switch (Transition)
+        {
+            case transition.Color:
+                image.color = clickedColor;
+                break;
+            case transition.Sprite:
+                image.sprite = clickedSprite;
+                break;
+        }
+        //mouseState = MouseState.Click;
         OnClick?.Invoke();
         if (ableToChangeScene) {
             SceneController.LoadScene(sceneToChange);
@@ -76,7 +98,16 @@ public class V_Button : MonoBehaviour,IPointerEnterHandler,IPointerDownHandler,I
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        mouseState = MouseState.Exit;
+        switch (Transition)
+        {
+            case transition.Color:
+                image.color = normalColor;
+                break;
+            case transition.Sprite:
+                image.sprite = normalSprite;
+                break;
+        }
+        //mouseState = MouseState.Exit;
         OnExit?.Invoke();
         if (ableToAssignSFX)
         {

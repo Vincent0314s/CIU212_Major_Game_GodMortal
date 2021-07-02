@@ -1,0 +1,1 @@
+{"playerPosition":{"x":224.84005737304688,"y":15.894999504089356,"z":10.600000381469727},"currentHP":70.0,"currentShield":10.0,"hpPotion":1}

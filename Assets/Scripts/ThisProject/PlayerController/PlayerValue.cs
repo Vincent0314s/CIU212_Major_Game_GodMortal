@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class PlayerValue : CharacterBaseValue
 {
 
@@ -31,8 +29,15 @@ public class PlayerValue : CharacterBaseValue
         base.Initialzation();
         selfCollider = GetComponent<CapsuleCollider>();
         pm = GetComponent<PlayerMovement>();
-        shieldSetting.Initialization();
+        if (!LoadFromMainMenu.isLoadFromMainMenu) { 
+            shieldSetting.Initialization();
+        }
         staminaSetting.Initialization();
+        UpdatePlayerHpBar();
+        UpdatePlayerShieldBar();
+    }
+
+    public void UpdateFromLoad() {
         UpdatePlayerHpBar();
         UpdatePlayerShieldBar();
     }

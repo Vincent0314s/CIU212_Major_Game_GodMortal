@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 585324737}
   - component: {fileID: 585324736}
   - component: {fileID: 585324738}
+  - component: {fileID: 585324739}
   m_Layer: 0
   m_Name: _Manager
   m_TagString: Untagged
@@ -1144,6 +1145,18 @@ MonoBehaviour:
     type: 2}
   soundEffectOutPutGroup: {fileID: -7541240123415986903, guid: 0767824d8f5fd954b9cdf72f172081fd,
     type: 2}
+--- !u!114 &585324739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585324735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85124b9a3be293240bb75eb3468e9f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &585885216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,6 +4228,7 @@ GameObject:
   - component: {fileID: 1805368334}
   - component: {fileID: 1805368337}
   - component: {fileID: 1805368336}
+  - component: {fileID: 1805368338}
   - component: {fileID: 1805368335}
   m_Layer: 5
   m_Name: Load
@@ -4252,35 +4266,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1805368333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd34c93ead2d486c95a2ccdcd651507, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 0}
-  ableToChangeScene: 0
-  sceneToChange: 0
-  ableToAssignSFX: 0
-  hover: 0
-  click: 0
-  exit: 0
-  OnEnter:
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1805368336}
+  m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
-  Transition: 0
-  image: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  highLightedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  clickedColor: {r: 1, g: 0, b: 0, a: 1}
-  mouseState: 0
-  normalSprite: {fileID: 0}
-  highLightedSprite: {fileID: 0}
-  clickedSprite: {fileID: 0}
-  anim: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 585324739}
+        m_TargetAssemblyTypeName: LoadFromMainMenu, Core
+        m_MethodName: LoadData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1805368336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4319,6 +4351,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805368333}
   m_CullTransparentMesh: 1
+--- !u!114 &1805368338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805368333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3513032e6166ba040a71cee926a46892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809129063
 GameObject:
   m_ObjectHideFlags: 0

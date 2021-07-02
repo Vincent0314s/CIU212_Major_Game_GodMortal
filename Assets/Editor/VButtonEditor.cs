@@ -11,9 +11,9 @@ public class VButtonEditor : Editor
     private bool showButtonEvents;
     Image image;
 
-    private string normal = "Normal";
-    private string highlighted = "HighLighted";
-    private string clicked = "Clicked";
+    //private string normal = "Normal";
+    //private string highlighted = "HighLighted";
+    //private string clicked = "Clicked";
 
 
     public override void OnInspectorGUI()
@@ -50,31 +50,35 @@ public class VButtonEditor : Editor
             vButton.clickedColor = EditorGUILayout.ColorField("Clicked Color", vButton.clickedColor);
             EditorGUI.indentLevel--;
 
-            if (EditorApplication.isPlaying)
-            {
-                //Change Color
-                if (vButton.mouseState == V_Button.MouseState.Hover)
-                {
-                    vButton.OnEnter.AddListener(() =>
-                    {
-                        image.color = vButton.highLightedColor;
-                    });
-                }
-                else if (vButton.mouseState == V_Button.MouseState.Click)
-                {
-                    vButton.OnClick.AddListener(() =>
-                    {
-                        image.color = vButton.clickedColor;
-                    });
-                }
-                else
-                {
-                    image.color = vButton.normalColor;
-                }
-            }
-            else {
+            if (!Application.isPlaying) { 
                 image.color = vButton.normalColor;
             }
+            //if (Application.isPlaying)
+            //{
+            //    //Change Color
+            //    if (vButton.mouseState == V_Button.MouseState.Hover)
+            //    {
+            //        vButton.OnEnter.AddListener(() =>
+            //        {
+            //            Debug.Log("Highlight");
+            //            image.color = vButton.highLightedColor;
+            //        });
+            //    }
+            //    else if (vButton.mouseState == V_Button.MouseState.Click)
+            //    {
+            //        vButton.OnClick.AddListener(() =>
+            //        {
+            //            image.color = vButton.clickedColor;
+            //        });
+            //    }
+            //    else
+            //    {
+            //        image.color = vButton.normalColor;
+            //    }
+            //}
+            //else {
+            //    image.color = vButton.normalColor;
+            //}
         } else if (vButton.Transition == V_Button.transition.Sprite) {
             image.color = Color.white;
             EditorGUI.indentLevel++;
@@ -94,33 +98,36 @@ public class VButtonEditor : Editor
             EditorGUILayout.EndHorizontal();
             EditorGUI.indentLevel--;
 
-            if (EditorApplication.isPlaying) {
-                //Change sprtie
-                if (vButton.mouseState == V_Button.MouseState.Hover)
-                {
-                    vButton.OnEnter.AddListener(() =>
-                    {
-                        image.sprite = vButton.highLightedSprite;
-                    });
-                }
-                else if (vButton.mouseState == V_Button.MouseState.Click)
-                {
-                    if (vButton.clickedSprite != null)
-                    {
-                        vButton.OnClick.AddListener(() =>
-                        {
-                            image.sprite = vButton.clickedSprite;
-                        });
-                    }
-                    else {
-                        image.sprite = vButton.normalSprite;
-                    }
-                }
-                else
-                {
-                    image.sprite = vButton.normalSprite;
-                }
+            if (!Application.isPlaying) { 
+                image.sprite = vButton.normalSprite;
             }
+            //if (EditorApplication.isPlaying) {
+            //    //Change sprtie
+            //    if (vButton.mouseState == V_Button.MouseState.Hover)
+            //    {
+            //        vButton.OnEnter.AddListener(() =>
+            //        {
+            //            image.sprite = vButton.highLightedSprite;
+            //        });
+            //    }
+            //    else if (vButton.mouseState == V_Button.MouseState.Click)
+            //    {
+            //        if (vButton.clickedSprite != null)
+            //        {
+            //            vButton.OnClick.AddListener(() =>
+            //            {
+            //                image.sprite = vButton.clickedSprite;
+            //            });
+            //        }
+            //        else {
+            //            image.sprite = vButton.normalSprite;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        image.sprite = vButton.normalSprite;
+            //    }
+            //}
         }
 
         vButton.ableToChangeScene = GUILayout.Toggle(vButton.ableToChangeScene, "Able to change scene");
@@ -130,6 +137,7 @@ public class VButtonEditor : Editor
             vButton.sceneToChange = (SceneInTheBuild)EditorGUILayout.EnumPopup("Scene to change", vButton.sceneToChange);
             EditorGUI.indentLevel--;
         }
+
 
         showSFX = GUILayout.Toggle(showSFX, "Show SFX");
         if (showSFX) {
