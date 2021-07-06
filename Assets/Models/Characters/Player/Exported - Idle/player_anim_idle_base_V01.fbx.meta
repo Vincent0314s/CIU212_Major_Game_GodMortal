@@ -26,7 +26,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'idle_base_V01' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'anim_player_idle:Master_player_CHA:GreidRig_Spine1'
+      has translation animation that will be discarded.\n\t'anim_player_idle:Master_player_CHA:GreidRig_RArmCollarbone'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
