@@ -19,10 +19,6 @@ public class PlayerAnimationEvent : MonoBehaviour
         pc = GetComponentInParent<PlayerController>();
     }
 
-    private void Update()
-    {
-        transform.localPosition = new Vector3(0, 0.266f, 0);
-    }
 
     public void ForwardForce() {
         //pc.cbv.rb.AddForce(pc.transform.right * forwardForceValue);
