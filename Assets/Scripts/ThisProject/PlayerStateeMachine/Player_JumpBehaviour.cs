@@ -10,8 +10,9 @@ public class Player_JumpBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
-
+        //pc.pm.cgm.StopMoving();
         pc.Jump_Enter();
+
     }
 
     
@@ -19,11 +20,11 @@ public class Player_JumpBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc.Jump_Update();
-        pc.EnableGroundCheck();
-        //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
-        //{
-        //    pc.EnableGroundCheck();
-        //}
+        //pc.EnableGroundCheck();
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
+        {
+            pc.EnableGroundCheck();
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
