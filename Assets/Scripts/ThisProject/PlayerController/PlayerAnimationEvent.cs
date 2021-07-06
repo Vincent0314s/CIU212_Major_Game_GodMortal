@@ -54,6 +54,20 @@ public class PlayerAnimationEvent : MonoBehaviour
         }
     }
 
+    public void DrinkingPotion(int _potionIndex) {
+        switch (_potionIndex) {
+            //HP
+            case 0:
+                ItemManager.i.RemoveItems(Items.HealthPotion);
+                pc.pv.AddHP(ItemManager.i.healthPotionHealAmount);
+                break;
+            //Stamina
+            case 1:
+                //ItemManager.i.RemoveItems(Items.StaminaPotion);
+                break;
+        }
+    }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

@@ -19,10 +19,11 @@ public class Player_JumpBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc.Jump_Update();
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.75f)
-        {
-            pc.EnableGroundCheck();
-        }
+        pc.EnableGroundCheck();
+        //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
+        //{
+        //    pc.EnableGroundCheck();
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

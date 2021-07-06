@@ -119,7 +119,8 @@ public class PlayerController : MonoBehaviour
 
     public bool IsPressingItemSlot_01() {
         if (ItemManager.i.CanUsingItems(Items.HealthPotion) && Input.GetKeyDown(key_HealthPotion)) {
-            ItemManager.i.RemoveItems(Items.HealthPotion);
+            //ItemManager.i.RemoveItems(Items.HealthPotion);
+
             return true;
         }
         return false;
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
     public bool IsPressingItemSlot_02() {
         if (ItemManager.i.CanUsingItems(Items.StaminaPotion) && Input.GetKeyDown(key_StanimaPotion))
         {
-            ItemManager.i.RemoveItems(Items.StaminaPotion);
+            //ItemManager.i.RemoveItems(Items.StaminaPotion);
             return true;
         }
         return false;
@@ -140,10 +141,12 @@ public class PlayerController : MonoBehaviour
         if (!pv.healthSetting.IsDead) {
             if (IsPressingItemSlot_01())
             {
-                pv.AddHP(ItemManager.i.healthPotionHealAmount);
+                pv.anim.Play("Drinking");
+                //pv.AddHP(ItemManager.i.healthPotionHealAmount);
             }
 
-            if (IsPressingItemSlot_02()) { 
+            if (IsPressingItemSlot_02()) {
+                //pv.anim.Play("Drinking");
                 //RecoverStanima
             }
 
