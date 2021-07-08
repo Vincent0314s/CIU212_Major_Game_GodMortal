@@ -9,8 +9,14 @@ public class PlayerAnimationEvent : MonoBehaviour
     public float forwardForceValue = 5f;
 
     public Transform attackPoint;
-    public float lightAttackRadius = 0.25f;
+    [Header("LightAttack")]
+    public float lightAttackRadius = 1f;
     public Color lightAttackRangeColor = Color.white;
+
+    [Header("HeavyAttack")]
+    public float heavyAttackRaduis = 2f;
+    public Color heavyAttackRangeColor = Color.blue;
+
     public LayerMask enemyMask;
     public LayerMask destructiveObjectMask;
 
@@ -50,6 +56,27 @@ public class PlayerAnimationEvent : MonoBehaviour
         }
     }
 
+    public void HeavyAttackRange() {
+        //Enemy
+        Collider[] enemies = Physics.OverlapSphere(attackPoint.position, heavyAttackRaduis, enemyMask);
+        if (enemies.Length > 0)
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].GetComponent<CharacterBaseValue>().GetHurt(pc.pv.GetDamageAmountFromAttackType(AttackType.Heavy), true);
+            }
+        }
+        //Destructive object
+        Collider[] DestructiveObjects = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, destructiveObjectMask);
+        if (DestructiveObjects.Length > 0)
+        {
+            for (int i = 0; i < DestructiveObjects.Length; i++)
+            {
+                DestructiveObjects[i].GetComponent<DestructiveObject>().BeingBroken();
+            }
+        }
+    }
+
     public void DrinkingPotion(int _potionIndex) {
         switch (_potionIndex) {
             //HP
@@ -71,8 +98,11 @@ public class PlayerAnimationEvent : MonoBehaviour
         if (attackPoint) {
             Handles.color = lightAttackRangeColor;
             Handles.DrawWireDisc(attackPoint.position, transform.parent.forward, lightAttackRadius);
-            GUI.color = Color.white;
-            Handles.Label(attackPoint.position, lightAttackRadius.ToString("f1"));
+            //GUI.color = Color.white;
+            //Handles.Label(attackPoint.position, lightAttackRadius.ToString("f1"));
+
+            Handles.color = heavyAttackRangeColor;
+            Handles.DrawWireDisc(attackPoint.position, transform.parent.forward, heavyAttackRaduis);
         }
     }
 #endif

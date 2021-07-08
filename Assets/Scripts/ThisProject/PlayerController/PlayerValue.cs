@@ -22,13 +22,11 @@ public class PlayerValue : CharacterBaseValue
 
     public CapsuleCollider selfCollider;
 
-    PlayerMovement pm;
 
     public override void Initialzation()
     {
         base.Initialzation();
         selfCollider = GetComponent<CapsuleCollider>();
-        pm = GetComponent<PlayerMovement>();
         if (!LoadFromMainMenu.isLoadFromMainMenu) { 
             shieldSetting.Initialization();
         }

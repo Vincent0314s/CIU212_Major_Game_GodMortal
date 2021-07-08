@@ -26,6 +26,7 @@ public class GameFlowManager : GameBasicFlowManager
     }
     public GameObject UI_GameOver;
     public GameObject UI_PauseMenu;
+    public GameObject UI_AreaDisplay;
 
     private void Awake()
     {
@@ -65,7 +66,6 @@ public class GameFlowManager : GameBasicFlowManager
         Time.timeScale = 1;
     }
 
-
     public void SaveData() {
         SaveObject saveObject = new SaveObject {
             playerPosition = GameAssetManager.i.currentPlayer.transform.position,
@@ -95,6 +95,15 @@ public class GameFlowManager : GameBasicFlowManager
         else {
             Debug.LogError("NoSave");
         }
+    }
+
+    public void DisplayArea(string _areaText) {
+        if (!UI_AreaDisplay.activeSelf)
+        {
+            UI_AreaDisplay.SetActive(true);
+            UI_AreaDisplay.GetComponentInChildren<Text>().text = _areaText;
+        }
+      
     }
 }
 

@@ -12,8 +12,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -973480132884127010}
-  m_StateMachineBehaviours:
-  - {fileID: -3162791787446436566}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -688,21 +687,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToPlayNextAnim: 0.75
   animString: LightAttack02
---- !u!114 &-3162791787446436566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6664d417ed544f438a022e180a76211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToPlayNextAnim: 0.75
-  animString: LightHeavy01
-  canDoNextAttack: 0
 --- !u!114 &-3018543295284265268
 MonoBehaviour:
   m_ObjectHideFlags: 1

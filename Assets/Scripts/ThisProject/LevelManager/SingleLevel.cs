@@ -30,6 +30,8 @@ public class SingleLevel : MonoBehaviour
         if (_c.transform.tag == "Player") {
             _c.GetComponent<PlayerController>().whereisPlayer = levelArea;
             _c.GetComponent<PlayerController>().respawonPosition = transform.GetChild(1).position;
+            GameFlowManager.i.DisplayArea(levelArea.ToString());
+
             for (int i = 0; i < levelsToOpen.Length; i++)
             {
                 if (!LevelManager.i.levels[levelsToOpen[i]].activeInHierarchy)

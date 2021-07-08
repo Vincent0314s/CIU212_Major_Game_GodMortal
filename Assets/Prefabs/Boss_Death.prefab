@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 3458195370828352763}
   - component: {fileID: 3458195370828352761}
   - component: {fileID: 3458195370828352758}
-  - component: {fileID: 1532092489009182021}
   - component: {fileID: 1570103598}
   - component: {fileID: 1515395354}
   - component: {fileID: 1515395355}
+  - component: {fileID: 4001885925371986009}
   m_Layer: 16
   m_Name: Boss_Death
   m_TagString: Enemy
@@ -107,24 +107,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1532092489009182021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458195370828352759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46604baae82d6aa41b2ced35bc043ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReadyToLoadComponment: 1
-  healthSetting:
-    maxHP: 100
-  attackSetting:
-  - type: 0
-    damage: 30
 --- !u!114 &1570103598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +168,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBeingBlocked: 0
   timeToBack: 1
+--- !u!114 &4001885925371986009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458195370828352759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386a7829301ea9d4dab8a7f81c69f9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyToLoadComponment: 1
+  healthSetting:
+    maxHP: 100
+  attackSetting:
+  - type: 0
+    damage: 30
+  - type: 1
+    damage: 45
+  UI_HPBar: {fileID: 0}
 --- !u!95 &3762827536067445408
 Animator:
   serializedVersion: 3
