@@ -7,6 +7,7 @@ public enum VisualEffect
 }
 public enum SoundEffect 
 {
+	FireBallCasting,
 
 }
 public enum UI_SoundEffects 

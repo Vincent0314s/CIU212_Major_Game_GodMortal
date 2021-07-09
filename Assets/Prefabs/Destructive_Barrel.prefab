@@ -286,6 +286,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8132280570983875834, guid: c96031a2726de0a4da765811f17f15c1,
     type: 3}
+  dropPercentage:
+    percentageSection:
+    - name: None
+      percentage: 50
+    - name: HP_Potion
+      percentage: 50
+    percentageSum: 0
 --- !u!1 &4241447034472542321
 GameObject:
   m_ObjectHideFlags: 0

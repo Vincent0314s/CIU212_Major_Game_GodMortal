@@ -9,7 +9,8 @@ public class DOTArea : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("DestroyArea",duration);
+        //Invoke("DestroyArea",duration);
+        Destroy(this.gameObject,duration);
     }
 
     private void OnTriggerStay(Collider other)

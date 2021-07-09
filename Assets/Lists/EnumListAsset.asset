@@ -19,7 +19,8 @@ MonoBehaviour:
     - LifeBoss_NormalAttack
     - LifeBoss_BindingArea
   - name: SoundEffect
-    enumVariable: []
+    enumVariable:
+    - FireBallCasting
   - name: UI_SoundEffects
     enumVariable: []
   - name: AIOwner

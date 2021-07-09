@@ -40,6 +40,10 @@ public class PlayerAnimationEvent : MonoBehaviour
         pc.LaunchRangedPower();
     }
 
+    public void PlayerRangePowerSFX() {
+        SoundManager.PlaySound(SoundEffect.FireBallCasting);
+    }
+
     public void LightAttackRange() {
         //Enemy
         Collider[] enemies = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, enemyMask);

@@ -15,6 +15,7 @@ public class GameAssetManager : MonoBehaviour
     }
 
     public GameObject currentPlayer;
+    public GameObject HP_Potion;
 
     private void Awake()
     {

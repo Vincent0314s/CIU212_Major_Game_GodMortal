@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class Trap_InstantDeath : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

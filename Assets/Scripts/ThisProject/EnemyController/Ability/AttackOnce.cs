@@ -6,13 +6,13 @@ public class AttackOnce : MonoBehaviour
 {
     public Abilities abilities;
     public float preAttackTime = 2f;
-    private float currentPreAttackTime;
-    //
+
     Renderer rend;
     public Color preAttackColor;
     public Color attackColor;
-    //
     public float damage;
+
+    public bool destroyObjectAfterEffecting;
 
     Collider coll;
 
@@ -30,7 +30,14 @@ public class AttackOnce : MonoBehaviour
         yield return new WaitForSeconds(preAttackTime);
         rend.material.color = attackColor;
         coll.enabled = true;
-        Destroy(this.gameObject,1f);
+        if (destroyObjectAfterEffecting)
+        {
+            Destroy(this.gameObject, 1f);
+        }
+        else {
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
