@@ -77,6 +77,12 @@ public class PlayerValue : CharacterBaseValue
         UpdatePlayerShieldBar();
     }
 
+    public void GetHurt_IgonoreShield(float _damage, bool _canPlayAnimation) {
+        base.GetHurt(_damage,_canPlayAnimation);
+        UpdatePlayerHpBar();
+        UpdatePlayerShieldBar();
+    }
+
     public void UpdatePlayerHpBar()
     {
         if (UI_HPBar)

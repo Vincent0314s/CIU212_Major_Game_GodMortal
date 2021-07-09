@@ -1692,7 +1692,7 @@ MonoBehaviour:
   heavyAttackRangeColor: {r: 0, g: 0, b: 1, a: 1}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 66560
   destructiveObjectMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8800471cb08c1094181f92b46053bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whereisPlayer: 4
+  whereisPlayer: 0
 --- !u!114 &7054528700338781131
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class Trap : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
-            other.GetComponent<PlayerValue>().Dead();
+            other.GetComponent<PlayerValue>().GetHurt_IgonoreShield(10000,true);
         }
     }
 }

@@ -1,42 +1,22 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_HeavyAttackBehaviour : StateMachineBehaviour
+public class Player_RangedPowerBehaviour : StateMachineBehaviour
 {
-
-    [Range(0, 1)]
-    public float timeToPlayNextAnim;
-    public string animString;
-    private bool canDoNextAttack;
-    public bool hasNextCombo = false;
-
     PlayerController pc;
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         pc = animator.GetComponentInParent<PlayerController>();
         pc.pm.cgm.StopMoving();
-        canDoNextAttack = false;
-
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (hasNextCombo) {
-            if (!canDoNextAttack)
-            {
-                if (pc.IsPressingHeavyAttack())
-                {
-                    canDoNextAttack = true;
-                }
-            }
-            if (canDoNextAttack && stateInfo.normalizedTime > timeToPlayNextAnim)
-            {
-                animator.Play(animString);
-            }
-        }
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

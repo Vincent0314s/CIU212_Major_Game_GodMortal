@@ -271,10 +271,14 @@ public class PlayerController : MonoBehaviour
     void LaunchRangedPowerFunction() {
         if (IsPressingRangedPower())
         {
-            GameObject obj = Instantiate(rangedPowerObject, pae.attackPoint.position, Quaternion.identity);
-            obj.GetComponent<PlayerProjectile>().SetPlayerController(this);
-            obj.GetComponent<Rigidbody>().velocity = transform.right * rangedPowerForce;
+            pv.anim.Play("RangedAttack");
         }
+    }
+
+    public void LaunchRangedPower() {
+        GameObject obj = Instantiate(rangedPowerObject, pae.attackPoint.position, Quaternion.identity);
+        obj.GetComponent<PlayerProjectile>().SetPlayerController(this);
+        obj.GetComponent<Rigidbody>().velocity = transform.right * rangedPowerForce;
     }
 
     void AttachToRopeFunction() {

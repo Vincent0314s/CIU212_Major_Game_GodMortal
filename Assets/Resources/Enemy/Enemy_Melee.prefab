@@ -146,7 +146,7 @@ MonoBehaviour:
     maxHP: 100
   attackSetting:
   - type: 0
-    damage: 30
+    damage: 60
 --- !u!114 &7894140991862222780
 MonoBehaviour:
   m_ObjectHideFlags: 0

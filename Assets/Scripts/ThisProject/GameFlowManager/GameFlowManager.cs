@@ -38,7 +38,6 @@ public class GameFlowManager : GameBasicFlowManager
 
     }
     public void GameOver() {
-        Time.timeScale = 0;
         UI_GameOver.SetActive(true);
     }
 

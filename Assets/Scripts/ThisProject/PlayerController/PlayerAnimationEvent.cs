@@ -36,6 +36,10 @@ public class PlayerAnimationEvent : MonoBehaviour
         pc.Jump_Enter();
     }
 
+    public void LaunchRangedPower() {
+        pc.LaunchRangedPower();
+    }
+
     public void LightAttackRange() {
         //Enemy
         Collider[] enemies = Physics.OverlapSphere(attackPoint.position, lightAttackRadius, enemyMask);
