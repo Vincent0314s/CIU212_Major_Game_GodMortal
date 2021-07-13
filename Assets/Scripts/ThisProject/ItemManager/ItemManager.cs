@@ -18,6 +18,7 @@ public class ItemManager : MonoBehaviour
     [Space]
     [Header("UI")]
     public Text UI_Item1text;
+    public GameObject UI_Letter;
 
     public float healthPotionHealAmount = 15f;
     public float staminaPotionHealAmount = 5f;
@@ -130,5 +131,9 @@ public class ItemManager : MonoBehaviour
         if (UI_Item1text) { 
              UI_Item1text.text = healthPotionNumber.ToString();
         }
+    }
+
+    public void OpenLetter() {
+        UI_Letter.SetActive(true);
     }
 }

@@ -11,6 +11,9 @@ public class Item : MonoBehaviour
     {
         if (collision.transform.tag == "Player") {
             ItemManager.i.AddItems(itemType);
+            if (itemType == Items.Letter) {
+                collision.gameObject.GetComponent<PlayerController>().ReadLetter();
+            }
             Destroy(this.gameObject);
         }
     }

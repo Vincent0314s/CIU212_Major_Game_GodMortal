@@ -275,6 +275,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ReadLetter() {
+        pv.anim.Play("Sit");
+    }
+
+    public void CloseLetter() {
+        pv.anim.Play("StandUp",0,0.25f);
+    }
+
     public void LaunchRangedPower() {
         GameObject obj = Instantiate(rangedPowerObject, pae.attackPoint.position, Quaternion.identity);
         obj.GetComponent<PlayerProjectile>().SetPlayerController(this);

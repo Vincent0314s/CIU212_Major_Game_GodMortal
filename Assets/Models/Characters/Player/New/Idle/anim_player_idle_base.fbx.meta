@@ -19,16 +19,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'GreidRig_Spine1'
-      : position error = 44.903625 mm\n\t'GreidRig_Spine2' : position error = 23.302197
-      mm\n\t'GreidRig_RArmCollarbone' : position error = 10.115994 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'idle_base' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'GreidRig_Spine1' has translation animation
-      that will be discarded.\n\t'GreidRig_RArmCollarbone' has translation animation
-      that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0

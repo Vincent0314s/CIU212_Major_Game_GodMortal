@@ -17,6 +17,8 @@ public class PlayerAnimationEvent : MonoBehaviour
     public float heavyAttackRaduis = 2f;
     public Color heavyAttackRangeColor = Color.blue;
 
+    public GameObject childLetter;
+
     public LayerMask enemyMask;
     public LayerMask destructiveObjectMask;
 
@@ -97,6 +99,20 @@ public class PlayerAnimationEvent : MonoBehaviour
                 //ItemManager.i.RemoveItems(Items.StaminaPotion);
                 break;
         }
+    }
+
+    public void ActivateLetter(int _i) {
+        if (_i == 0)
+        {
+            childLetter.SetActive(false);
+        }
+        else {
+            childLetter.SetActive(true);
+        }
+    }
+
+    public void OpenLetter() {
+        ItemManager.i.OpenLetter();
     }
 
 
