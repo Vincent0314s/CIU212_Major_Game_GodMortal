@@ -13,9 +13,16 @@ public class Item : MonoBehaviour
     {
         if (collision.transform.tag == "Player") {
             ItemManager.i.AddItems(itemType);
-            if (itemType == Items.Letter) {
-                ItemManager.i.SetLetterText(description);
-                collision.gameObject.GetComponent<PlayerController>().ReadLetter();
+
+            switch (itemType) {
+                case Items.HealthPotion:
+                    AnalyticsManager.AddCollectedPotion();
+                    break;
+                case Items.Letter:
+                    AnalyticsManager.AddCollectedLetter();
+                    ItemManager.i.SetLetterText(description);
+                    collision.gameObject.GetComponent<PlayerController>().ReadLetter();
+                    break;
             }
             Destroy(this.gameObject);
         }

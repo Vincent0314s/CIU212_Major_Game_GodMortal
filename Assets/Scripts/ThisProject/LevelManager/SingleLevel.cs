@@ -9,6 +9,7 @@ public class SingleLevel : MonoBehaviour
     public int[] levelsToOpen;
     public int[] levelsToClose;
     public Color areaBorderColor = new Color(1,0.9f,0.02f,0.35f);
+    public float stayAreaTime = 0;
 
 
     public void MatchGameobjectName() {
@@ -33,7 +34,11 @@ public class SingleLevel : MonoBehaviour
             GameFlowManager.i.DisplayArea(levelArea.ToString());
             if (levelArea != Levels.LifeArea_03 || levelArea != Levels.DeathArea_03)
             {
+                _c.GetComponent<PlayerController>().SetPlayerInBossRoom(false);
                 GameFlowManager.i.AutoSaving();
+            }
+            else {
+                _c.GetComponent<PlayerController>().SetPlayerInBossRoom(true);
             }
 
             for (int i = 0; i < levelsToOpen.Length; i++)
@@ -50,6 +55,15 @@ public class SingleLevel : MonoBehaviour
                 {
                     LevelManager.i.SetLevelActive(levelsToClose[i], false);
                 }
+            }
+        }
+    }
+
+    public void CallTriggerStay(Collider _c) {
+        if (_c.transform.tag == "Player") {
+            if (!_c.GetComponent<PlayerValue>().healthSetting.IsDead)
+            {
+                stayAreaTime += Time.unscaledDeltaTime;
             }
         }
     }

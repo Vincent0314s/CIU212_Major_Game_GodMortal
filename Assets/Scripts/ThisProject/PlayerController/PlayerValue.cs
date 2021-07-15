@@ -125,6 +125,7 @@ public class PlayerValue : CharacterBaseValue
 
     public override void Dead()
     {
+        AnalyticsManager.AddPlayerDeathTimes();
         GameFlowManager.i.GameOver();
     }
  

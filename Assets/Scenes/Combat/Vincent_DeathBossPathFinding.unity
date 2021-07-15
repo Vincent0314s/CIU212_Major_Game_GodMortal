@@ -7257,7 +7257,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 2.5, z: -15}
   speedValue: 0.5
-  limitedHeight: {x: -50, y: 24}
+  distanceBetweenBoss: 12
+  limitedZ: {x: -15, y: -30}
+  limitedY: {x: -50, y: 30}
+  boss: {fileID: 1917894015}
 --- !u!1 &1861916004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5059345162149907180, guid: 121b29dffdde75644b08512546ebe4fd,
@@ -7301,7 +7304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317451338, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
       propertyPath: whereisPlayer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7058069560047037975, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
@@ -7701,6 +7704,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &1917894015 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3458195370828352762, guid: ca32098549bb54642bc82168fc12e36a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1656549893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919437274
 GameObject:
   m_ObjectHideFlags: 0

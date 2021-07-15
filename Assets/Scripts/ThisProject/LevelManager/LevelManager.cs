@@ -77,8 +77,17 @@ public class LevelManager : MonoBehaviour
         {
             enemyPoints[i].SpawnEnemy();
         }
-        //GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().Initialzation();
         GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().ResetPlayerValue();
         GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().InitPlayerController();
+    }
+
+    public float GetLevelStayTime(Levels _level) {
+        for (int i = 0; i < levelinfos.Length; i++)
+        {
+            if (levelinfos[i].GetComponent<SingleLevel>().levelArea == _level) {
+                return levelinfos[i].GetComponent<SingleLevel>().stayAreaTime;
+            }
+        }
+        return 0;
     }
 }

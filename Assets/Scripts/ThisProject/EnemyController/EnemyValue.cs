@@ -6,6 +6,7 @@ public class EnemyValue : CharacterBaseValue
 {
     public override void Dead()
     {
+        AnalyticsManager.AddEnemyDeathTimes();
         transform.parent = null;
         rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;

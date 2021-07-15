@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
-
     public PlayerMovement pm { get; private set; }
     public PlayerValue pv { get; private set; }
     private PlayerAnimationEvent pae;
 
     public Levels whereisPlayer;
     public Vector3 respawonPosition;
+    public bool isInBossRoom { get; private set; }
 
     private bool isGoingRight;
     private bool isGoingLeft;
@@ -152,6 +151,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(key_Escape)) {
                 GameFlowManager.i.OpenPauseMenu();
             }
+
+
         }
     }
 
@@ -350,6 +351,10 @@ public class PlayerController : MonoBehaviour
     public void DisableGroundCheck() {
         pm.cgc.OnGround(false);
         pm.cgc.OnSlope(false);
+    }
+
+    public void SetPlayerInBossRoom(bool _b) {
+        isInBossRoom = _b;
     }
 
 

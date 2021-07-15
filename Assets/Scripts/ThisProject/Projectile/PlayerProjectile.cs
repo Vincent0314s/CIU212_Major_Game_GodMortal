@@ -10,6 +10,11 @@ public class PlayerProjectile : MonoBehaviour
         pc = _pc;
     }
 
+    private void OnEnable()
+    {
+        Destroy(this.gameObject,5f);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Enemy")

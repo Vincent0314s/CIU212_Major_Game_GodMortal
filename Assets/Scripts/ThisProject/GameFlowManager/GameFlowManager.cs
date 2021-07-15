@@ -127,7 +127,13 @@ public class GameFlowManager : GameBasicFlowManager
             UI_AreaDisplay.GetComponentInChildren<Text>().text = _areaText;
         }
     }
- 
+
+    private void OnApplicationQuit()
+    {
+        AnalyticsManager.RecordBasicValue();
+        AnalyticsManager.RecordLevelStayTime();
+    }
+
 }
 
 

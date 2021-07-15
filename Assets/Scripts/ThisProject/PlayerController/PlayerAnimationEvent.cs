@@ -87,18 +87,10 @@ public class PlayerAnimationEvent : MonoBehaviour
         }
     }
 
-    public void DrinkingPotion(int _potionIndex) {
-        switch (_potionIndex) {
-            //HP
-            case 0:
-                ItemManager.i.RemoveItems(Items.HealthPotion);
-                pc.pv.AddHP(ItemManager.i.healthPotionHealAmount);
-                break;
-            //Stamina
-            case 1:
-                //ItemManager.i.RemoveItems(Items.StaminaPotion);
-                break;
-        }
+    public void DrinkingPotion() {
+        AnalyticsManager.AddDrinkPotionTimes();
+        ItemManager.i.RemoveItems(Items.HealthPotion);
+        pc.pv.AddHP(ItemManager.i.healthPotionHealAmount);
     }
 
     public void ActivateLetter(int _i) {

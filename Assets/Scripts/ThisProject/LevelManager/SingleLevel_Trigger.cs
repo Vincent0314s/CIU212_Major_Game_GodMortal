@@ -8,4 +8,9 @@ public class SingleLevel_Trigger : MonoBehaviour
     {
         gameObject.GetComponentInParent<SingleLevel>().CallTrigger(other);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        gameObject.GetComponentInParent<SingleLevel>().CallTriggerStay(other);
+    }
 }
