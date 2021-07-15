@@ -35,6 +35,15 @@ public class PlayerValue : CharacterBaseValue
         UpdatePlayerShieldBar();
     }
 
+    public void ResetPlayerValue()
+    {
+        healthSetting.Initialization();
+        shieldSetting.Initialization();
+        staminaSetting.Initialization();
+        UpdatePlayerHpBar();
+        UpdatePlayerShieldBar();
+    }
+
     public void UpdateFromLoad() {
         UpdatePlayerHpBar();
         UpdatePlayerShieldBar();
@@ -61,15 +70,22 @@ public class PlayerValue : CharacterBaseValue
 
     public override void GetHurt(float damage, bool _canPlayAnimation)
     {
-        if (shieldSetting.HasShield)
+        if (!GameFlowManager.i.isKillingLifeBoss)
         {
-            shieldSetting.GetHurt(damage);
-            if (_canPlayAnimation) { 
-               anim.Play("Hurt", 0, 0);
+            if (shieldSetting.HasShield)
+            {
+                shieldSetting.GetHurt(damage);
+                if (_canPlayAnimation)
+                {
+                    anim.Play("Hurt", 0, 0);
+                }
+            }
+            else
+            {
+                base.GetHurt(damage, _canPlayAnimation);
             }
         }
-        else
-        {
+        else {
             base.GetHurt(damage, _canPlayAnimation);
         }
 
@@ -92,8 +108,11 @@ public class PlayerValue : CharacterBaseValue
     }
 
     public void UpdatePlayerShieldBar() {
-        if (UI_ShieldBar) {
-            UI_ShieldBar.fillAmount = shieldSetting.GetShieldPercentage();
+        if (!GameFlowManager.i.isKillingLifeBoss) {
+            if (UI_ShieldBar)
+            {
+                UI_ShieldBar.fillAmount = shieldSetting.GetShieldPercentage();
+            }
         }
     }
 

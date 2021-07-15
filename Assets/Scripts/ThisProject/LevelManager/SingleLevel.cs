@@ -31,6 +31,10 @@ public class SingleLevel : MonoBehaviour
             _c.GetComponent<PlayerController>().whereisPlayer = levelArea;
             _c.GetComponent<PlayerController>().respawonPosition = transform.GetChild(1).position;
             GameFlowManager.i.DisplayArea(levelArea.ToString());
+            if (levelArea != Levels.LifeArea_03 || levelArea != Levels.DeathArea_03)
+            {
+                GameFlowManager.i.AutoSaving();
+            }
 
             for (int i = 0; i < levelsToOpen.Length; i++)
             {

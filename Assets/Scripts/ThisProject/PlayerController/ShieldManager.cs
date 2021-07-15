@@ -15,11 +15,13 @@ public class ShieldManager
     private bool hasShield;
     public bool HasShield
     {
-        get { if (currentShield <= 0)
+        get {
+            if (currentShield <= 0)
             {
                 hasShield = false;
             }
-            else {
+            else
+            {
                 hasShield = true;
             }
             return hasShield; }
@@ -44,21 +46,25 @@ public class ShieldManager
     }
 
     public void RecoverShield(Action _OnUpdateValue) {
-        if (!HasMaxShield())
+        if (!GameFlowManager.i.isKillingLifeBoss)
         {
-            if (currentRecoverSec < recoverBySec)
+            if (!HasMaxShield())
             {
-                currentRecoverSec += Time.deltaTime;
+                if (currentRecoverSec < recoverBySec)
+                {
+                    currentRecoverSec += Time.deltaTime;
+                }
+                else
+                {
+                    currentShield += recoverAmount;
+                    _OnUpdateValue?.Invoke();
+                    currentRecoverSec = 0;
+                }
             }
             else
             {
-                currentShield += recoverAmount;
-                _OnUpdateValue?.Invoke();
-                currentRecoverSec = 0;
+                currentShield = maxShield;
             }
-        }
-        else {
-            currentShield = maxShield;
         }
     }
 

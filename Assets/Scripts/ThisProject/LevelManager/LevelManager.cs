@@ -77,7 +77,8 @@ public class LevelManager : MonoBehaviour
         {
             enemyPoints[i].SpawnEnemy();
         }
-        GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().Initialzation();
+        //GameAssetManager.i.currentPlayer.GetComponent<CharacterBaseValue>().Initialzation();
+        GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().ResetPlayerValue();
         GameAssetManager.i.currentPlayer.GetComponent<PlayerController>().InitPlayerController();
     }
 }

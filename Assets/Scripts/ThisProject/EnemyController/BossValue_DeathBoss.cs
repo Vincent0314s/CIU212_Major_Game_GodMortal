@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossValue : CharacterBaseValue
+public class BossValue_DeathBoss : CharacterBaseValue
 {
 
     [Header("UI")]
@@ -39,9 +39,11 @@ public class BossValue : CharacterBaseValue
     }
     public override void Dead()
     {
+        GameFlowManager.i.isKillingDeathBoss = true;
         transform.parent = null;
-        rb.isKinematic = true;
-        GetComponent<Collider>().enabled = false;
+        rb.useGravity = true;
+        GetComponent<Collider>().enabled = true;
+        GameFlowManager.i.AutoSaving();
         Destroy(this.gameObject, 5f);
     }
 }

@@ -11,6 +11,8 @@ public class GameFlowManager : GameBasicFlowManager
         public float currentHP;
         public float currentShield;
         public int hpPotion;
+        public bool hasKillDeathBoss;
+        public bool hasKillLifeBoss;
     }
 
 
@@ -27,6 +29,13 @@ public class GameFlowManager : GameBasicFlowManager
     public GameObject UI_GameOver;
     public GameObject UI_PauseMenu;
     public GameObject UI_AreaDisplay;
+    public Button UI_SaveButton;
+    [Header("AutoSaving")]
+    [SerializeField]
+    private GameObject autoSavingText;
+
+    public bool isKillingDeathBoss;
+    public bool isKillingLifeBoss;
 
     private void Awake()
     {
@@ -35,7 +44,6 @@ public class GameFlowManager : GameBasicFlowManager
         if (LoadFromMainMenu.isLoadFromMainMenu) {
             LoadData();
         }
-
     }
     public void GameOver() {
         UI_GameOver.SetActive(true);
@@ -65,12 +73,26 @@ public class GameFlowManager : GameBasicFlowManager
         Time.timeScale = 1;
     }
 
+    public void AutoSaving() {
+        SaveData();
+        StartCoroutine(AutoSavingText());
+    }
+
+    IEnumerator AutoSavingText() {
+        autoSavingText.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        autoSavingText.SetActive(false);
+    }
+
+
     public void SaveData() {
         SaveObject saveObject = new SaveObject {
             playerPosition = GameAssetManager.i.currentPlayer.transform.position,
             currentHP = GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().healthSetting.currentHP,
             currentShield = GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().shieldSetting.currentShield,
             hpPotion = ItemManager.i.healthPotionNumber,
+            hasKillDeathBoss = isKillingDeathBoss,
+            hasKillLifeBoss = isKillingLifeBoss,
         };
         string json = JsonUtility.ToJson(saveObject);
         SaveLoadSystem.Save(json);
@@ -85,6 +107,8 @@ public class GameFlowManager : GameBasicFlowManager
             GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().healthSetting.SetCurrentHP(saveObject.currentHP);
             GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().shieldSetting.SetCurrentShield(saveObject.currentShield);
             GameAssetManager.i.currentPlayer.GetComponent<PlayerValue>().UpdateFromLoad();
+            isKillingDeathBoss = saveObject.hasKillDeathBoss;
+            isKillingLifeBoss = saveObject.hasKillLifeBoss;
 
             ItemManager.i.AddItems(Items.HealthPotion,saveObject.hpPotion,true);
 
@@ -102,8 +126,8 @@ public class GameFlowManager : GameBasicFlowManager
             UI_AreaDisplay.SetActive(true);
             UI_AreaDisplay.GetComponentInChildren<Text>().text = _areaText;
         }
-      
     }
+ 
 }
 
 

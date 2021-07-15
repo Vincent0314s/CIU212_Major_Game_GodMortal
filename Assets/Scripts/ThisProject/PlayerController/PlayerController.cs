@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_Escape;
     public KeyCode key_Interact;
 
- 
 
     void Start()
     {
@@ -269,13 +268,17 @@ public class PlayerController : MonoBehaviour
         }
     }
     void LaunchRangedPowerFunction() {
-        if (IsPressingRangedPower())
-        {
-            pv.anim.Play("RangedAttack");
+        if (!GameFlowManager.i.isKillingDeathBoss) {
+            if (IsPressingRangedPower())
+            {
+                pv.anim.Play("RangedAttack");
+            }
         }
     }
 
     public void ReadLetter() {
+        moveVector = new Vector3(1, 0, 0).normalized;
+        GetComponent<IMovement>().SetVelocity(moveVector);
         pv.anim.Play("Sit");
     }
 
