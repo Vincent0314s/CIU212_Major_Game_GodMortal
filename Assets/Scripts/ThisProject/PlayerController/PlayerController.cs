@@ -272,7 +272,8 @@ public class PlayerController : MonoBehaviour
         if (!GameFlowManager.i.isKillingDeathBoss) {
             if (IsPressingRangedPower())
             {
-                pv.anim.Play("RangedAttack");
+                pv.anim.SetLayerWeight(1,1);
+                pv.anim.Play("RangedAttack",1);
             }
         }
     }

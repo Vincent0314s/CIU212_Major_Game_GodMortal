@@ -8,4 +8,82 @@ AvatarMask:
   m_PrefabAsset: {fileID: 0}
   m_Name: UpperBody
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  m_Elements: []
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Greid_Mesh_GRP
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/axe_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/Greid_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/knife_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/shield_mesh_grp
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/shield_mesh_grp/shield_deployed_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/shield_mesh_grp/shield_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/sword_deployed_mesh
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/sword_holsterd_GRP
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/sword_holsterd_GRP/scabard
+    m_Weight: 0
+  - m_Path: Greid_Mesh_GRP/sword_holsterd_GRP/sword_mesh
+    m_Weight: 0
+  - m_Path: GreidRig_Root
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_knifeBone
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_LLegThigh
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_LLegThigh/GreidRig_LLegCalf
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_LLegThigh/GreidRig_LLegCalf/GreidRig_LLegFoot
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_LLegThigh/GreidRig_LLegCalf/GreidRig_LLegFoot/GreidRig_LLegDigit11
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_RLegThigh
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_RLegThigh/GreidRig_RLegCalf
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_RLegThigh/GreidRig_RLegCalf/GreidRig_RLegFoot
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_RLegThigh/GreidRig_RLegCalf/GreidRig_RLegFoot/GreidRig_RLegDigit11
+    m_Weight: 0
+  - m_Path: GreidRig_Root/GreidRig_scabardBone
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_LCollarbone
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_LCollarbone/GreidRig_LUpperarm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_LCollarbone/GreidRig_LUpperarm/GreidRig_LForearm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_LCollarbone/GreidRig_LUpperarm/GreidRig_LForearm/GreidRig_LPalm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_LCollarbone/GreidRig_LUpperarm/GreidRig_LForearm/GreidRig_LPalm/GreidRig_shieldDeployedBone
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_Neck
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_Neck/GreidRig_Head
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_RArmCollarbone
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_RArmCollarbone/GreidRig_RArmUpperarm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_RArmCollarbone/GreidRig_RArmUpperarm/GreidRig_RArmForearm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_RArmCollarbone/GreidRig_RArmUpperarm/GreidRig_RArmForearm/GreidRig_RArmPalm
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_RArmCollarbone/GreidRig_RArmUpperarm/GreidRig_RArmForearm/GreidRig_RArmPalm/GreidRig_swordBone
+    m_Weight: 1
+  - m_Path: GreidRig_Root/GreidRig_Spine1/GreidRig_Spine2/GreidRig_Ribcage/GreidRig_ShieldBone
+    m_Weight: 1

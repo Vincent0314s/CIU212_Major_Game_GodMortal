@@ -26,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -123,7 +123,202 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Greid_Rig_V02(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Greid_Mesh_GRP
+      parentName: Greid_Rig_V02(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Greid_mesh
+      parentName: Greid_Mesh_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: axe_mesh
+      parentName: Greid_Mesh_GRP
+      position: {x: 0.73873305, y: 1.1899874, z: -0.27269882}
+      rotation: {x: -0.040837787, y: -0.027790742, z: 0.5136367, w: 0.85658467}
+      scale: {x: 1.0000048, y: 0.99999934, z: 0.99999857}
+    - name: shield_mesh_grp
+      parentName: Greid_Mesh_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shield_deployed_mesh
+      parentName: shield_mesh_grp
+      position: {x: -0.73335224, y: 1.2103356, z: -0.0007719081}
+      rotation: {x: 0.6820287, y: 0.28635666, z: 0.6144697, w: -0.27434254}
+      scale: {x: 0.9999936, y: 1.0000037, z: 1.0000039}
+    - name: shield_mesh
+      parentName: shield_mesh_grp
+      position: {x: -0.06673004, y: 1.2328242, z: -0.20109384}
+      rotation: {x: 0.063587576, y: 0.7042409, z: 0.7042429, w: -0.06358736}
+      scale: {x: 1.0000002, y: 0.99999994, z: 0.99999994}
+    - name: sword_holsterd_GRP
+      parentName: Greid_Mesh_GRP
+      position: {x: 0.17387411, y: 0.9504437, z: -0.04548626}
+      rotation: {x: -0.43238887, y: -0.450899, z: 0.565765, w: 0.538182}
+      scale: {x: 1, y: 1, z: 1}
+    - name: scabard
+      parentName: sword_holsterd_GRP
+      position: {x: -0.9410243, y: 0.009038339, z: 0.23059542}
+      rotation: {x: -0.07480758, y: 0.7188901, z: -0.08122201, w: 0.68629724}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: sword_mesh
+      parentName: sword_holsterd_GRP
+      position: {x: 0.13633186, y: -0.0012991738, z: 0.0006593895}
+      rotation: {x: 0.5059241, y: 0.4918235, z: 0.50659096, w: 0.4954958}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: knife_mesh
+      parentName: Greid_Mesh_GRP
+      position: {x: -0.16320586, y: 0.9878884, z: 0.036233988}
+      rotation: {x: 2.220446e-16, y: 1.110223e-16, z: -2.220446e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sword_deployed_mesh
+      parentName: Greid_Mesh_GRP
+      position: {x: 0.7170896, y: 1.2019241, z: 0.003526868}
+      rotation: {x: 0.9635219, y: -0.2622971, z: 0.05313016, w: -0.001724959}
+      scale: {x: 1.0000025, y: 1.0000031, z: 0.99999285}
+    - name: GreidRig_Root
+      parentName: Greid_Rig_V02(Clone)
+      position: {x: 0.000000047813337, y: 0.8986496, z: -0.04543324}
+      rotation: {x: 0.49912703, y: -0.50087154, z: -0.49912694, w: 0.5008715}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_Spine1
+      parentName: GreidRig_Root
+      position: {x: -0.045647047, y: -0.0034924746, z: -0.00000000866773}
+      rotation: {x: -0.0000000033679965, y: -0.000000045756472, z: -0.07340859, w: 0.997302}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1}
+    - name: GreidRig_Spine2
+      parentName: GreidRig_Spine1
+      position: {x: -0.2807583, y: 4.973799e-16, z: 2.7457649e-14}
+      rotation: {x: -0.000000003717477, y: 0.000000025926367, z: 0.1419336, w: 0.98987615}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: GreidRig_Ribcage
+      parentName: GreidRig_Spine2
+      position: {x: -0.23916854, y: -4.2632563e-16, z: 6.098453e-14}
+      rotation: {x: 0.000000027597466, y: 0.0000008192496, z: -0.49333435, w: 0.86983985}
+      scale: {x: 0.9999996, y: 0.9999996, z: 1}
+    - name: GreidRig_ShieldBone
+      parentName: GreidRig_Ribcage
+      position: {x: 0.22329864, y: -0.11232487, z: 0.06030845}
+      rotation: {x: -0.07491196, y: 0.076839775, z: 0.69403636, w: 0.711897}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_Neck
+      parentName: GreidRig_Ribcage
+      position: {x: -0.00079315185, y: -0.0034924746, z: -0.000000006707136}
+      rotation: {x: 1.1185497e-14, y: -6.0507155e-14, z: -0.18151785, w: 0.98338765}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_Head
+      parentName: GreidRig_Neck
+      position: {x: -0.10012512, y: -0.000000038146972, z: 1.7964034e-14}
+      rotation: {x: -1.110223e-14, y: -6.034062e-14, z: 0.18151785, w: 0.98338765}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_LCollarbone
+      parentName: GreidRig_Ribcage
+      position: {x: 0.04366989, y: 0.10543432, z: 0.030406203}
+      rotation: {x: 0.04964754, y: 0.71518594, z: 0.1754388, w: 0.6747337}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_LUpperarm
+      parentName: GreidRig_LCollarbone
+      position: {x: -0.17440298, y: -0.00000011494838, z: 0.0000001526325}
+      rotation: {x: 0.12835483, y: -0.0021216862, z: -0.17331736, w: 0.9764639}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.9999999}
+    - name: GreidRig_LForearm
+      parentName: GreidRig_LUpperarm
+      position: {x: -0.2623874, y: -0.00000024794642, z: 0.00000045829975}
+      rotation: {x: 0.047196057, y: -0.022631345, z: -0.019045234, w: 0.9984476}
+      scale: {x: 0.9999997, y: 0.9999993, z: 1.0000012}
+    - name: GreidRig_LPalm
+      parentName: GreidRig_LForearm
+      position: {x: -0.24307124, y: 0.000003662293, z: -0.00000045733208}
+      rotation: {x: -0.751653, y: -0.04801927, z: -0.041675683, w: 0.6564869}
+      scale: {x: 1.0000004, y: 1.0000017, z: 0.99999845}
+    - name: GreidRig_shieldDeployedBone
+      parentName: GreidRig_LPalm
+      position: {x: -0.054619025, y: -0.015520935, z: 0.00000083208084}
+      rotation: {x: -0.000006424229, y: 0.000008735801, z: -0.59613043, w: 0.8028876}
+      scale: {x: 1.0000011, y: 1.000001, z: 0.9999985}
+    - name: GreidRig_RArmCollarbone
+      parentName: GreidRig_Ribcage
+      position: {x: 0.04366989, y: 0.10543432, z: -0.030406198}
+      rotation: {x: -0.04964864, y: -0.715186, z: 0.17543805, w: 0.67473376}
+      scale: {x: 1, y: 1, z: 1}
+    - name: GreidRig_RArmUpperarm
+      parentName: GreidRig_RArmCollarbone
+      position: {x: -0.174403, y: 0.00000007578647, z: -4.4493048e-11}
+      rotation: {x: -0.12835506, y: 0.0021222527, z: -0.17331778, w: 0.97646374}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: GreidRig_RArmForearm
+      parentName: GreidRig_RArmUpperarm
+      position: {x: -0.26238754, y: -0.00000024794642, z: -0.00000045829975}
+      rotation: {x: -0.047196098, y: 0.022631044, z: -0.01904563, w: 0.9984476}
+      scale: {x: 1.0000001, y: 0.99999917, z: 1.0000014}
+    - name: GreidRig_RArmPalm
+      parentName: GreidRig_RArmForearm
+      position: {x: -0.24307139, y: 0.000003662293, z: 0.00000030474422}
+      rotation: {x: 0.75268906, y: 0.027647782, z: -0.025321411, w: 0.6573078}
+      scale: {x: 1.0000007, y: 1.0000019, z: 0.9999983}
+    - name: GreidRig_swordBone
+      parentName: GreidRig_RArmPalm
+      position: {x: -0.06380085, y: -0.014974975, z: 0.0053763175}
+      rotation: {x: 0.0017581623, y: -0.7094146, z: 0.001664211, w: 0.70478725}
+      scale: {x: 0.99999815, y: 1.0000019, z: 1.0000008}
+    - name: GreidRig_knifeBone
+      parentName: GreidRig_Root
+      position: {x: -0.14667106, y: 0.08041789, z: 0.16465592}
+      rotation: {x: -0.037214976, y: 0.36836728, z: 0.92886066, w: -0.011767395}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: GreidRig_LLegThigh
+      parentName: GreidRig_Root
+      position: {x: -0.017192611, y: 0.046885267, z: 0.08785235}
+      rotation: {x: -0.0113361385, y: 0.99964964, z: 0.011688715, w: 0.02086801}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: GreidRig_LLegCalf
+      parentName: GreidRig_LLegThigh
+      position: {x: -0.357361, y: 0.000004378557, z: 0.0000034046172}
+      rotation: {x: -0.0039986377, y: -0.0018116027, z: 0.075611815, w: 0.9971277}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: GreidRig_LLegFoot
+      parentName: GreidRig_LLegCalf
+      position: {x: -0.45164198, y: 0, z: 0}
+      rotation: {x: -0.06156383, y: -0.0037983386, z: -0.50006276, w: 0.86378974}
+      scale: {x: 0.99999845, y: 1.0000014, z: 1.0000002}
+    - name: GreidRig_LLegDigit11
+      parentName: GreidRig_LLegFoot
+      position: {x: -0.14582275, y: 0.015289898, z: 0.0014615344}
+      rotation: {x: -0.00095293747, y: 0.004293591, z: -0.31054252, w: 0.9505493}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: GreidRig_RLegThigh
+      parentName: GreidRig_Root
+      position: {x: -0.017192611, y: 0.04688527, z: -0.08785235}
+      rotation: {x: -0.011280501, y: 0.99965227, z: -0.0115542775, w: -0.020848425}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: GreidRig_RLegCalf
+      parentName: GreidRig_RLegThigh
+      position: {x: -0.35736126, y: 0.0000043809414, z: -0.0000033950805}
+      rotation: {x: 0.003982874, y: 0.0017858994, z: 0.07471045, w: 0.9971957}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: GreidRig_RLegFoot
+      parentName: GreidRig_RLegCalf
+      position: {x: -0.45164198, y: 0, z: 0.000000009536743}
+      rotation: {x: 0.060026646, y: 0.0032959376, z: -0.49918196, w: 0.8644092}
+      scale: {x: 0.99999833, y: 1.0000014, z: 1.0000004}
+    - name: GreidRig_RLegDigit11
+      parentName: GreidRig_RLegFoot
+      position: {x: -0.14582275, y: 0.015289854, z: -0.0014615344}
+      rotation: {x: 0.0010132776, y: -0.004476198, z: -0.31039938, w: 0.9505952}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: GreidRig_scabardBone
+      parentName: GreidRig_Root
+      position: {x: -0.051793974, y: 0.000127665, z: -0.17387407}
+      rotation: {x: 0.023238987, y: 0.11028929, z: 0.99362385, w: -0.002803035}
+      scale: {x: 1, y: 0.99999994, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -136,11 +331,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0d60af2746454a5408e5ee83052a3cb3,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

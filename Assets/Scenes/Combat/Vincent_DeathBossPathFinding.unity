@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8012319
 Transform:
   m_ObjectHideFlags: 0
@@ -370,6 +370,7 @@ MonoBehaviour:
   levelsToOpen: 020000000300000004000000
   levelsToClose: 0100000005000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!1 &116494894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,6 +2316,7 @@ MonoBehaviour:
   levelsToOpen: 030000000400000005000000
   levelsToClose: 0200000006000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!1 &647341508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4641,6 +4643,7 @@ MonoBehaviour:
   levelsToOpen: 040000000500000006000000
   levelsToClose: 0300000007000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!1 &1248984030
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5319,7 @@ MonoBehaviour:
   levelsToOpen: 040000000500000006000000
   levelsToClose: 03000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!1 &1455472041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7298,14 +7302,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 317451338, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 317451338, guid: 9ef42bf1f34a64b9aaa38b54bf09547a, type: 3}
-      propertyPath: whereisPlayer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7058069560047037975, guid: 9ef42bf1f34a64b9aaa38b54bf09547a,
         type: 3}
       propertyPath: UI_HPBar
@@ -7389,7 +7385,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20396
+  m_Name: pb_Mesh21124
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10568,7 +10564,7 @@ PrefabInstance:
     - target: {fileID: 6396915346711008033, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.69
+      value: 1.947
       objectReference: {fileID: 0}
     - target: {fileID: 6396915346711008033, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
@@ -10614,11 +10610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss_Life
-      objectReference: {fileID: 0}
-    - target: {fileID: 6396915346711008044, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
@@ -10770,7 +10761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3192816875209604613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11151,6 +11142,7 @@ MonoBehaviour:
   levelsToOpen: 0000000001000000
   levelsToClose: 02000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!4 &3236824955106693644
 Transform:
   m_ObjectHideFlags: 0
@@ -11235,6 +11227,7 @@ MonoBehaviour:
   levelsToOpen: 010000000200000003000000
   levelsToClose: 0000000004000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!4 &3236824955118068019
 Transform:
   m_ObjectHideFlags: 0
@@ -11314,6 +11307,7 @@ MonoBehaviour:
   levelsToOpen: 000000000100000002000000
   levelsToClose: 03000000
   areaBorderColor: {r: 1, g: 0.9, b: 0.02, a: 0.35}
+  stayAreaTime: 0
 --- !u!4 &3236824955634639145
 Transform:
   m_ObjectHideFlags: 0
