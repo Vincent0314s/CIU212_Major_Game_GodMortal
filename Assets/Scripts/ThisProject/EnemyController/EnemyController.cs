@@ -79,7 +79,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void FacingPlayer()
+    protected void FacingPlayer()
     {
         if (player.position.x > transform.position.x) {
             cm.FacingRight(true);

@@ -6642,10 +6642,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1515395355, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1570103598, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
       propertyPath: platformParent
       value: 
       objectReference: {fileID: 1941467296}
+    - target: {fileID: 1570103598, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
+      propertyPath: reactionTimeRange.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570103598, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
+      propertyPath: reactionTimeRange.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3458195370828352759, guid: ca32098549bb54642bc82168fc12e36a,
         type: 3}
       propertyPath: m_Name
@@ -6716,6 +6728,11 @@ PrefabInstance:
       propertyPath: UI_HPBar
       value: 
       objectReference: {fileID: 3192816875426005489}
+    - target: {fileID: 7726227689476179298, guid: ca32098549bb54642bc82168fc12e36a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca32098549bb54642bc82168fc12e36a, type: 3}
 --- !u!1 &1662096878
@@ -8933,6 +8950,25 @@ Transform:
   m_Father: {fileID: 1046585307}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2117676727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6396915346711008044, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026452998098175811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2117676734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117676727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a401b70e16f4b82a8f3522b5c2b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 10
 --- !u!1 &2122115919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10611,11 +10647,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Life
       objectReference: {fileID: 0}
+    - target: {fileID: 6396915346711008044, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+        type: 3}
+      propertyPath: less50CDTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
       propertyPath: platformParent
       value: 
       objectReference: {fileID: 1941467296}
+    - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+        type: 3}
+      propertyPath: healingPercentage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+        type: 3}
+      propertyPath: reactionTimeRange.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
+        type: 3}
+      propertyPath: reactionTimeRange.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6396915346711008050, guid: 8d87b83ee7ab03a43a220a9fa34f63b8,
         type: 3}
       propertyPath: teleportPoints.Array.data[0]

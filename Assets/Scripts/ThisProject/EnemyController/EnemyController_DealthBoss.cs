@@ -9,13 +9,10 @@ public class EnemyController_DealthBoss : EnemyController
 
     [Space]
     [Header("NewValues")]
-    public float IdleTime = 1.5f;
     public Transform platformParent;
     private Transform[] platforms;
     private Transform currentPlayerPlatform;
     private GameObject currentDOTArea;
-    
-
 
     [Space]
     [Header("Percentage")]
@@ -42,7 +39,6 @@ public class EnemyController_DealthBoss : EnemyController
 
     public override void Move(Vector3 targetPos)
     {
-
         if (targetPos.x > transform.position.x)
         {
             cfm.FacingRight(true);
@@ -79,37 +75,81 @@ public class EnemyController_DealthBoss : EnemyController
     {
         if (player)
         {
-
-            if (od.isBeingBlocked)
+            Move(player.position);
+            if (IsInAttackRange(player.position))
             {
-                if (moveVector.y > 0)
-                {
-                    Move(new Vector3(player.position.x, player.position.y + 5f, 6));
-                }
-                else
-                {
-                    Move(new Vector3(player.position.x, player.position.y, 6));
-                }
+                Attack();
+                StopTracinPlayer();
             }
-            else {
-                Move(player.position);
-                if (IsInAttackRange(player.position))
-                {
-                    Attack();
-                    StopTracinPlayer();
-                }
-            }
+            //if (od.isBeingBlocked)
+            //{
+            //    if (moveVector.y > 0)
+            //    {
+            //        Move(new Vector3(player.position.x, player.position.y + 5f, 6));
+            //    }
+            //    else
+            //    {
+            //        Move(new Vector3(player.position.x, player.position.y, 6));
+            //    }
+            //}
+            //else {
+            //    Move(player.position);
+            //    if (IsInAttackRange(player.position))
+            //    {
+            //        Attack();
+            //        StopTracinPlayer();
+            //    }
+            //}
         }
     }
 
     public override void Move_Enter()
     {
-        
+        currentReactionTimer = 0;
+        reactionTimer = GetRandomTime(reactionTimeRange);
     }
+
     public override void Move_Upate()
     {
         if (player)
         {
+            //Move(player.position);
+            //if (IsInAttackRange(player.position))
+            //{
+            //    Attack();
+            //    StopTracinPlayer();
+            //}
+            //if (currentReactionTimer < reactionTimer)
+            //{
+            //    currentReactionTimer += Time.deltaTime;
+
+            //}
+            //else {
+            //    if (IsCloseToTarget(player.position) && !IsInAttackRange(player.position))
+            //    {
+            //        if (rangeMedium.GetCertainPercentageFromList() == "Debuff")
+            //        {
+            //            PlayerMovement pm = player.GetComponent<PlayerMovement>();
+            //            if (!pm.isBeingDebuff)
+            //            {
+            //                cbv.anim.Play("Debuff");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (!currentDOTArea && currentPlayerPlatform)
+            //            {
+            //                cbv.anim.Play("DOT");
+            //            }
+            //        }
+            //    }
+            //    else if (IsCloseToConsiderRange(player.position) && !IsCloseToTarget(player.position))
+            //    {
+            //        cbv.anim.Play("Telegraphed");
+            //    }
+            //}
+
+
             if (od.isBeingBlocked)
             {
                 if (moveVector.y > 0)
@@ -121,40 +161,47 @@ public class EnemyController_DealthBoss : EnemyController
                     Move(new Vector3(player.position.x, player.position.y, 6));
                 }
             }
-            else {
+            else
+            {
                 Move(player.position);
+              
+                if (currentReactionTimer < reactionTimer)
+                {
+                    currentReactionTimer += Time.deltaTime;
 
-                if (IsInAttackRange(player.position))
-                {
-                    Attack();
-                    StopTracinPlayer();
                 }
-                else if (IsCloseToTarget(player.position) && !IsInAttackRange(player.position))
+                else
                 {
-                    if (rangeMedium.GetCertainPercentageFromList() == "Debuff")
+                    if (IsInAttackRange(player.position))
                     {
-                        PlayerMovement pm = player.GetComponent<PlayerMovement>();
-                        if (!pm.isBeingDebuff)
+                        Attack();
+                        StopTracinPlayer();
+                    }
+                    else if (IsCloseToTarget(player.position) && !IsInAttackRange(player.position))
+                    {
+                        if (rangeMedium.GetCertainPercentageFromList() == "Debuff")
                         {
-                            cbv.anim.Play("Debuff");
+                            PlayerMovement pm = player.GetComponent<PlayerMovement>();
+                            if (!pm.isBeingDebuff)
+                            {
+                                cbv.anim.Play("Debuff");
+                            }
+                        }
+                        else
+                        {
+                            if (!currentDOTArea && currentPlayerPlatform)
+                            {
+                                cbv.anim.Play("DOT");
+                            }
                         }
                     }
-                    else
+                    else if (IsCloseToConsiderRange(player.position) && !IsCloseToTarget(player.position))
                     {
-                        if (!currentDOTArea && currentPlayerPlatform)
-                        {
-                            cbv.anim.Play("DOT");
-                        }
+                        cbv.anim.Play("Telegraphed");
                     }
-                }
-                else if (IsCloseToConsiderRange(player.position) && !IsCloseToTarget(player.position))
-                {
-                    cbv.anim.Play("Telegraphed");
                 }
             }
         }
-           
-
     }
 
     void DeTectPlayerCurrentPlatform() {

@@ -40,6 +40,7 @@ public class BossValue_DeathBoss : CharacterBaseValue
     public override void Dead()
     {
         GameFlowManager.i.isKillingDeathBoss = true;
+        GetComponent<Character_FlyingMovement>().StopMoving();
         transform.parent = null;
         rb.useGravity = true;
         GetComponent<Collider>().enabled = true;

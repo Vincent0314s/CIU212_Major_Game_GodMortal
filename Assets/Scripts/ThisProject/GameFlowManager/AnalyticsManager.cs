@@ -11,8 +11,6 @@ public static class AnalyticsManager
     private static int drinkPotionTimes;
     private static int howManyPotionsBeingCollected;
     private static int howManyLetterBeingCollected;
-    private static string levelName;
-    private static float levelStayTime;
 
     public static void RecordBasicValue() {
         Dictionary<string, object> analyticsData = new Dictionary<string, object>
@@ -26,7 +24,7 @@ public static class AnalyticsManager
         };
 
         AnalyticsResult result = Analytics.CustomEvent("GameEnd", analyticsData);
-        Debug.Log("Analytics Result Basic " + result);
+        //Debug.Log("Analytics Result Basic " + result);
     }
 
     public static void RecordLevelStayTime() {
@@ -83,10 +81,10 @@ public static class AnalyticsManager
         AnalyticsResult HR = Analytics.CustomEvent("HubAreaStayTime", HubArea);
         AnalyticsResult LR = Analytics.CustomEvent("LifeAreaStayTime", LifeArea);
         AnalyticsResult DR = Analytics.CustomEvent("DeathAreaStayTime", DeathArea);
-        Debug.Log("Analytics Result LevelTime WR    " + WR);
-        Debug.Log("Analytics Result LevelTime HR    " + HR);
-        Debug.Log("Analytics Result LevelTime LR    " + LR);
-        Debug.Log("Analytics Result LevelTime DR    " + DR);
+        //Debug.Log("Analytics Result LevelTime WR    " + WR);
+        //Debug.Log("Analytics Result LevelTime HR    " + HR);
+        //Debug.Log("Analytics Result LevelTime LR    " + LR);
+        //Debug.Log("Analytics Result LevelTime DR    " + DR);
     }
 
     public static void AddPlayerDeathTimes() {

@@ -1,1 +1,1 @@
-{"playerPosition":{"x":1.2937499284744263,"y":2.970491409301758,"z":10.600000381469727},"currentHP":100.0,"currentShield":50.0,"hpPotion":0,"hasKillDeathBoss":false,"hasKillLifeBoss":false}
+{"playerPosition":{"x":-0.5342056155204773,"y":4.188992023468018,"z":10.600000381469727},"currentHP":100.0,"currentShield":50.0,"hpPotion":0,"hasKillDeathBoss":false,"hasKillLifeBoss":false}
